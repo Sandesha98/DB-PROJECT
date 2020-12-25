@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 import javax.swing.border.Border;
 class GUI
 {
-     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10;
-    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10;
+     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11;
+    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11;
     FlowLayout fl;
     JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel;
     JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse;
@@ -940,7 +940,7 @@ class GUI
         delNur.setFont(new Font("Arial",Font.BOLD,16));
         c6.add(delNur);
       
-        /*delNur.addActionListener(new ActionListener(){
+        delNur.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
              { 
          f10 = new JFrame("Hospital Managment System");
@@ -953,7 +953,7 @@ class GUI
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
            //c9.add(back);
-          /*back.addActionListener(new ActionListener() {
+          back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
                     f9.setVisible(false);
@@ -1041,12 +1041,33 @@ class GUI
                 f10.setSize(626,616);
                 f10.setResizable(false);  
              }
-        });*/
+        });
       
         searchNur = new JButton ("SEARCH");
         searchNur.setBounds(280,200,220,40);
         searchNur.setFont(new Font("Arial",Font.BOLD,16));
         c6.add(searchNur);
+        searchNur.addActionListener(new ActionListener(){
+             public void actionPerformed(ActionEvent a)
+             { 
+                 f11 = new JFrame("Hospital Managment System");
+        //f8.setVisible(false);
+        c11 = f11.getContentPane();
+        c11.setLayout(null);
+        c11.add(l1);
+        Icon icon = new ImageIcon("b.jpeg");
+             back = new JButton(icon);
+             back.setBounds(8,15,42,36);
+            back.setBorderPainted(false);
+           //c9.add(back);
+          /*back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                    f9.setVisible(false);
+                    f6.setVisible(true);
+            }});*/
+          
+             }});
         updNur = new JButton ("UPDATE");
         updNur.setBounds(280,400,220,50);
         updNur.setFont(new Font("Arial",Font.BOLD,16));
