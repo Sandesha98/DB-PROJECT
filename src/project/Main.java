@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.Border;
+
 class GUI
 {
      JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10;
