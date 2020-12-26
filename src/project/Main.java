@@ -3,21 +3,30 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+
 
 class GUI
 {
-     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11;
-    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11;
+     JFrame f, jf,frame1, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5;
+    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5;
     FlowLayout fl;
-    JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel;
-    JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse;
-    JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur;
-    //String val1,val2,val3;
+      JComboBox cb;
+    JScrollPane scroll ;
+    JLabel dl,dl1,dl2,dl3,dl4,dl5,dl6,l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,pl,pl1,pl2,pl3,pl4,pl5;
+    JTextField ptf,ptf1,ptf2,ptf3,ptf4,ptf5,tf1, tf2,tf3,dtf,dtf1,dtf2,dtf3,dtf4,dtf5,dtf6,dtf7,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse;
+    JButton pb,pb1,pb2,pb3,pb4,pb5,b1,db1,db2,db3,db4,db,b2,b3,b4,b5,button, d1,b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur;
+
+    String[] columnNames = {"User_id","Password","Designation"};
+ 
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
-   JTable table;
+    JTable table;
+   private javax.swing.JTable jTable1;
+     JScrollPane sp;
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
     void Draw()
     {		
@@ -25,7 +34,7 @@ class GUI
 	f = new JFrame("Hospital Managment System");
 	c = f.getContentPane();
 	c.setLayout(null);
-        ImageIcon ii = new ImageIcon("login.jpeg") ;
+        ImageIcon ii = new ImageIcon("login.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616);   
         
@@ -116,7 +125,7 @@ class GUI
         l1.setForeground(Color.BLACK);
         l1.setBounds(70,00,600,60);
         c1.add(l1);
-       Icon icon = new ImageIcon("b.jpeg");
+       Icon icon = new ImageIcon("b.jpg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -128,14 +137,198 @@ class GUI
                     jf.setVisible(false);
                     f.setVisible(true);
             }});
-        b2 = new JButton ("CHECK PATIENT");
-        b2.setBounds(280,100,250,50);
-        b2.setFont(new Font("Arial",Font.BOLD,16));
-        c1.add(b2);
+        d1 = new JButton ("CHECK PATIENT");
+        d1.setBounds(280,100,250,50);
+        d1.setFont(new Font("Arial",Font.BOLD,16));
+        c1.add(d1);
+        /* ********************************************************************************
+         *                         CHECK PATIENT REPORT 
+         * 
+         * ********************************************************************************
+         */
         b3 = new JButton ("CHECK PATIENT REPORT");
         b3.setBounds(280,200,250,50);
         b3.setFont(new Font("Arial",Font.BOLD,16));
         c1.add(b3);
+        
+        b3.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent ae)
+            {
+                
+                ImageIcon ii = new ImageIcon("bg.jpg") ; 
+               bgimg = new JLabel("",ii,JLabel.CENTER);
+                bgimg.setBounds(0,0,626,616); 
+                df2 = new JFrame("Hospital Managment System");
+                dc2 = df2.getContentPane();
+                dc2.setLayout(null);
+                l1 = new JLabel ("Hospital Managment System") ;
+                l1.setFont(new java.awt.Font("Tahoma" , 1, 30)) ;
+                l1.setForeground(Color.BLACK);
+                l1.setBounds(70,00,600,60);
+                dc2.add(l1);
+                dl1 = new JLabel ("Enter Patient Id ");
+                dl1.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl1.setForeground(Color.BLACK);
+                dl1.setBounds(70,70,250,50);
+                dc2.add(dl1);
+                dtf7 = new JTextField (50);
+                dtf7.setBounds(280,80,150,30);
+                dc2.add(dtf7);
+                
+                db1 = new JButton("GO");
+                db1.setBounds(440,80,65,30);
+                db1.setFont(new Font("Arial",Font.BOLD,16));
+                dc2.add(db1);
+                db1.addActionListener(new ActionListener()
+                {
+                  public void actionPerformed(ActionEvent ae)
+                    {
+                                     report data11 = new report();
+
+                          if(tf1.getText().equals("")||tf2.getText().equals(""))
+                    {
+                        JOptionPane.showMessageDialog (f4,"Please Enter Values") ;
+                    }
+                    else{
+                        try {
+                            data11.openConnection22();
+                        } 
+                        catch (SQLException ex) {
+                            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    }
+                   class report{
+                private Connection con;
+                private Statement stat;
+                public Connection openConnection22() throws SQLException
+                {
+                    if(con==null)
+                    {
+                    String url = "jdbc:mysql://localhost/";
+                    String dbName="projectdb";
+                    String dr="com.mysql.jdbc.Driver"; 
+
+                    String user="root";
+                    String pass="";
+                    try{
+                    Class.forName(dr);
+                    this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+                    PreparedStatement stmt = con.prepareStatement("SELECT * FROM DIAGNOSIS_REPORT WHERE pt_id =?");
+                    stmt.setInt(1,Integer.parseInt(dtf7.getText()));
+                    ResultSet rs = stmt.executeQuery();
+                    if(rs.next())
+                    {
+                      dtf2.setText(rs.getInt("pt_id")+"");
+                      dtf3.setText(rs.getString("details"));  
+                      dtf4.setText(rs.getString("remarks"));
+                      dtf5.setText(rs.getDate("report_Date")+"");
+                      dtf6.setText(rs.getInt("report_id")+"");
+                      
+                    }
+                     else
+                    {
+                     JOptionPane.showMessageDialog(null,"Record not found");
+                    }
+                          con.close();
+                     }
+                    catch(ClassNotFoundException e)
+                    {
+                    System.out.println("Not Connected");
+                    }
+                    }
+                    return con;
+                }
+            }
+                });
+                
+  
+                dl2 = new JLabel ("Patient Id");
+                dl2.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl2.setForeground(Color.BLACK);
+                dl2.setBounds(330,140,250,50);
+                dc2.add(dl2);
+                
+                dtf2 = new JTextField(50);
+                dtf2.setBounds(490,150,120,30);
+                dc2.add(dtf2);
+                
+                dl3 = new JLabel ("Details");
+                dl3.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl3.setForeground(Color.BLACK);
+                dl3.setBounds(330,180,250,50);
+                dc2.add(dl3);
+                
+                dtf3 = new JTextField(50);
+                dtf3.setBounds(490,190,120,30);
+                dc2.add(dtf3);
+                
+                dl4 = new JLabel ("Remarks");
+                dl4.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl4.setForeground(Color.BLACK);
+                dl4.setBounds(330,220,250,50);
+                dc2.add(dl4);
+                
+                dtf4 = new JTextField(50);
+                dtf4.setBounds(490,230,120,30);
+                dc2.add(dtf4);
+                
+                dl5 = new JLabel ("Report Date");
+                dl5.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl5.setForeground(Color.BLACK);
+                dl5.setBounds(330,260,250,50);
+                dc2.add(dl5);
+                
+                dtf5 = new JTextField(50);
+                dtf5.setBounds(490,270,120,30);
+                dc2.add(dtf5);
+                
+                dl6 = new JLabel ("Report Id");
+                dl6.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl6.setForeground(Color.BLACK);
+                dl6.setBounds(330,300,250,50);
+                dc2.add(dl6);
+                
+                dtf6 = new JTextField(50);
+                dtf6.setBounds(490,310,120,30);
+                dc2.add(dtf6);
+                   
+                
+                db2 = new JButton("CLEAR");
+                db2.setBounds(430,350,120,30);
+                db2.setFont(new Font("Arial",Font.BOLD,16));
+                dc2.add(db2);
+                db2.addActionListener(new ActionListener()
+                {
+                  public void actionPerformed(ActionEvent ae)
+                    {
+                      
+                      dtf2.setText("");
+                      dtf3.setText("");  
+                      dtf4.setText("");
+                      dtf5.setText("");
+                      dtf6.setText("");
+                      dtf7.setText("");
+                    }
+                });
+            
+        
+                dtf2.setFont(font1);
+                dc2.add(bgimg);
+                
+                df2.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
+                df2.setVisible(true);
+                df2.setSize(626,616);
+                df2.setResizable(false); 
+                
+            }
+           
+            
+        
+        });
+        
+        
         b4 = new JButton ("GIVE MEDICINE");
         b4.setBounds(280,300,250,50);
         b4.setFont(new Font("Arial",Font.BOLD,16));
@@ -170,7 +363,7 @@ class GUI
         l1.setFont(new java.awt.Font("Tahoma" , 1, 30)) ;
         l1.setForeground(Color.BLACK);
         l1.setBounds(70,00,600,60);
-        c2.add(l1); Icon icon = new ImageIcon("b.jpeg");
+        c2.add(l1); Icon icon = new ImageIcon("b.jpg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -193,7 +386,7 @@ class GUI
         f3 = new JFrame("Hospital Managment System");
         c3 = f3.getContentPane();
         c3.setLayout(null);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -221,7 +414,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -265,7 +458,7 @@ class GUI
                 l2.setForeground(Color.BLACK);
                 l2.setBounds(350,180,200,30);
                 c4.add(l2);
-    tf5 = new JTextField (50);
+                tf5 = new JTextField (50);
             
                 tf5.setBounds(350,200,240,49);
                 c4.add(tf5);
@@ -335,7 +528,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -525,7 +718,7 @@ class GUI
         c9 = f9.getContentPane();
         c9.setLayout(null);
         c9.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -634,12 +827,219 @@ class GUI
 	f3.setResizable(false); 
         }
         });
-        
+        /*
+        ***************************************************
+                            PATIENT
+        ***************************************************
+        */
         
         b3 = new JButton ("PATIENT");
         b3.setBounds(280,300,220,40);
         b3.setFont(new Font("Arial",Font.BOLD,16));
         c2.add(b3);
+        b3.addActionListener(new ActionListener()
+        {
+        public void actionPerformed(ActionEvent ae)
+        {
+         pf = new JFrame("Hospital Managment System");
+         pc = pf.getContentPane();   
+         pc.setLayout(null);
+         ImageIcon ii = new ImageIcon("bg.jpg") ;
+         bgimg = new JLabel("",ii,JLabel.CENTER);
+         bgimg.setBounds(0,0,626,616); 
+         
+         l1 = new JLabel ("Hospital Managment System") ;
+         l1.setFont(new java.awt.Font("Tahoma" , 1, 30)) ;
+         l1.setForeground(Color.BLACK);
+         l1.setBounds(70,00,600,60);
+         
+         pc.add(l1);
+         
+         JButton pInsrt = new JButton("INSERT");
+         pInsrt.setBounds(280,100,220,40);
+         pInsrt.setFont(new Font("Arial",Font.BOLD,16));
+         pc.add(pInsrt);
+         pInsrt.addActionListener(new ActionListener()
+        {
+        public void actionPerformed(ActionEvent ae)
+        {
+            pf1= new JFrame("Hospital Managment System");
+            pc1 = pf1.getContentPane();   
+            pc1.setLayout(null);
+            ImageIcon ii = new ImageIcon("bg.jpg") ;
+            bgimg = new JLabel("",ii,JLabel.CENTER);
+            bgimg.setBounds(0,0,626,616); 
+
+                l2 = new JLabel ("NAME", SwingConstants.CENTER) ;
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(350,60,200,30);
+                pc1.add(l2);
+                
+                ptf = new JTextField (50);
+                ptf.setBounds(350,80,240,49);
+                pc1.add(ptf);
+                ptf.setOpaque(false);
+                ptf.setBorder(border);
+                ptf.setFont(font1);
+
+                l2 = new JLabel ("F/NAME", SwingConstants.CENTER) ;
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(350,120,200,30);
+                pc1.add(l2);
+                
+                ptf1 = new JTextField (50);
+                ptf1.setBounds(350,140,240,49);
+                pc1.add(ptf1);
+                ptf1.setOpaque(false);
+                ptf1.setBorder(border);
+                ptf1.setFont(font1);
+               
+                l2 = new JLabel ("AGE", SwingConstants.CENTER) ;
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(350,180,200,30);
+                pc1.add(l2);
+                
+                ptf2 = new JTextField (50);            
+                ptf2.setBounds(350,200,240,49);
+                pc1.add(ptf2);
+                ptf2.setOpaque(false);
+                ptf2.setBorder(border);
+                ptf2.setFont(font1);
+                
+                l3 = new JLabel ("GENDER", SwingConstants.CENTER) ;
+                l3.setFont(font1) ;
+                l3.setForeground(Color.BLACK);
+                l3.setBounds(350,240,200,30);
+                pc1.add(l3);
+                
+                ptf3 = new JTextField (50);
+                ptf3.setBounds(350,260,240,49);
+                pc1.add(ptf3);
+                ptf3.setOpaque(false);
+                ptf3.setBorder(border);
+                ptf3.setFont(font1);                
+                
+                l4 = new JLabel ("ADDRESS", SwingConstants.CENTER) ;
+                l4.setFont(font1) ;
+                l4.setForeground(Color.BLACK);
+                l4.setBounds(350,300,200,30);
+                pc1.add(l4);     
+                
+                                
+                ptf4 = new JTextField (50);
+                ptf4.setBounds(350,320,240,49);
+                pc1.add(ptf4);
+                
+                
+                ptf4.setOpaque(false);
+                ptf4.setBorder(border);
+                ptf4.setFont(font1); 
+                
+                l4 = new JLabel ("PHONE NUM", SwingConstants.CENTER) ;
+                l4.setFont(font1) ;
+                l4.setForeground(Color.BLACK);
+                l4.setBounds(350,360,200,30);
+                pc1.add(l4);     
+                
+                                
+                ptf4 = new JTextField (50);
+                ptf4.setBounds(350,380,240,49);
+                pc1.add(ptf4);
+                
+                
+                ptf4.setOpaque(false);
+                ptf4.setBorder(border);
+                ptf4.setFont(font1); 
+                
+                l4 = new JLabel ("WARD NUM", SwingConstants.CENTER) ;
+                l4.setFont(font1) ;
+                l4.setForeground(Color.BLACK);
+                l4.setBounds(350,420,200,30);
+                pc1.add(l4);     
+                
+                                
+                ptf4 = new JTextField (50);
+                ptf4.setBounds(350,440,240,49);
+                pc1.add(ptf4);
+                
+                
+                ptf4.setOpaque(false);
+                ptf4.setBorder(border);
+                ptf4.setFont(font1); 
+                
+                cmbo box = new cmbo();
+            
+                try {
+                    box.openConnectionC();
+                } 
+                catch (SQLException ex) {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                pb = new JButton("SAVE");
+                pb.setBounds(400,520,110,30);
+                pb.setFont(new Font("Arial",Font.BOLD,16));
+                pc1.add(pb);
+                
+            
+            pc1.add(bgimg);
+            pf1.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
+            pf1.setVisible(true);
+            pf1.setSize(626,616);
+            pf1.setResizable(false);
+        }
+        
+        class cmbo{
+            private Connection con;
+            private Statement stat;
+        public Connection openConnectionC() throws SQLException
+        {
+        if(con==null)
+        {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+                
+        String user="root";
+        String pass="";
+        try{
+        Class.forName(dr);
+        this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+        String cmb = "SELECT d_id from doctor";
+        stat = con.createStatement();
+        ResultSet cb = stat.executeQuery(cmb); 
+        Vector v = new Vector();
+        while(rs.next())
+        {
+            int id = rs.getInt("d_id");
+            v.add(id);
+        }
+        c1 = new JComboBox(v);
+        c1.setBounds(150, 110, 150, 20);
+        pc1.add(c1);
+        }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+          }
+        
+        }
+        );
+        
+        
+        
+        
+        
+        
+        
         
         /*****************************nurse*************/
         b4 = new JButton ("NURSE");
@@ -912,7 +1312,7 @@ class GUI
         stmt.setString(3, tf14.getText()); //gender
         stmt.setInt(4, Integer.parseInt(tf15.getText())); //age
         stmt.setString(5, tf16.getText());//qualification
-        stmt.setString(6,"nurse"); // designation
+        stmt.setString(6,"nurse"); // pass
          stmt.executeUpdate();
       }
         catch(ClassNotFoundException e)
@@ -949,7 +1349,7 @@ class GUI
         c10 = f10.getContentPane();
         c10.setLayout(null);
         c10.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1056,7 +1456,7 @@ class GUI
         c11 = f11.getContentPane();
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1092,21 +1492,25 @@ class GUI
         f2.setSize(626,616);
         f2.setResizable(false);
         }
-        }
+        });
         if(flag==false)
         {
         JOptionPane.showMessageDialog (jf,"Either of the value is incorrect!") ;
         }
         con.close();
         }
+        
+        }   
+}
         catch(ClassNotFoundException e)
         {
         System.out.println("Not Connected");
         }
         }
         return con;
-        }}}
-                );
+        }
+                }
+        });
         
         
          c.add(bgimg);
@@ -1115,8 +1519,6 @@ class GUI
 	f.setSize(626,616);
 	f.setResizable(false); 
     }
-
-    // String opt[] = new String[3];
 }
 
 public class Main{
