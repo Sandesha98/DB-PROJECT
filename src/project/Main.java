@@ -1,5 +1,4 @@
-//****************************	27 DEC		************************************************
-package project;
+//	04:47
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -77,7 +76,7 @@ class GUI
             db d = new db();
             if(tf1.getText().equals("")||tf2.getText().equals(""))
             {
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
+                JOptionPane.showMessageDialog (f,"Please Enter Values") ;
             }
             else{
                 try {
@@ -159,11 +158,7 @@ class GUI
                 df2.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 dc2.setLayout(null);
                 dc2.add(l1);
-<<<<<<< HEAD
-             Icon icon = new ImageIcon("b.jpeg");
-=======
              Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -463,11 +458,7 @@ class GUI
 	l1.setForeground(Color.BLACK);
 	l1.setBounds(70,00,600,60);
         c2.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -491,11 +482,7 @@ class GUI
         c3.setLayout(null);
         f3.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c3.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -931,11 +918,7 @@ class GUI
         c11.setLayout(null);
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.add(l1);
-<<<<<<< HEAD
-             Icon icon = new ImageIcon("b.jpeg");
-=======
              Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -999,11 +982,7 @@ class GUI
                     searchDoc data = new searchDoc();
             if(d1.getText().equals(""))
             {
-<<<<<<< HEAD
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-=======
                 JOptionPane.showMessageDialog (f11,"Please Enter Values") ;
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
                // f4.setVisible(false);
             }
             else{
@@ -1038,11 +1017,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1175,11 +1150,7 @@ class GUI
          pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
          pc.setLayout(null);
          pc.add(l1);
-<<<<<<< HEAD
-         Icon icon = new ImageIcon("b.jpeg");
-=======
          Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1203,19 +1174,11 @@ class GUI
             pc1.setLayout(null);
             pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             pc1.add(l1);
-<<<<<<< HEAD
-            Icon icon = new ImageIcon("b.jpeg");
-             back = new JButton(icon);
-             back.setBounds(8,15,42,36);
-            back.setBorderPainted(false);
-           pc1.add(back);
-=======
             Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
            pf1.add(back);
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
           back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
@@ -1389,11 +1352,7 @@ class GUI
         f12.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c12.setLayout(null);
         c12.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1463,11 +1422,7 @@ class GUI
                 f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c13.setLayout(null);
                 c13.add(l1);
-<<<<<<< HEAD
-               Icon icon = new ImageIcon("b.jpeg");
-=======
                Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -1524,11 +1479,7 @@ class GUI
         f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c13.setLayout(null);
         c13.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1618,11 +1569,7 @@ class GUI
         f6.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c6.setLayout(null);
        c6.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1645,11 +1592,7 @@ class GUI
                 f7.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c7.setLayout(null);
                 c7.add(l1);
-<<<<<<< HEAD
-            Icon icon = new ImageIcon("b.jpeg");
-=======
             Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1737,11 +1680,7 @@ class GUI
                     insert2 data = new insert2();
             if(tf12.getText().equals("")||tf13.getText().equals("")||tf14.getText().equals("")||tf15.getText().equals("")||tf16.getText().equals(""))
             {
-<<<<<<< HEAD
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-=======
                 JOptionPane.showMessageDialog (f7,"Please Enter Values") ;
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
             }
             else{
                 try {
@@ -1756,11 +1695,7 @@ class GUI
                 f8.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
              c8.setLayout(null); 
              c8.add(l1);
-<<<<<<< HEAD
-                Icon icon = new ImageIcon("b.jpeg");
-=======
                 Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1823,11 +1758,7 @@ class GUI
                  
                   if(tf17.getText().equals("")||tf18.getText().equals("")||tf19.getText().equals(""))
             {
-<<<<<<< HEAD
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-=======
                 JOptionPane.showMessageDialog (f8,"Please Enter Values") ;
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
             }
             else{
                 try {
@@ -1955,11 +1886,7 @@ class GUI
         f10.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c10.setLayout(null);
         c10.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1994,15 +1921,9 @@ class GUI
             {
             
                     deleteNurse dlt = new deleteNurse();
-<<<<<<< HEAD
-            if(dltNurse.getText().equals(""))
-            {
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-=======
             if(tf1.getText().equals("")||tf2.getText().equals(""))
             {
                 JOptionPane.showMessageDialog (f4,"Please Enter Values") ;
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
             }
             else{
                 try {
@@ -2076,11 +1997,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2144,11 +2061,7 @@ class GUI
                     searchNur data = new searchNur();
             if(st1.getText().equals(""))
             {
-<<<<<<< HEAD
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-=======
                 JOptionPane.showMessageDialog (f11,"Please Enter Values") ;
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
                // f4.setVisible(false);
             }
             else{
@@ -2182,11 +2095,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-<<<<<<< HEAD
-        Icon icon = new ImageIcon("b.jpeg");
-=======
         Icon icon = new ImageIcon("b.jpg");
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2315,7 +2224,6 @@ class GUI
         }
         }
         if(flag==false)
-<<<<<<< HEAD
         {
         JOptionPane.showMessageDialog (jf,"Either of the value is incorrect!") ;
         }
@@ -2577,357 +2485,6 @@ class searchDoc
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-       String val = "SELECT * FROM doctor JOIN staff using(st_id) WHERE d_id=?";
-            PreparedStatement stmt = con.prepareStatement(val);
-            stmt.setInt(1,Integer.parseInt(dt1.getText()));
-            ResultSet rs = stmt.executeQuery();
-            if(rs.next())
-            {
-              st2.setText(rs.getString("Name"));
-              st3.setText(rs.getString("FatherName"));
-              st4.setText(rs.getString("Gender"));
-              st4.setEditable(false);
-              st5.setText(rs.getInt("Age")+"");
-              st6.setText(rs.getString("Qualification"));
-              st7.setText(rs.getDate("JoiningDate")+"");
-              st8.setText(rs.getDate("LeavingDate")+"");
-              st9.setText(rs.getString("Designation"));
-              st9.setEditable(false);
-              st10.setText(rs.getInt("st_id")+"");
-              st10.setEditable(false);
-              st11.setText(rs.getString("duty_shift"));
-              dt2.setText(rs.getString("specialization"));
-              st13.setText(rs.getString("Position"));
-            }
-            else
-            {
-            JOptionPane.showMessageDialog(null,"Record not found");
-            }
-         con.close();
-             }
-        catch(ClassNotFoundException e)
-        {
-        System.out.println("Not Connected");
-        }
-        }
-        return con;
-        
-        }}
-class updateDoc
-                {
-                private Connection con;
-         public Connection connection() throws SQLException, ParseException
-         {
-         if(con==null)
-         {
-         String url = "jdbc:mysql://localhost/";
-        String dbName="projectdb";
-        String dr="com.mysql.jdbc.Driver"; 
-        String user="root";
-        String pass="";
-        try{
-        Class.forName(dr);
-        this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-       String val = "Update doctor join staff using(st_id) set name = ?,fathername = ?,age = ?,qualification = ?,JoiningDate = ?,LeavingDate = ?,duty_shift = ?, specialization=?,Position=? where d_id = = '"+dt1.getText()+"'";
-            PreparedStatement stmt = con.prepareStatement(val);
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsed = format.parse(st7.getText());
-        java.sql.Date d = new java.sql.Date(parsed.getTime());
-         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date pd = format1.parse(st8.getText());
-        java.sql.Date d1 = new java.sql.Date(pd.getTime());
-         //   stmt.setInt(1,Integer.parseInt(dt1.getText()));
-              stmt.setString(1,st2.getText());
-              stmt.setString(2,st3.getText());
-              stmt.setInt(3,Integer.parseInt(st5.getText()));
-              stmt.setString(4,st6.getText());
-              stmt.setDate(5,d);
-              stmt.setDate(6,d1);
-              stmt.setString(7,st11.getText());
-               stmt.setString(8,dt2.getText());  
-               stmt.setString(9,st13.getText());
-                stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Updated Successfully"); 
-         con.close();
-             }
-        catch(ClassNotFoundException e)
-        {
-        System.out.println("Not Connected");
-        }
-        }
-        return con;
-        
-        }}
-class searchNur
-                {
-                private Connection con;
-        private Statement stat;
-        public Connection connection() throws SQLException
-=======
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
-        {
-        JOptionPane.showMessageDialog (jf,"Either of the value is incorrect!") ;
-        }
-        con.close();
-        }
-        catch(ClassNotFoundException e)
-        {
-        System.out.println("Not Connected");
-        }
-        }
-        return con;
-        }}}
-                );
-        
-
-         c.add(bgimg);
-       f.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
-	f.setVisible(true);
-	f.setSize(626,616);
-	f.setResizable(false); 
-    }
-   public void searchData(){
-                
-           s2 = new JLabel ("Name : ") ;
-            s2.setFont(font1) ;
-            s2.setForeground(Color.BLACK);
-            s2.setBounds(80,80,200,30);
-            c11.add(s2);
-                
-              st2 = new JTextField (50);   //Name
-                st2.setBounds(300,80,140,20);
-                c11.add(st2);
-            s3 = new JLabel ("Father Name : ") ;
-            s3.setFont(font1) ;
-            s3.setForeground(Color.BLACK);
-            s3.setBounds(80,110,140,30);
-            c11.add(s3);
-                
-                st3 = new JTextField (50);  //father name
-                st3.setBounds(300,110,140,20);
-                c11.add(st3);
-            s4 = new JLabel ("Gender : ") ; 
-            s4.setFont(font1) ;
-            s4.setForeground(Color.BLACK);
-            s4.setBounds(80,140,140,30);
-            c11.add(s4);
-                
-                st4 = new JTextField (50); //gender
-                st4.setBounds(300,140,140,20);
-                c11.add(st4);
-                 s5 = new JLabel ("Age : ") ;
-            s5.setFont(font1) ;
-            s5.setForeground(Color.BLACK);
-            s5.setBounds(80,170,140,30);
-            c11.add(s5);
-                
-                st5 = new JTextField (50);  //age
-                st5.setBounds(300,170,140,20);
-                c11.add(st5);
-             s6 = new JLabel ("Qualification : ") ;
-            s6.setFont(font1) ;
-            s6.setForeground(Color.BLACK);
-            s6.setBounds(80,200,140,30);
-            c11.add(s6);
-                
-                st6 = new JTextField (50);
-                st6.setBounds(300,200,140,20);
-                c11.add(st6);
-            s7 = new JLabel ("Joining Date : ") ;
-            s7.setFont(font1) ;
-            s7.setForeground(Color.BLACK);
-            s7.setBounds(80,230,140,30);
-            c11.add(s7);
-                
-                st7 = new JTextField (50);
-                st7.setBounds(300,230,140,20);
-                c11.add(st7);
-                s8 = new JLabel ("Leaving Date : ") ;
-            s8.setFont(font1) ;
-            s8.setForeground(Color.BLACK);
-            s8.setBounds(80,260,140,30);
-            c11.add(s8);
-                
-                st8 = new JTextField (50);
-                st8.setBounds(300,260,140,20);
-                c11.add(st8);
-                s9 = new JLabel ("Designation : ") ;
-            s9.setFont(font1) ;
-            s9.setForeground(Color.BLACK);
-            s9.setBounds(80,290,140,30);
-            c11.add(s9);
-                
-                st9 = new JTextField (50);
-                st9.setBounds(300,290,140,20);
-                c11.add(st9);
-                s10 = new JLabel ("Staff ID : ") ;
-            s10.setFont(font1) ;
-            s10.setForeground(Color.BLACK);
-            s10.setBounds(80,320,140,30);
-            c11.add(s10);
-                
-                st10 = new JTextField (50);
-                st10.setBounds(300,320,140,20);
-                c11.add(st10);
-                s11 = new JLabel ("Duty Shift : ") ;
-            s11.setFont(font1) ;
-            s11.setForeground(Color.BLACK);
-            s11.setBounds(80,350,140,30);
-            c11.add(s11);
-                
-                st11 = new JTextField (50);
-                st11.setBounds(300,350,140,20);
-                c11.add(st11);
-               
-                s13 = new JLabel ("Position : ") ;
-            s13.setFont(font1) ;
-            s13.setForeground(Color.BLACK);
-            s13.setBounds(80,410,140,30);
-            c11.add(s13);
-                
-                st13 = new JTextField (50);
-                st13.setBounds(300,410,140,20);
-                c11.add(st13);
-           }
-    public void searchPatientData(){
-            p1 = new JLabel ("Patient id : ") ;
-            p1.setFont(font1) ;
-            p1.setForeground(Color.BLACK);
-            p1.setBounds(80,50,200,30);
-            c13.add(p1);
-                
-                pt1 = new JTextField (50);
-                pt1.setBounds(300,50,140,20);
-                c13.add(pt1);
-           p2 = new JLabel ("Name : ") ;
-            p2.setFont(font1) ;
-            p2.setForeground(Color.BLACK);
-            p2.setBounds(80,80,200,30);
-            c13.add(p2);
-                
-              pt2 = new JTextField (50);   //Name
-                pt2.setBounds(300,80,140,20);
-                c13.add(pt2);
-            p3 = new JLabel ("Father Name : ") ;
-            p3.setFont(font1) ;
-            p3.setForeground(Color.BLACK);
-            p3.setBounds(80,110,140,30);
-            c13.add(p3);
-                
-                pt3 = new JTextField (50);  //father name
-                pt3.setBounds(300,110,140,20);
-                c13.add(pt3);
-            p4 = new JLabel ("Age : ") ; 
-            p4.setFont(font1) ;
-            p4.setForeground(Color.BLACK);
-            p4.setBounds(80,140,140,30);
-            c13.add(p4);
-                
-                pt4 = new JTextField (50); //gender
-                pt4.setBounds(300,140,140,20);
-                c13.add(pt4);
-                 p5 = new JLabel ("Gender : ") ;
-            p5.setFont(font1) ;
-            p5.setForeground(Color.BLACK);
-            p5.setBounds(80,170,140,30);
-            c13.add(p5);
-                
-                pt5 = new JTextField (50);  //age
-                pt5.setBounds(300,170,140,20);
-                c13.add(pt5);
-             p6 = new JLabel ("Address : ") ;
-            p6.setFont(font1) ;
-            p6.setForeground(Color.BLACK);
-            p6.setBounds(80,200,140,30);
-            c13.add(p6);
-                
-                pt6 = new JTextField (50);
-                pt6.setBounds(300,200,140,20);
-                c13.add(pt6);
-            p7 = new JLabel ("Phone Number : ") ;
-            p7.setFont(font1) ;
-            p7.setForeground(Color.BLACK);
-            p7.setBounds(80,230,140,30);
-            c13.add(p7);
-                
-                pt7 = new JTextField (50);
-                pt7.setBounds(300,230,140,20);
-                c13.add(pt7);
-                p8 = new JLabel ("Entry Date : ") ;
-            p8.setFont(font1) ;
-            p8.setForeground(Color.BLACK);
-            p8.setBounds(80,260,140,30);
-            c13.add(p8);
-                
-                pt8 = new JTextField (50);
-                pt8.setBounds(300,260,140,20);
-                c13.add(pt8);
-                p9 = new JLabel ("Discharge Date : ") ;
-            p9.setFont(font1) ;
-            p9.setForeground(Color.BLACK);
-            p9.setBounds(80,290,140,30);
-            c13.add(p9);
-                
-                pt9 = new JTextField (50);
-                pt9.setBounds(300,290,140,20);
-                c13.add(pt9);
-                p10 = new JLabel ("Ward Number: ") ;
-            p10.setFont(font1) ;
-            p10.setForeground(Color.BLACK);
-            p10.setBounds(80,320,140,30);
-            c13.add(p10);
-                
-                pt10 = new JTextField (50);
-                pt10.setBounds(300,320,140,20);
-                c13.add(pt10);
-                p11 = new JLabel ("Doctor ID : ") ;
-            p11.setFont(font1) ;
-            p11.setForeground(Color.BLACK);
-            p11.setBounds(80,350,140,30);
-            c13.add(p11);
-                
-                pt11 = new JTextField (50);
-                pt11.setBounds(300,350,140,20);
-                c13.add(pt11);
-                clear = new JButton ("Clear");
-        clear.setBounds(300,450,80,40);
-        clear.setFont(new Font("Arial",Font.BOLD,16));
-        c13.add(clear);
-         clear.addActionListener(new ActionListener()
-                {
-                public void actionPerformed(ActionEvent a)
-                {
-                pt1.setText("");
-                pt2.setText("");
-                pt3.setText("");
-                pt4.setText("");
-                pt5.setText("");
-                pt6.setText("");
-                pt7.setText("");
-                pt8.setText("");
-                pt9.setText("");
-                pt10.setText("");
-                pt11.setText("");
-                }
-                });
- }
-class searchDoc
-                {
-                private Connection con;
-         public Connection connection() throws SQLException
-         {
-         if(con==null)
-         {
-         String url = "jdbc:mysql://localhost/";
-        String dbName="projectdb";
-        String dr="com.mysql.jdbc.Driver"; 
-        String user="root";
-        String pass="";
-        try{
-        Class.forName(dr);
-        this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-<<<<<<< HEAD
-=======
        String val = "SELECT * FROM doctor JOIN staff using(st_id) WHERE d_id=?";
             PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(dt1.getText()));
@@ -3025,7 +2582,6 @@ class searchNur
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
        String val = "SELECT * FROM nurse JOIN staff using(st_id) WHERE n_id=?";
             PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(st1.getText()));
@@ -3162,11 +2718,7 @@ class searchPatient
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-<<<<<<< HEAD
-       String val = "Update Nurse join staff using(st_id) set name = ?,fathername = ?,age = ?,qualification = ?,JoiningDate = ?,LeavingDate = ?,duty_shift = ?,ward_num=?, Position=? where n_id= '"+ st1.getText()+"'" ;
-=======
        String val = "Update Nurse join staff using(st_id) set name = ?,fathername = ?,age = ?,qualification = ?,JoiningDate = ?,LeavingDate = ?,duty_shift = ?,ward_num=?, Position=?";
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
             PreparedStatement stmt = con.prepareStatement(val);
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date parsed = format.parse(st7.getText());
@@ -3191,13 +2743,8 @@ class searchPatient
         catch(ClassNotFoundException e)
         {
         System.out.println("Not Connected");
-<<<<<<< HEAD
         }
         }
-=======
-        }
-        }
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
         return con;
         
         }}
@@ -3216,11 +2763,7 @@ class searchPatient
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-<<<<<<< HEAD
-       String val = "Update patient set name = ? , fathername = ?,age = ?,Address= ?,PhoneNumber=?,EntryDate = ?,DischargeDate = ?,ward_num=?, d_id=? where pt_id = '"+pt1.getText()+"'";
-=======
        String val = "Update patient set name = ? , fathername = ?,age = ?,Address= ?,PhoneNumber=?,EntryDate = ?,DischargeDate = ?,ward_num=?, d_id=?";
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
             PreparedStatement stmt = con.prepareStatement(val);
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date parsed = format.parse(pt8.getText());
@@ -3253,10 +2796,7 @@ class searchPatient
 class insPat
 {
     private Connection con;
-<<<<<<< HEAD
-=======
     private Statement stat;
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
     public Connection connection() throws SQLException
         {
            if(con==null)
@@ -3269,11 +2809,7 @@ class insPat
             try{
                 Class.forName(dr);
                 this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-<<<<<<< HEAD
-                String in = "INSERT INTO patient(Name,fathername,Age,Gender,Address,PhoneNumber,EntryDate,ward_Num,d_id) values(?,?,?,?,?,?,current_date(),?,?)";
-=======
                 String in = "INSERT INTO patient(Name,fathername,Age,Gender,Address,PhoneNumber,EntryDate,DischargeDate,ward_Num,d_id) value(?,?,?,?,?,?,current_date(),null,?,?)";
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
                 PreparedStatement stmt = con.prepareStatement(in);
                 stmt.setString(1,ptf.getText()); //name
                 stmt.setString(2, ptf1.getText()); //f-name
@@ -3287,20 +2823,7 @@ class insPat
                 int ii = Integer.parseInt(val); // d_id
                 stmt.setInt(7, i);
                 stmt.setInt(8, ii);
-<<<<<<< HEAD
-                //pt9.setText("0000-00-00");
-               int j= stmt.executeUpdate();
-                if(j==1)
-                {
-                JOptionPane.showMessageDialog(null,"Record added successfully");
-                }
-                if(j==0)
-                {
-                JOptionPane.showMessageDialog(null,"Record not added");
-                }
-=======
                 stmt.executeUpdate();
->>>>>>> a8fc1b1173f969fd402c7d407734e5d6494adc05
                 con.close();
             }
             catch(ClassNotFoundException e)
@@ -3469,7 +2992,7 @@ class getD
         }
 }
 }
-public class Main{
+public class JavaApplication1{
 
     public static void main(String[] args) {
         GUI g = new GUI();
