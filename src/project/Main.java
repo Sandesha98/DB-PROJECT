@@ -1,5 +1,4 @@
 //****************************	27 DEC		************************************************
-
 package project;
 import java.awt.*;
 import javax.swing.*;
@@ -12,22 +11,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Vector;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
 class GUI
 {
-     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5;
-    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5;
+     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3;
+    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3;
     JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,d1,d2,dl,dl1,dl2,dl3,dl4,dl5,dl6,
             p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
     JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10
             ,st11,st12,st13,dt1,dt2,dtf,dtf1,dtf2,dtf3,dtf4,dtf5,dtf6,dtf7,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,
-            pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11;
+            pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
-            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt;
+            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2;
     //String val1,val2,val3;
     Vector v = new Vector();
      Vector v1 = new Vector();
-    String opt[];
-    JComboBox cb1,cb2;
+      Vector p = new Vector();
+      String data[][];
+      String column[];
+    String opt[]={"ibuprofen","paracetamol","chloroquine","Voltral Emulgel","Risek Capsules 20mg","Risek Capsules 40mg","Motilium Tablets","Mucaine Suspension","Librax Dragees","Sita Met Tablets","Getryl Tablets 2mg","Treviamet Xr 50/500mg","Caldree-600mg","High-C 1000","Acenac Tab 100 MG"};
+    JComboBox cb1,cb2,pcb,pcb2;
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
    JTable table;
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
@@ -317,11 +320,115 @@ class GUI
                 df2.setResizable(false); 
             }
         });
-
+        /************************************* GIVE MEDICINEE *******************************************/
+        
         b4 = new JButton ("GIVE MEDICINE");
         b4.setBounds(280,300,250,50);
         b4.setFont(new Font("Arial",Font.BOLD,16));
         c1.add(b4);
+        b4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                mf = new JFrame("Hospital Managment System");
+                mc = mf.getContentPane();
+                mf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
+                mc.setLayout(null);
+                mc.add(l1);
+                Icon icon = new ImageIcon("b.jpg");
+                back = new JButton(icon);
+                back.setBounds(8,15,42,36);
+                back.setBorderPainted(false);
+                mc.add(back);
+                
+                l2 = new JLabel("Medicine Name ");
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(20,80,200,24);
+                mc.add(l2);
+                pcb2 = new JComboBox(opt);
+                pcb2.setBounds(30,110,150,30);
+                mc.add(pcb2);
+                
+                l2 = new JLabel("Patient Id");
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(210,80,200,24);
+                mc.add(l2);           
+                
+                getP pp = new getP();
+                try 
+                {
+                    pp.connection();
+                } 
+                catch (SQLException ex) 
+                {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 pcb.setBounds(220,110 ,70, 30);
+                mc.add(pcb);
+                
+                l2 = new JLabel("Price");
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(350,80,200,24);
+                mc.add(l2);
+                
+                mt = new JTextField (50);
+                mt.setBounds(350,100,50,40);
+                mc.add(mt);
+                mt.setOpaque(false);
+                mt.setBorder(border);
+                mt.setFont(font1);
+                
+                l2 = new JLabel("Quantity");
+                l2.setFont(font1) ;
+                l2.setForeground(Color.BLACK);
+                l2.setBounds(450,80,200,24);
+                mc.add(l2);
+                
+         
+                JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 99, 1));
+                spinner.setBounds(470,110,50,30);    
+                mc.add(spinner);    
+                
+                    DefaultTableModel model = new DefaultTableModel(); 
+                    JTable jt=new JTable(model);    
+                    model.addColumn("PT_ID");
+                    model.addColumn("Medicine Name");
+                    model.addColumn("Quantity");
+                    model.addColumn("Price");
+                    JScrollPane scroll = new JScrollPane(jt);
+                    scroll.setBounds(30,200,500,100);
+                    mc.add(scroll);
+                    
+                    
+                mb = new JButton("Next");
+                mb.setBounds(230,150,120,30);
+                mb.setFont(new Font("Arial",Font.BOLD,16));
+                mc.add(mb);
+                mb.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae)
+                {                  
+                    DefaultTableModel model = (DefaultTableModel) jt.getModel();
+                    model.addRow(new Object[]{pcb.getSelectedItem().toString(), pcb2.getSelectedItem().toString(), spinner.getValue(),mt.getText()});
+       
+                }});
+
+                back.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae)
+                {
+                    mf.setVisible(false);
+                    jf.setVisible(true);
+                }});
+                mc.add(bgimg);
+                mf.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
+                mf.setVisible(true);
+                mf.setSize(626,616);
+                mf.setResizable(false);
+            }
+        });back.setBounds(8,15,42,36);
+                back.setBorderPainted(false);
+               
         b5 = new JButton ("EXIT");
         b5.setBounds(280,400,250,50);
         b5.setFont(new Font("Arial",Font.BOLD,16));
@@ -2729,6 +2836,48 @@ class insPat
         
         }
              }
+class insMed
+{
+    private Connection con;
+    private Statement stat;
+    public Connection connection() throws SQLException
+        {
+           if(con==null)
+        {
+            String url = "jdbc:mysql://localhost/";
+            String dbName="projectdb";
+            String dr="com.mysql.jdbc.Driver"; 
+            String user="root";
+            String pass="";
+            try{
+                Class.forName(dr);
+                this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+                String in = "INSERT INTO Medicine(Name,fathername,Age,Gender,Address,PhoneNumber,EntryDate,DischargeDate,ward_Num,d_id) value(?,?,?,?,?,?,current_date(),null,?,?)";
+                PreparedStatement stmt = con.prepareStatement(in);
+                stmt.setString(1,ptf.getText()); //name
+                stmt.setString(2, ptf1.getText()); //f-name
+                stmt.setInt(3, Integer.parseInt(ptf2.getText())); //age 
+                stmt.setString(4, ptf3.getText()); //gender 
+                stmt.setString(5, ptf4.getText()); //Add
+                stmt.setString(6, ptf5.getText()); //Ph#
+                String val = cb1.getSelectedItem().toString();
+                String val1 = cb2.getSelectedItem().toString();
+                int i = Integer.parseInt(val1); // ward_num
+                int ii = Integer.parseInt(val); // d_id
+                stmt.setInt(7, i);
+                stmt.setInt(8, ii);
+                stmt.executeUpdate();
+                con.close();
+            }
+            catch(ClassNotFoundException e)
+            {
+            System.out.println("Not Connected");
+            }
+        }
+        return con;
+        
+        }
+             }
 class getD
 {
  private Connection con;
@@ -2805,8 +2954,45 @@ class getD
         return con;
         }
 }
+    class getP
+{
+ private Connection con;
+    private Statement stat;
+    public Connection connection() throws SQLException
+        {
+           if(con==null)
+        {
+            String url = "jdbc:mysql://localhost/";
+            String dbName="projectdb";
+            String dr="com.mysql.jdbc.Driver"; 
+            String user="root";
+            String pass="";
+            try{
+                Class.forName(dr);
+                this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+                String d = "select pt_id from patient" ;
+                PreparedStatement stmt = con.prepareStatement(d);
+               
+                ResultSet rs = stmt.executeQuery();
+                while(rs.next())
+                {
+                    int x = rs.getInt("pt_id");
+                    p.add(x) ;
+                    
+                }
+                pcb = new JComboBox(p);
+                
+                con.close();
+            }
+            catch(ClassNotFoundException e)
+            {
+            System.out.println("Not Connected");
+            }
+        }
+        return con;
+        }
 }
-
+}
 public class Main{
 
     public static void main(String[] args) {
