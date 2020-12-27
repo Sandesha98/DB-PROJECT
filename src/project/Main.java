@@ -1,4 +1,3 @@
-//	04:47
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -13,23 +12,26 @@ import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 class GUI
 {
-     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3;
-    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3;
+     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3,wf,wf1;
+    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3,wc,wc2;
     JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,d1,d2,dl,dl1,dl2,dl3,dl4,dl5,dl6,
             p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
     JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10
             ,st11,st12,st13,dt1,dt2,dtf,dtf1,dtf2,dtf3,dtf4,dtf5,dtf6,dtf7,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,
             pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
-            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2;
+            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1;
     //String val1,val2,val3;
     Vector v = new Vector();
      Vector v1 = new Vector();
       Vector p = new Vector();
       String data[][];
       String column[];
+      JSpinner spinner;
     String opt[]={"ibuprofen","paracetamol","chloroquine","Voltral Emulgel","Risek Capsules 20mg","Risek Capsules 40mg","Motilium Tablets","Mucaine Suspension","Librax Dragees","Sita Met Tablets","Getryl Tablets 2mg","Treviamet Xr 50/500mg","Caldree-600mg","High-C 1000","Acenac Tab 100 MG"};
     JComboBox cb1,cb2,pcb,pcb2;
+    DefaultTableModel model1;
+    JTable jt1;
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
    JTable table;
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
@@ -386,7 +388,7 @@ class GUI
                 mc.add(l2);
                 
          
-                JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 99, 1));
+                spinner = new JSpinner(new SpinnerNumberModel(1, 1, 99, 1));
                 spinner.setBounds(470,110,50,30);    
                 mc.add(spinner);    
                 
@@ -410,7 +412,16 @@ class GUI
                 {                  
                     DefaultTableModel model = (DefaultTableModel) jt.getModel();
                     model.addRow(new Object[]{pcb.getSelectedItem().toString(), pcb2.getSelectedItem().toString(), spinner.getValue(),mt.getText()});
-       
+                    
+                    insMed md = new insMed();
+                
+                try {
+                    md.connection();
+                } 
+                catch (SQLException ex) {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
                 }});
 
                 back.addActionListener(new ActionListener() {
@@ -2211,11 +2222,90 @@ class GUI
 	f6.setResizable(false); 
         }
         });
+        /******************************** CHECKK WARD INFO************************/
         
         b5 = new JButton ("CHECK WARD INFO");
         b5.setBounds(280,400,220,50);
         b5.setFont(new Font("Arial",Font.BOLD,16));
         c2.add(b5);
+        b5.addActionListener(new ActionListener()
+                {
+                public void actionPerformed(ActionEvent a)
+                {
+                    wf = new JFrame("Hospital Managment System");
+                    wc = wf.getContentPane();
+                    wf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
+                    wc.setLayout(null);
+                    wc.add(l1);
+                    
+                    Icon icon = new ImageIcon("b.jpg");
+                    back = new JButton(icon);
+                    back.setBounds(8,15,42,36);
+                    back.setBorderPainted(false);
+                    wc.add(back);
+                    
+                    l4 = new JLabel ("WARD NUM") ;
+                    l4.setFont(font1) ;
+                    l4.setForeground(Color.BLACK);
+                    l4.setBounds(70,60,200,30);
+                    wc.add(l4); 
+                
+                    getW w = new getW();
+                    try 
+                    {
+                        w.connection();
+                    } 
+                    catch (SQLException ex) 
+                    {
+                        Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    cb2.setBounds(210,60 ,70, 30);
+                    wc.add(cb2);
+                    
+                     model1 = new DefaultTableModel(); 
+                     jt1=new JTable(model1);    
+                    model1.addColumn("PATIENT ID");
+                    model1.addColumn("PATIENT NAME");
+                    model1.addColumn("NURSE ID");
+                    model1.addColumn("WARD NUM");
+                    model1.addColumn("WARD Name");
+                  
+                   // model1.addColumn("NURSE NAME");
+                    
+                    
+                    JScrollPane scroll1 = new JScrollPane(jt1);
+                    scroll1.setBounds(5,100,600,200);
+                    wc.add(scroll1);
+                    
+                    
+                    
+                    wb = new JButton("GO");
+                    wb.setBounds(290,60,82,30);
+                    wc.add(wb);
+                    wb.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                        searchWard sw = new searchWard();
+                        try {
+                            sw.connection();
+                            } 
+                        catch (SQLException ex) {
+                            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }});
+                    
+                    back.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                         wf.setVisible(false);
+                         f2.setVisible(true);
+                    }});
+                        wc.add(bgimg);
+                        wf.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
+                        wf.setVisible(true);
+                        wf.setSize(626,616);
+                        wf.setResizable(false);
+                    }});
         c2.add(bgimg);
         f2.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
         f2.setVisible(true);
@@ -2471,7 +2561,7 @@ class GUI
                 });
  }
 class searchDoc
-                {
+{
                 private Connection con;
          public Connection connection() throws SQLException
          {
@@ -2520,7 +2610,47 @@ class searchDoc
         }
         return con;
         
-        }}
+        }
+}
+/************* CHECKK WARD INFO *************************/
+
+class searchWard
+{
+         private Connection con;
+         public Connection connection() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT WARD.ward_num,WARD.Ward_Name, nurse.n_id,patient.pt_id,patient.Name FROM ((WARD JOIN nurse using(ward_num)) JOIN patient using(ward_num))";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              DefaultTableModel model1 = (DefaultTableModel) jt1.getModel();
+              model1.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"), rs.getInt("n_id"),rs.getInt("ward_num"),rs.getString("Ward_Name")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
 class updateDoc
                 {
                 private Connection con;
@@ -2792,7 +2922,9 @@ class searchPatient
         }
         return con;
         
-        }}
+        }
+        }
+        
 class insPat
 {
     private Connection con;
@@ -2835,6 +2967,7 @@ class insPat
         
         }
              }
+/********** MEDICINE INSERT**************/
 class insMed
 {
     private Connection con;
@@ -2851,20 +2984,20 @@ class insMed
             try{
                 Class.forName(dr);
                 this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-                String in = "INSERT INTO Medicine(Name,fathername,Age,Gender,Address,PhoneNumber,EntryDate,DischargeDate,ward_Num,d_id) value(?,?,?,?,?,?,current_date(),null,?,?)";
+                String in = "INSERT INTO Medicine(Med_name,pt_id,price,Quantity) value(?,?,?,?)";
                 PreparedStatement stmt = con.prepareStatement(in);
-                stmt.setString(1,ptf.getText()); //name
-                stmt.setString(2, ptf1.getText()); //f-name
-                stmt.setInt(3, Integer.parseInt(ptf2.getText())); //age 
-                stmt.setString(4, ptf3.getText()); //gender 
-                stmt.setString(5, ptf4.getText()); //Add
-                stmt.setString(6, ptf5.getText()); //Ph#
-                String val = cb1.getSelectedItem().toString();
-                String val1 = cb2.getSelectedItem().toString();
-                int i = Integer.parseInt(val1); // ward_num
-                int ii = Integer.parseInt(val); // d_id
-                stmt.setInt(7, i);
-                stmt.setInt(8, ii);
+                stmt.setString(1,pcb2.getSelectedItem().toString()); //m-name
+                String val = pcb.getSelectedItem().toString();
+                int ii = Integer.parseInt(val); // p_id
+                
+                stmt.setInt(2, ii); //p-id
+               
+                stmt.setInt(3, Integer.parseInt(mt.getText())); //price 
+                int val1 = (Integer) spinner.getValue();
+                
+                stmt.setInt(4, val1); //Quantity 
+                
+                
                 stmt.executeUpdate();
                 con.close();
             }
@@ -2877,6 +3010,8 @@ class insMed
         
         }
              }
+
+/************* GET DOC ID IN COMBO BOX*************************/
 class getD
 {
  private Connection con;
@@ -2915,6 +3050,7 @@ class getD
         return con;
         }
 }
+/************* GET WARD NUM IN COMBO BOX*************************/
    class getW
 {
  private Connection con;
@@ -2953,6 +3089,7 @@ class getD
         return con;
         }
 }
+   /******** GET PATIENT ID **************/
     class getP
 {
  private Connection con;
