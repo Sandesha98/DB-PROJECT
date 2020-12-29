@@ -78,7 +78,7 @@ class GUI
             db d = new db();
             if(tf1.getText().equals("")||tf2.getText().equals(""))
             {
-                JOptionPane.showMessageDialog (f,"Please Enter Values") ;
+                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
             }
             else{
                 try {
@@ -786,7 +786,7 @@ class GUI
         stmt.setInt(4, Integer.parseInt(tf6.getText())); //age
         stmt.setString(5, tf7.getText());//qualification
         stmt.setString(6,"doc"); // designation
-         stmt.executeUpdate();
+         int i =stmt.executeUpdate();
       }
         catch(ClassNotFoundException e)
         {
@@ -1025,7 +1025,7 @@ class GUI
                     searchDoc data = new searchDoc();
             if(d1.getText().equals(""))
             {
-                JOptionPane.showMessageDialog (f11,"Please Enter Values") ;
+                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
                // f4.setVisible(false);
             }
             else{
@@ -1723,7 +1723,7 @@ class GUI
                     insert2 data = new insert2();
             if(tf12.getText().equals("")||tf13.getText().equals("")||tf14.getText().equals("")||tf15.getText().equals("")||tf16.getText().equals(""))
             {
-                JOptionPane.showMessageDialog (f7,"Please Enter Values") ;
+                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
             }
             else{
                 try {
@@ -1801,7 +1801,7 @@ class GUI
                  
                   if(tf17.getText().equals("")||tf18.getText().equals("")||tf19.getText().equals(""))
             {
-                JOptionPane.showMessageDialog (f8,"Please Enter Values") ;
+                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
             }
             else{
                 try {
@@ -1844,9 +1844,13 @@ class GUI
        stmt2.setInt(2,id3); //st_id
        stmt2.setInt(3, Integer.parseInt(tf18.getText()));  //ward num
       //  stmt2.setInt(3, 4);  //ward num
-       stmt2.setString(4, tf19.getText()); // position
-        stmt2.executeUpdate();
-    JOptionPane.showMessageDialog(null,"Insertion Successful");
+         stmt2.setString(4, tf19.getText()); // position
+        int i= stmt2.executeUpdate();
+        if(i==1)
+        {
+        JOptionPane.showMessageDialog(null,"Insertion Successful");
+        f8.setVisible(false);
+        }
         }
         catch(ClassNotFoundException e)
         {
@@ -1964,10 +1968,11 @@ class GUI
             {
             
                     deleteNurse dlt = new deleteNurse();
-            if(tf1.getText().equals("")||tf2.getText().equals(""))
+            if(dltNurse.getText().equals(""))
             {
-                JOptionPane.showMessageDialog (f4,"Please Enter Values") ;
+                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
             }
+
             else{
                 try {
                     dlt.connection();
