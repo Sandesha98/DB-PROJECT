@@ -1,4 +1,5 @@
-package project
+//Updated
+package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
@@ -14,8 +15,6 @@ import java.util.logging.Logger;
 import java.util.Vector;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
-
-
 class GUI
 {
      JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3,wf,wf1,cf1;
@@ -26,7 +25,7 @@ class GUI
             ,st11,st12,st13,dt1,dt2,dtf,dtf1,dtf2,dtf3,dtf4,dtf5,dtf6,dtf7,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,
             pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
-            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,ct;
+            updateButt,Insrt,pDel,pSear,pUp, pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,nur_sh,ct;
     //String val1,val2,val3;
     Vector v = new Vector();
      Vector v1 = new Vector();
@@ -37,7 +36,7 @@ class GUI
     String opt[]={"ibuprofen","paracetamol","chloroquine","Voltral Emulgel","Risek Capsules 20mg","Risek Capsules 40mg","Motilium Tablets","Mucaine Suspension","Librax Dragees","Sita Met Tablets","Getryl Tablets 2mg","Treviamet Xr 50/500mg","Caldree-600mg","High-C 1000","Acenac Tab 100 MG"};
     JComboBox cb1,cb2,pcb,pcb2;
     DefaultTableModel model1, model2,model3,model4;
-    JTable jt1, shw_doc,table,shw_pat,d_pat;
+    JTable jt1, shw_doc,table,shw_nur,shw_pat,d_pat;
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
     void Draw()
@@ -46,7 +45,7 @@ class GUI
 	f = new JFrame("Hospital Managment System");
 	c = f.getContentPane();
 	c.setLayout(null);
-        ImageIcon ii = new ImageIcon("login.jpg") ;
+        ImageIcon ii = new ImageIcon("login.jpeg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616);   
         f.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
@@ -135,7 +134,7 @@ class GUI
         l1.setForeground(Color.BLACK);
         l1.setBounds(70,00,600,60);
         c1.add(l1);
-       Icon icon = new ImageIcon("b.jpg");
+       Icon icon = new ImageIcon("b.jpeg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -148,8 +147,10 @@ class GUI
                     f.setVisible(true);
             }});
         b2 = new JButton ("CHECK PATIENT");
-        b2.setBounds(280,100,250,50);
+        b2.setBounds(350,100,250,50);
         b2.setFont(new Font("Arial",Font.BOLD,16));
+        b2.setBackground(Color.WHITE);
+        b2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c1.add(b2);
          b2.addActionListener(new ActionListener()
         {
@@ -160,7 +161,7 @@ class GUI
             cf1.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             cc1.setLayout(null);
             cc1.add(l1);
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
             back = new JButton(icon);
             back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -181,6 +182,9 @@ class GUI
             ct = new JButton ("GO");
             ct.setBounds(470,70,70,32);
             ct.setFont(new Font("Arial",Font.BOLD,16));
+            
+        ct.setBackground(Color.WHITE);
+        ct.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
             cc1.add(ct);
             ct.addActionListener(new ActionListener()
             {
@@ -195,7 +199,7 @@ class GUI
                 model3.addColumn("AGE");
                 model3.addColumn("WARD NUM");
                 model3.addColumn("D-ID");
-                shw_Pat pt = new shw_Pat();
+                shw_Pat2 pt = new shw_Pat2();
                 
                 try {
                      pt.connection();
@@ -224,11 +228,12 @@ class GUI
                 cf1.setSize(626,616);
                 cf1.setResizable(false);
             }});
-       
         b3 = new JButton ("CHECK PATIENT REPORT");
-        b3.setBounds(280,200,250,50);
+        b3.setBounds(350,200,250,50);
         b3.setFont(new Font("Arial",Font.BOLD,16));
         c1.add(b3);
+        b3.setBackground(Color.WHITE);
+        b3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         b3.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent ae)
@@ -239,12 +244,12 @@ class GUI
                 df2.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 dc2.setLayout(null);
                 dc2.add(l1);
-             Icon icon = new ImageIcon("b.jpg");
-             back = new JButton(icon);
-             back.setBounds(8,15,42,36);
-             back.setBorderPainted(false);
-             dc2.add(back);
-             back.addActionListener(new ActionListener() {
+             Icon icon = new ImageIcon("b.jpeg");
+       back = new JButton(icon);
+        back.setBounds(8,15,42,36);
+        back.setBorderPainted(false);
+        dc2.add(back);
+        back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
                     df2.setVisible(false);
@@ -262,7 +267,12 @@ class GUI
                 db1 = new JButton("GO");
                 db1.setBounds(440,80,65,30);
                 db1.setFont(new Font("Arial",Font.BOLD,16));
+                
+        db1.setBackground(Color.WHITE);
+        db1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 dc2.add(db1);
+                db1.setBackground(Color.WHITE);
+                db1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 db1.addActionListener(new ActionListener()
                 {
                   public void actionPerformed(ActionEvent ae)
@@ -378,6 +388,9 @@ class GUI
                 db2 = new JButton("CLEAR");
                 db2.setBounds(430,350,120,30);
                 db2.setFont(new Font("Arial",Font.BOLD,16));
+                
+        db2.setBackground(Color.WHITE);
+        db2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 dc2.add(db2);
                 db2.addActionListener(new ActionListener()
                 {
@@ -403,8 +416,10 @@ class GUI
         /************************************* GIVE MEDICINEE *******************************************/
         
         b4 = new JButton ("GIVE MEDICINE");
-        b4.setBounds(280,300,250,50);
+        b4.setBounds(350,300,250,50);
         b4.setFont(new Font("Arial",Font.BOLD,16));
+        b4.setBackground(Color.WHITE);
+        b4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c1.add(b4);
         b4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
@@ -414,7 +429,7 @@ class GUI
                 mf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 mc.setLayout(null);
                 mc.add(l1);
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
                 back = new JButton(icon);
                 back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
@@ -485,6 +500,8 @@ class GUI
                 mb = new JButton("Next");
                 mb.setBounds(230,150,120,30);
                 mb.setFont(new Font("Arial",Font.BOLD,16));
+        mb.setBackground(Color.WHITE);
+        mb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 mc.add(mb);
                 mb.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae)
@@ -518,15 +535,17 @@ class GUI
         });back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
                
-        b5 = new JButton ("EXIT");
-        b5.setBounds(280,400,250,50);
+        b5 = new JButton ("CREATE PATIENT REPORT");
+        b5.setBounds(350,400,250,50);
         b5.setFont(new Font("Arial",Font.BOLD,16));
+        b5.setBackground(Color.WHITE);
+        b5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c1.add(b5);
-         b5.addActionListener(new ActionListener() {
+        /* b5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
                     System.exit(0);
-            }});
+            }});*/
         c1.add(bgimg);
         jf.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
         jf.setVisible(true);
@@ -548,7 +567,7 @@ class GUI
 	l1.setForeground(Color.BLACK);
 	l1.setBounds(70,00,600,60);
         c2.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -560,8 +579,10 @@ class GUI
                     f.setVisible(true);
             }});
         b2 = new JButton ("DOCTOR");
-        b2.setBounds(280,100,220,40);
+        b2.setBounds(350,100,220,40);
         b2.setFont(new Font("Arial",Font.BOLD,16));
+        b2.setBackground(Color.WHITE);
+        b2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c2.add(b2);
         b2.addActionListener(new ActionListener()
         {
@@ -572,7 +593,7 @@ class GUI
         c3.setLayout(null);
         f3.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c3.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -585,8 +606,10 @@ class GUI
             }});
         
          insert = new JButton ("INSERT");
-        insert.setBounds(280,100,220,40);
+        insert.setBounds(350,100,220,40);
         insert.setFont(new Font("Arial",Font.BOLD,16));
+         insert.setBackground(Color.WHITE);
+        insert.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c3.add(insert);
          insert.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
@@ -599,7 +622,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -616,12 +639,9 @@ class GUI
                 l2.setBounds(350,60,200,30);
                 c4.add(l2);
                 
-                tf3 = new JTextField (50);
-                tf3.setBounds(350,80,240,49);
+                tf3 = new JTextField(50);
+                tf3.setBounds(350,90,200,25);
                 c4.add(tf3);
-                tf3.setOpaque(false);
-    //    tf1.setText("USER ID");
-                tf3.setBorder(border);
                 tf3.setFont(font1);
 
                 l2 = new JLabel ("F/NAME", SwingConstants.CENTER) ;
@@ -630,12 +650,9 @@ class GUI
                 l2.setBounds(350,120,200,30);
                 c4.add(l2);
                 
-                    tf4 = new JTextField (50);
-                tf4.setBounds(350,140,240,49);
+                 tf4 = new JTextField(50);
+                tf4.setBounds(350,150,200,25);
                 c4.add(tf4);
-                tf4.setOpaque(false);
-    //    tf1.setText("USER ID");
-                tf4.setBorder(border);
                 tf4.setFont(font1);
                
                 l2 = new JLabel ("GENDER", SwingConstants.CENTER) ;
@@ -643,13 +660,9 @@ class GUI
                 l2.setForeground(Color.BLACK);
                 l2.setBounds(350,180,200,30);
                 c4.add(l2);
-                tf5 = new JTextField (50);
-            
-                tf5.setBounds(350,200,240,49);
+                tf5 = new JTextField(50);
+                tf5.setBounds(350,210,200,25);
                 c4.add(tf5);
-                tf5.setOpaque(false);
-    //    tf1.setText("USER ID");
-                tf5.setBorder(border);
                 tf5.setFont(font1);
                 
                 l3 = new JLabel ("AGE", SwingConstants.CENTER) ;
@@ -658,12 +671,9 @@ class GUI
                 l3.setBounds(350,240,200,30);
                 c4.add(l3);
                 
-                tf6 = new JTextField (50);
-                tf6.setBounds(350,260,240,49);
+                tf6 = new JTextField(50);
+                tf6.setBounds(350,270,200,25);
                 c4.add(tf6);
-                tf6.setOpaque(false);
-    //    tf1.setText("USER ID");
-                tf6.setBorder(border);
                 tf6.setFont(font1);                
                 
                 l4 = new JLabel ("QUALIFICATION", SwingConstants.CENTER) ;
@@ -674,16 +684,15 @@ class GUI
                 
                                 
                 tf7 = new JTextField (50);
-                tf7.setBounds(350,320,240,49);
+                tf7.setBounds(350,330,200,25);
                 c4.add(tf7);
-                tf7.setOpaque(false);
-    //    tf1.setText("USER ID");
-                tf7.setBorder(border);
                 tf7.setFont(font1); 
                 
                 b6 = new JButton ("NEXT");
-                b6.setBounds(350,360,180,30);
+                b6.setBounds(390,380,120,30);
                 b6.setFont(new Font("Arial",Font.BOLD,16));
+               b6.setBackground(Color.WHITE);
+        b6.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 c4.add(b6);
                 b6.addActionListener(new ActionListener()
                 {
@@ -694,6 +703,7 @@ class GUI
             {
                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
                 //f4.setVisible(false);
+                //f4.setVisible(true);
             }
             else{
                 try {
@@ -713,7 +723,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -731,10 +741,8 @@ class GUI
                 c5.add(l2);
                 
                 tf8 = new JTextField (50);
-                tf8.setBounds(350,80,240,49);
+                tf8.setBounds(350,90,200,25);
                 c5.add(tf8);
-                tf8.setOpaque(false);
-                tf8.setBorder(border);
                 tf8.setFont(font1);
 
                 l2 = new JLabel ("POSITION", SwingConstants.CENTER) ;
@@ -744,10 +752,8 @@ class GUI
                 c5.add(l2);
                 
                     tf9 = new JTextField (50);
-                tf9.setBounds(350,140,240,49);
+                tf9.setBounds(350,150,200,25);
                 c5.add(tf9);
-                tf9.setOpaque(false);
-                tf9.setBorder(border);
                 tf9.setFont(font1);
                
                 l2 = new JLabel ("DUTY SHIFT", SwingConstants.CENTER) ;
@@ -757,15 +763,14 @@ class GUI
                 c5.add(l2);
                 
                 tf10 = new JTextField (50);
-                 tf10.setBounds(350,200,240,49);
+                 tf10.setBounds(350,210,200,25);
                 c5.add(tf10);
-                tf10.setOpaque(false);
-                tf10.setBorder(border);
-                tf10.setFont(font1);
                 
                  b7 = new JButton ("DONE");
-                b7.setBounds(350,360,180,30);
+                b7.setBounds(400,260,100,30);
                 b7.setFont(new Font("Arial",Font.BOLD,16));
+                b7.setBackground(Color.WHITE);
+              b7.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 c5.add(b7);
                 b7.addActionListener(new ActionListener()
                 {
@@ -886,8 +891,10 @@ class GUI
                 
             }});
         delete = new JButton ("DELETE");
-        delete.setBounds(280,300,220,40);
+        delete.setBounds(350,300,220,40);
         delete.setFont(new Font("Arial",Font.BOLD,16));
+        delete.setBackground(Color.WHITE);
+        delete.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c3.add(delete);
         delete.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -898,7 +905,7 @@ class GUI
         c9.setLayout(null);
         f9.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c9.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -912,8 +919,10 @@ class GUI
 // *********************************** DOCTOR TABLE *******************************************
                    
                     doc_sh = new JButton ("SHOW ALL DOCTORS");
-                    doc_sh.setBounds(170,65,220,30);
+                    doc_sh.setBounds(180,65,220,30);
                     doc_sh.setFont(new Font("Arial",Font.BOLD,16));
+                    doc_sh.setBackground(Color.WHITE);
+                    doc_sh.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                     c9.add(doc_sh);
                     doc_sh.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae)
@@ -937,25 +946,27 @@ class GUI
                         }
                         JScrollPane scroll2 = new JScrollPane(shw_doc);
                     scroll2.setBounds(5,100,580,250);
+                    scroll2.setBackground(Color.WHITE);
+                    scroll2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                     c9.add(scroll2);
                     }});  
                      
                    
-                dltLabel = new JLabel ("Insert Id to Delete") ;
+                dltLabel = new JLabel ("INSERT ID") ;
                 dltLabel.setFont(font1) ;
                 dltLabel.setForeground(Color.BLACK);
-                dltLabel.setBounds(350,350,260,30);
+                dltLabel.setBounds(400,350,260,30);
                 c9.add(dltLabel);
                 
                 dltTf = new JTextField (50);
-                dltTf.setBounds(350,360,240,49);
+                dltTf.setBounds(350,380,200,25);
                 c9.add(dltTf);
-                dltTf.setOpaque(false);
-                dltTf.setBorder(border);
                 dltTf.setFont(font1);
                 dlt_but = new JButton ("DELETE");
-                dlt_but.setBounds(350,405,120,30);
+                dlt_but.setBounds(400,420,100,30);
                 dlt_but.setFont(new Font("Arial",Font.BOLD,16));
+                dlt_but.setBackground(Color.WHITE);
+               dlt_but.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 c9.add(dlt_but);
                
             dlt_but.addActionListener(new ActionListener()
@@ -1027,8 +1038,10 @@ class GUI
              }
         });
         search = new JButton ("SEARCH");
-        search.setBounds(280,200,220,40);
+        search.setBounds(350,200,220,40);
         search.setFont(new Font("Arial",Font.BOLD,16));
+        search.setBackground(Color.WHITE);
+        search.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c3.add(search);
         search.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -1040,7 +1053,7 @@ class GUI
         c11.setLayout(null);
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.add(l1);
-             Icon icon = new ImageIcon("b.jpg");
+             Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1051,32 +1064,37 @@ class GUI
                     f11.setVisible(false);
                     f3.setVisible(true);
             }});
-            d1 = new JLabel ("Doctor id : ") ;
+            d1 = new JLabel ("DOCTOR ID: ") ;
             d1.setFont(font1) ;
             d1.setForeground(Color.BLACK);
-            d1.setBounds(80,50,200,30);
+            d1.setBounds(120,50,200,30);
             c11.add(d1);
                 
                 dt1 = new JTextField (50);
-                dt1.setBounds(300,50,140,20);
+                dt1.setBounds(340,55,140,20);
                 c11.add(dt1);
                 searchData();
            
-            d2 = new JLabel("Specialization : ") ;
+            d2 = new JLabel("SPECIALIZATION: ") ;
             d2.setFont(font1) ;
             d2.setForeground(Color.BLACK);
-            d2.setBounds(80,380,140,30);
+            d2.setBounds(120,380,200,30);
             c11.add(d2);
                 
                 dt2 = new JTextField (50);
-                dt2.setBounds(300,380,140,20);
+                dt2.setBounds(340,385,140,20);
                 c11.add(dt2);
-              searchButt=new JButton("Search");
-                searchButt.setBounds(200,450,80,40);
+              searchButt=new JButton("SEARCH");
+                searchButt.setBounds(210,450,100,40);
+                searchButt.setFont(new Font("Arial",Font.BOLD,16));
+        searchButt.setBackground(Color.WHITE);
+        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c11.add(searchButt);
-        clear = new JButton ("Clear");
-        clear.setBounds(300,450,80,40);
+        clear = new JButton ("CLEAR");
+        clear.setBounds(320,450,100,40);
         clear.setFont(new Font("Arial",Font.BOLD,16));
+        clear.setBackground(Color.WHITE);
+        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c11.add(clear);
          clear.addActionListener(new ActionListener()
                 {
@@ -1127,8 +1145,10 @@ class GUI
                 f11.setResizable(false);
              }});
         update = new JButton ("UPDATE");
-        update.setBounds(280,400,220,50);
+        update.setBounds(350,400,220,40);
         update.setFont(new Font("Arial",Font.BOLD,16));
+        update.setBackground(Color.WHITE);
+        update.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c3.add(update);
         update.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -1139,7 +1159,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1150,32 +1170,37 @@ class GUI
                     f11.setVisible(false);
                     f3.setVisible(true);
             }});
-               d1 = new JLabel ("Doctor id : ") ;
+               d1 = new JLabel ("DOCTOR: ") ;
             d1.setFont(font1) ;
             d1.setForeground(Color.BLACK);
-            d1.setBounds(80,50,200,30);
+            d1.setBounds(120,50,200,30);
             c11.add(d1);
                 
                 dt1 = new JTextField (50);
-                dt1.setBounds(300,50,140,20);
+                dt1.setBounds(340,55,140,20);
                 c11.add(dt1);
                 searchData();
            
-                d2 = new JLabel("Specialization : ") ;
+                d2 = new JLabel("SPECIALIZATION: ") ;
             d2.setFont(font1) ;
             d2.setForeground(Color.BLACK);
-            d2.setBounds(80,380,140,30);
+            d2.setBounds(120,380,200,30);
             c11.add(d2);
                 
                 dt2 = new JTextField (50);
-                dt2.setBounds(300,380,140,20);
+                dt2.setBounds(340,385,140,20);
                 c11.add(dt2);
-                searchButt=new JButton("Search");
-                searchButt.setBounds(200,450,80,40);
+                searchButt=new JButton("SEARCH");
+                searchButt.setBounds(180,450,80,40);
+                searchButt.setFont(new Font("Arial",Font.BOLD,16));
+        searchButt.setBackground(Color.WHITE);
+        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c11.add(searchButt);
-        clear = new JButton ("Clear");
-        clear.setBounds(300,450,80,40);
+        clear = new JButton ("CLEAR");
+        clear.setBounds(280,450,80,40);
         clear.setFont(new Font("Arial",Font.BOLD,16));
+        clear.setBackground(Color.WHITE);
+        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c11.add(clear);
          clear.addActionListener(new ActionListener()
                 {
@@ -1201,7 +1226,7 @@ class GUI
                 public void actionPerformed(ActionEvent a)
                 { 
                     searchDoc data = new searchDoc();
-            if(d1.getText().equals(""))
+            if(dt1.getText().equals(""))
             {
                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
                // f4.setVisible(false);
@@ -1217,15 +1242,17 @@ class GUI
                 }
                 
                 });
-                updateButt=new JButton("Update");
-                updateButt.setBounds(400,450,80,40);
+                updateButt=new JButton("UPDATE");
+                updateButt.setBounds(380,450,80,40);
+                updateButt.setBackground(Color.WHITE);
+                updateButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 c11.add(updateButt);
                 updateButt.addActionListener(new ActionListener()
                 {
                 public void actionPerformed(ActionEvent a)
                 { 
                     updateDoc data = new updateDoc();
-            if(d1.getText().equals(""))
+            if(dt1.getText().equals(""))
             {
                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
                // f4.setVisible(false);
@@ -1260,8 +1287,10 @@ class GUI
         
         
         b3 = new JButton ("PATIENT");
-        b3.setBounds(280,300,220,40);
+        b3.setBounds(350,300,220,40);
         b3.setFont(new Font("Arial",Font.BOLD,16));
+        b3.setBackground(Color.WHITE);
+        b3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         c2.add(b3);
         b3.addActionListener(new ActionListener()
         {
@@ -1272,7 +1301,7 @@ class GUI
          pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
          pc.setLayout(null);
          pc.add(l1);
-         Icon icon = new ImageIcon("b.jpg");
+         Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1283,9 +1312,11 @@ class GUI
                     pf.setVisible(false);
                     f2.setVisible(true);
             }});
-         JButton pInsrt = new JButton("INSERT");
-         pInsrt.setBounds(280,100,220,40);
+          pInsrt = new JButton("INSERT");
+         pInsrt.setBounds(350,100,220,40);
          pInsrt.setFont(new Font("Arial",Font.BOLD,16));
+         pInsrt.setBackground(Color.WHITE);
+        pInsrt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
          pc.add(pInsrt);
          pInsrt.addActionListener(new ActionListener()
         {
@@ -1296,11 +1327,11 @@ class GUI
             pc1.setLayout(null);
             pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             pc1.add(l1);
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
-            back.setBorderPainted(false);
-           pf1.add(back);
+            //back.setBorderPainted(false);
+           pc1.add(back);
           back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
@@ -1314,10 +1345,8 @@ class GUI
                 pc1.add(l2);
                 
                 ptf = new JTextField (50);
-                ptf.setBounds(350,80,240,49);
+                ptf.setBounds(350,90,200,25);
                 pc1.add(ptf);
-                ptf.setOpaque(false);
-                ptf.setBorder(border);
                 ptf.setFont(font1);
 
                 l2 = new JLabel ("F/NAME", SwingConstants.CENTER) ;
@@ -1327,10 +1356,8 @@ class GUI
                 pc1.add(l2);
                 
                 ptf1 = new JTextField (50);
-                ptf1.setBounds(350,140,240,49);
+                ptf1.setBounds(350,150,200,25);
                 pc1.add(ptf1);
-                ptf1.setOpaque(false);
-                ptf1.setBorder(border);
                 ptf1.setFont(font1);
                
                 l2 = new JLabel ("AGE", SwingConstants.CENTER) ;
@@ -1340,10 +1367,8 @@ class GUI
                 pc1.add(l2);
                 
                 ptf2 = new JTextField (50);            
-                ptf2.setBounds(350,200,240,49);
+                ptf2.setBounds(350,210,200,25);
                 pc1.add(ptf2);
-                ptf2.setOpaque(false);
-                ptf2.setBorder(border);
                 ptf2.setFont(font1);
                 
                 l3 = new JLabel ("GENDER", SwingConstants.CENTER) ;
@@ -1353,10 +1378,8 @@ class GUI
                 pc1.add(l3);
                 
                 ptf3 = new JTextField (50);
-                ptf3.setBounds(350,260,240,49);
+                ptf3.setBounds(350,270,200,25);
                 pc1.add(ptf3);
-                ptf3.setOpaque(false);
-                ptf3.setBorder(border);
                 ptf3.setFont(font1);                
                 
                 l4 = new JLabel ("ADDRESS", SwingConstants.CENTER) ;
@@ -1367,10 +1390,8 @@ class GUI
                 
                                 
                 ptf4 = new JTextField (50);
-                ptf4.setBounds(350,320,240,49);
+                ptf4.setBounds(350,330,200,25);
                 pc1.add(ptf4);
-                ptf4.setOpaque(false);
-                ptf4.setBorder(border);
                 ptf4.setFont(font1); 
            	
            	l4 = new JLabel ("PHONE NUM", SwingConstants.CENTER) ;
@@ -1381,15 +1402,11 @@ class GUI
                 
                                 
                 ptf5 = new JTextField (50);
-                ptf5.setBounds(350,380,240,49);
+                ptf5.setBounds(350,390,200,25);
                 pc1.add(ptf5);
-                
-                
-                ptf5.setOpaque(false);
-                ptf5.setBorder(border);
                 ptf5.setFont(font1); 
                 
-                l4 = new JLabel ("DOC ID") ;
+                l4 = new JLabel ("DOCTOR ID") ;
                 l4.setFont(font1) ;
                 l4.setForeground(Color.BLACK);
                 l4.setBounds(350,420,200,30);
@@ -1399,7 +1416,7 @@ class GUI
                 l4 = new JLabel ("WARD NUM") ;
                 l4.setFont(font1) ;
                 l4.setForeground(Color.BLACK);
-                l4.setBounds(350,460,200,30);
+                l4.setBounds(350,450,200,30);
                 pc1.add(l4); 
                 
                 getW w = new getW();
@@ -1433,6 +1450,8 @@ class GUI
                 pb2 = new JButton("SAVE");
                 pb2.setBounds(400,530,110,40);
                 pb2.setFont(new Font("Arial",Font.BOLD,16));
+                pb2.setBackground(Color.WHITE);
+                pb2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 pc1.add(pb2);
                 
                 pb2.addActionListener(new ActionListener()
@@ -1461,9 +1480,11 @@ class GUI
         }
         });
          
-        JButton pDel = new JButton("DELETE");
-        pDel.setBounds(280,300,220,40);
+       pDel = new JButton("DELETE");
+        pDel.setBounds(350,300,220,40);
         pDel.setFont(new Font("Arial",Font.BOLD,16));
+        pDel.setBackground(Color.WHITE);
+        pDel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         pc.add(pDel);
         pDel.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -1474,7 +1495,7 @@ class GUI
         f12.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c12.setLayout(null);
         c12.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1484,9 +1505,9 @@ class GUI
             {
                     f12.setVisible(false);
                     pf.setVisible(true);
-            }});
-                
-          JButton s = new JButton("SHOW ALL PATIENTS");
+            }});JButton s = new JButton("SHOW ALL PATIENTS");
+                  s.setBackground(Color.WHITE);
+                   s.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
           s.setBounds(170,65,220,30);
           s.setFont(new Font("Arial",Font.BOLD,16));
           c12.add(s);
@@ -1516,22 +1537,21 @@ class GUI
                 scroll4.setBounds(5,100,580,250);
                 c12.add(scroll4);   
              }});
-                dltLabel = new JLabel ("Insert Id to Delete") ;
+                dltLabel = new JLabel ("INSERT ID") ;
                 dltLabel.setFont(font1) ;
-                dltLabel.setForeground(Color.BLACK);
-                dltLabel.setBounds(350,380,250,30);
+               dltLabel.setForeground(Color.BLACK);
+                dltLabel.setBounds(400,350,200,30);
                 c12.add(dltLabel);
                 
                 dltPatient = new JTextField (50);
-                dltPatient.setBounds(350,410,240,30);
+                dltPatient.setBounds(350,380,200,25);
                 c12.add(dltPatient);
-                dltPatient.setOpaque(false);
-    
-                dltPatient.setBorder(border);
                 dltPatient.setFont(font1);
                dlt_pt = new JButton ("DELETE");
-                dlt_pt.setBounds(380,460,120,30);
+                dlt_pt.setBounds(400,420,120,30);
                 dlt_pt.setFont(new Font("Arial",Font.BOLD,16));
+                dlt_pt.setBackground(Color.WHITE);
+               dlt_pt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
                 c12.add(dlt_pt);
                
             dlt_pt.addActionListener(new ActionListener()
@@ -1563,9 +1583,11 @@ class GUI
                 f12.setResizable(false);  
              }
         }); 
-        JButton pSear = new JButton ("SEARCH");
-        pSear.setBounds(280,200,220,40);
+        pSear = new JButton ("SEARCH");
+        pSear.setBounds(350,200,220,40);
         pSear.setFont(new Font("Arial",Font.BOLD,16));
+        pSear.setBackground(Color.WHITE);
+        pSear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
         pc.add(pSear); 
         pSear.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -1575,7 +1597,7 @@ class GUI
                 f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c13.setLayout(null);
                 c13.add(l1);
-               Icon icon = new ImageIcon("b.jpg");
+               Icon icon = new ImageIcon("b.jpeg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -1588,8 +1610,11 @@ class GUI
                     pf.setVisible(true);
             }});
                searchPatientData();
-              searchButt=new JButton("Search");
-                searchButt.setBounds(200,450,80,40);
+              searchButt=new JButton("SEARCH");
+                searchButt.setBounds(180,450,80,40);
+              searchButt.setFont(new Font("Arial",Font.BOLD,16));
+        searchButt.setBackground(Color.WHITE);
+        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c13.add(searchButt);
          
               searchButt.addActionListener(new ActionListener()
@@ -1619,9 +1644,11 @@ class GUI
                 f13.setSize(626,616);
                 f13.setResizable(false);
              }});
-        JButton pUp = new JButton ("UPDATE");
-        pUp.setBounds(280,400,220,50);
+        pUp = new JButton ("UPDATE");
+        pUp.setBounds(350,400,220,40);
         pUp.setFont(new Font("Arial",Font.BOLD,16));
+        pUp.setBackground(Color.WHITE);
+        pUp.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         pc.add(pUp);
          pUp.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -1632,7 +1659,7 @@ class GUI
         f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c13.setLayout(null);
         c13.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1645,8 +1672,11 @@ class GUI
             }});
                 searchPatientData();
            
-                searchButt=new JButton("Search");
-                searchButt.setBounds(200,450,80,40);
+                searchButt=new JButton("SEARCH");
+                searchButt.setBounds(180,450,80,40);
+                searchButt.setFont(new Font("Arial",Font.BOLD,16));
+        searchButt.setBackground(Color.WHITE);
+        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c13.add(searchButt);
               searchButt.addActionListener(new ActionListener()
                 {
@@ -1669,8 +1699,11 @@ class GUI
                 }
                 
                 });
-                updateButt=new JButton("Update");
-                updateButt.setBounds(400,450,80,40);
+                updateButt=new JButton("UPDATE");
+                updateButt.setBounds(380,450,80,40);
+                updateButt.setFont(new Font("Arial",Font.BOLD,16));
+        updateButt.setBackground(Color.WHITE);
+        updateButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c13.add(updateButt);
                 updateButt.addActionListener(new ActionListener()
                 {
@@ -1710,8 +1743,10 @@ class GUI
 
         /*****************************nurse*************/
         b4 = new JButton ("NURSE");
-        b4.setBounds(280,200,220,40);
+        b4.setBounds(350,200,220,40);
         b4.setFont(new Font("Arial",Font.BOLD,16));
+        b4.setBackground(Color.WHITE);
+        b4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c2.add(b4);
         b4.addActionListener(new ActionListener()
         {
@@ -1722,7 +1757,7 @@ class GUI
         f6.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c6.setLayout(null);
        c6.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1734,8 +1769,10 @@ class GUI
                     f2.setVisible(true);
             }}); 
          insertNur = new JButton ("INSERT");
-        insertNur.setBounds(280,100,220,40);
+        insertNur.setBounds(350,100,220,40);
         insertNur.setFont(new Font("Arial",Font.BOLD,16));
+        insertNur.setBackground(Color.WHITE);
+        insertNur.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c6.add(insertNur);
          insertNur.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
@@ -1745,7 +1782,7 @@ class GUI
                 f7.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c7.setLayout(null);
                 c7.add(l1);
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1763,10 +1800,8 @@ class GUI
                 c7.add(l2);
                 
                 tf12 = new JTextField (50);
-                tf12.setBounds(350,80,240,49);
+                tf12.setBounds(350,90,200,25);
                 c7.add(tf12);
-                tf12.setOpaque(false);
-                tf12.setBorder(border);
                 tf12.setFont(font1);
 
                 l2 = new JLabel ("F/NAME", SwingConstants.CENTER) ;
@@ -1776,10 +1811,8 @@ class GUI
                 c7.add(l2);
                 
                     tf13 = new JTextField (50);
-                tf13.setBounds(350,140,240,49);
+                tf13.setBounds(350,150,200,25);
                 c7.add(tf13);
-                tf13.setOpaque(false);
-                tf13.setBorder(border);
                 tf13.setFont(font1);
                
                 l2 = new JLabel ("GENDER", SwingConstants.CENTER) ;
@@ -1789,10 +1822,8 @@ class GUI
                 c7.add(l2);
                 tf14 = new JTextField (50);
             
-                tf14.setBounds(350,200,240,49);
+                tf14.setBounds(350,210,200,25);
                 c7.add(tf14);
-                tf14.setOpaque(false);
-                tf14.setBorder(border);
                 tf14.setFont(font1);
                 
                 l3 = new JLabel ("AGE", SwingConstants.CENTER) ;
@@ -1802,10 +1833,8 @@ class GUI
                 c7.add(l3);
                 
                 tf15 = new JTextField (50);
-                tf15.setBounds(350,260,240,49);
+                tf15.setBounds(350,270,200,25);
                 c7.add(tf15);
-                tf15.setOpaque(false);
-                tf15.setBorder(border);
                 tf15.setFont(font1);                
                 
                 l4 = new JLabel ("QUALIFICATION", SwingConstants.CENTER) ;
@@ -1816,15 +1845,15 @@ class GUI
                 
                                 
                 tf16 = new JTextField (50);
-                tf16.setBounds(350,320,240,49);
+                tf16.setBounds(350,330,200,25);
                 c7.add(tf16);
-                tf16.setOpaque(false);
-                tf16.setBorder(border);
                 tf16.setFont(font1); 
                 
                 b8 = new JButton ("NEXT");
-                b8.setBounds(350,360,180,30);
+                b8.setBounds(400,380,100,30);
                 b8.setFont(new Font("Arial",Font.BOLD,16));
+                b8.setBackground(Color.WHITE);
+        b8.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c7.add(b8);
                 b8.addActionListener(new ActionListener()
                 {
@@ -1848,7 +1877,7 @@ class GUI
                 f8.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
              c8.setLayout(null); 
              c8.add(l1);
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1866,10 +1895,8 @@ class GUI
                 c8.add(l2);
                 
                 tf17 = new JTextField (50);
-                tf17.setBounds(350,80,240,49);
+                tf17.setBounds(350,90,200,25);
                 c8.add(tf17);
-                tf17.setOpaque(false);
-               tf17.setBorder(border);
                 tf17.setFont(font1);
 
                 l2 = new JLabel ("WARD NUMBER", SwingConstants.CENTER) ;
@@ -1879,10 +1906,8 @@ class GUI
                 c8.add(l2);
                 
                     tf18 = new JTextField (50);
-                tf18.setBounds(350,140,240,49);
+                tf18.setBounds(350,150,200,25);
                 c8.add(tf18);
-                tf18.setOpaque(false);
-                tf18.setBorder(border);
                 tf18.setFont(font1);
                
                 l2 = new JLabel ("POSITION", SwingConstants.CENTER) ;
@@ -1893,15 +1918,15 @@ class GUI
                 
                 tf19 = new JTextField (50);
             
-                tf19.setBounds(350,200,240,49);
+                tf19.setBounds(350,210,200,25);
                 c8.add(tf19);
-                tf19.setOpaque(false);
-                 tf19.setBorder(border);
                 tf19.setFont(font1);
                 
                  b9 = new JButton ("DONE");
-                b9.setBounds(350,360,180,30);
+                b9.setBounds(400,260,100,30);
                 b9.setFont(new Font("Arial",Font.BOLD,16));
+                b9.setBackground(Color.WHITE);
+        b9.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c8.add(b9);
                 b9.addActionListener(new ActionListener()
                 {
@@ -2030,8 +2055,10 @@ class GUI
               });
          
         delNur = new JButton ("DELETE");
-        delNur.setBounds(280,300,220,40);
+        delNur.setBounds(350,300,220,40);
         delNur.setFont(new Font("Arial",Font.BOLD,16));
+        delNur.setBackground(Color.WHITE);
+        delNur.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c6.add(delNur);
       
         delNur.addActionListener(new ActionListener(){
@@ -2043,7 +2070,7 @@ class GUI
         f10.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c10.setLayout(null);
         c10.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2054,22 +2081,50 @@ class GUI
                     f10.setVisible(false);
                     f6.setVisible(true);
             }});
-        dltLabel = new JLabel ("Insert Id to delete", SwingConstants.CENTER) ;
+                    nur_sh = new JButton ("SHOW ALL NURSES");
+                    nur_sh.setBounds(180,65,220,30);
+                    nur_sh.setFont(new Font("Arial",Font.BOLD,16));
+                    nur_sh.setBackground(Color.WHITE);
+                   nur_sh.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                    c10.add(nur_sh);
+                    nur_sh.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                    model3 = new DefaultTableModel(); 
+                    shw_nur =new JTable(model3);    
+                    model3.addColumn("NURSE ID");
+                    model3.addColumn("NAME ");
+                    model3.addColumn("DUTY SHIFT");
+                    model3.addColumn("POSITION");
+                    model3.addColumn("WARD NUMBER");
+                    model3.addColumn("STAFF ID");
+                        shw_Nurse nu = new shw_Nurse();
+                        try 
+                        {
+                            nu.connection1();
+                        } 
+                        catch (SQLException ex) 
+                        {
+                            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        JScrollPane scroll3 = new JScrollPane(shw_nur);
+                    scroll3.setBounds(5,100,580,250);
+                    c10.add(scroll3);
+                    }});
+                dltLabel = new JLabel ("INSERT ID") ;
                 dltLabel.setFont(font1) ;
-               dltLabel.setForeground(Color.BLACK);
-                dltLabel.setBounds(350,120,200,30);
+                dltLabel.setForeground(Color.BLACK);
+                dltLabel.setBounds(400,350,260,30);
                 c10.add(dltLabel);
                 
                   dltNurse = new JTextField (50);
-                dltNurse.setBounds(350,140,240,49);
-                c10.add(dltNurse);
-                dltNurse.setOpaque(false);
-    //    tf1.setText("USER ID");
-                dltNurse.setBorder(border);
-                dltNurse.setFont(font1);
+                dltNurse.setBounds(350,380,200,25);
+                c10.add(dltNurse);               dltNurse.setFont(font1);
                dlt_nur = new JButton ("DELETE");
-                dlt_nur.setBounds(350,200,120,30);
+                dlt_nur.setBounds(400,420,110,30);
                 dlt_nur.setFont(new Font("Arial",Font.BOLD,16));
+                dlt_nur.setBackground(Color.WHITE);
+                dlt_nur.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c10.add(dlt_nur);
                
             dlt_nur.addActionListener(new ActionListener()
@@ -2128,7 +2183,6 @@ class GUI
         }
         }
         return con;
-        
         }
         
              }});     
@@ -2143,8 +2197,10 @@ class GUI
         });
       
         searchNur = new JButton ("SEARCH");
-        searchNur.setBounds(280,200,220,40);
+        searchNur.setBounds(350,200,220,40);
         searchNur.setFont(new Font("Arial",Font.BOLD,16));
+        searchNur.setBackground(Color.WHITE);
+        searchNur.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c6.add(searchNur);
         searchNur.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -2155,7 +2211,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2167,28 +2223,30 @@ class GUI
                     f6.setVisible(true);
             }});
         
-           s1 = new JLabel ("Nurse id : ") ;
+           s1 = new JLabel ("NURSE ID: ") ;
             s1.setFont(font1) ;
             s1.setForeground(Color.BLACK);
-            s1.setBounds(80,50,200,30);
+            s1.setBounds(120,50,200,30);
             c11.add(s1);
                 
                 st1 = new JTextField (50);
-                st1.setBounds(300,50,140,20);
+                st1.setBounds(340,55,140,20);
                 c11.add(st1);
             searchData();    
-           s12 = new JLabel ("Ward Number : ") ;
+           s12 = new JLabel ("WARD NUMBER: ") ;
             s12.setFont(font1) ;
             s12.setForeground(Color.BLACK);
-            s12.setBounds(80,380,140,30);
+            s12.setBounds(120,380,140,30);
             c11.add(s12);
                 
                 st12 = new JTextField (50);
-                st12.setBounds(300,380,140,20);
+                st12.setBounds(340,385,140,20);
                 c11.add(st12);
-                clear = new JButton ("Clear");
+                clear = new JButton ("CLEAR");
         clear.setBounds(300,450,80,40);
         clear.setFont(new Font("Arial",Font.BOLD,16));
+        clear.setBackground(Color.WHITE);
+        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c11.add(clear);
          clear.addActionListener(new ActionListener()
                 {
@@ -2209,8 +2267,11 @@ class GUI
                 st13.setText("");
                 }
                 });
-               searchBut=new JButton("Search");
+               searchBut=new JButton("SEARCH");
                 searchBut.setBounds(200,450,80,40);
+                searchBut.setFont(new Font("Arial",Font.BOLD,16));
+        searchBut.setBackground(Color.WHITE);
+        searchBut.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c11.add(searchBut);
               searchBut.addActionListener(new ActionListener()
                 {
@@ -2241,8 +2302,10 @@ class GUI
                 f11.setResizable(false);
              }});
         updNur = new JButton ("UPDATE");
-        updNur.setBounds(280,400,220,50);
+        updNur.setBounds(350,400,220,40);
         updNur.setFont(new Font("Arial",Font.BOLD,16));
+        updNur.setBackground(Color.WHITE);
+        updNur.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c6.add(updNur);
          updNur.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent a)
@@ -2253,7 +2316,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2264,32 +2327,37 @@ class GUI
                     f11.setVisible(false);
                     f6.setVisible(true);
             }});
-               s1 = new JLabel ("Nurse id : ") ;
+               s1 = new JLabel ("NURSE ID: ") ;
             s1.setFont(font1) ;
             s1.setForeground(Color.BLACK);
-            s1.setBounds(80,50,200,30);
+            s1.setBounds(120,50,200,30);
             c11.add(s1);
                 
                 st1 = new JTextField (50);
-                st1.setBounds(300,50,140,20);
+                st1.setBounds(340,55,140,20);
                 c11.add(st1);
                 searchData();
            
-            s12 = new JLabel("Ward Number : ") ;
+            s12 = new JLabel("WARD NUMBER: ") ;
             s12.setFont(font1) ;
             s12.setForeground(Color.BLACK);
-            s12.setBounds(80,380,140,30);
+            s12.setBounds(120,380,200,30);
             c11.add(s12);
                 
                 st12 = new JTextField (50);
-                st12.setBounds(300,380,140,20);
+                st12.setBounds(340,385,200,20);
                 c11.add(st12);
-                searchButt=new JButton("Search");
-                searchButt.setBounds(200,450,80,40);
+                searchButt=new JButton("SEARCH");
+                searchButt.setBounds(180,450,80,40);
+                searchButt.setFont(new Font("Arial",Font.BOLD,16));
+                searchButt.setBackground(Color.WHITE);
+        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c11.add(searchButt);
-        clear = new JButton ("Clear");
-        clear.setBounds(300,450,80,40);
+        clear = new JButton ("CLEAR");
+        clear.setBounds(280,450,80,40);
         clear.setFont(new Font("Arial",Font.BOLD,16));
+        clear.setBackground(Color.WHITE);
+        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c11.add(clear);
          clear.addActionListener(new ActionListener()
                 {
@@ -2331,8 +2399,11 @@ class GUI
                 }
                 
                 });
-                updateButt=new JButton("Update");
-                updateButt.setBounds(400,450,80,40);
+                updateButt=new JButton("UPDATE");
+                updateButt.setBounds(380,450,80,40);
+                updateButt.setFont(new Font("Arial",Font.BOLD,16));
+                updateButt.setBackground(Color.WHITE);
+        updateButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c11.add(updateButt);
                 updateButt.addActionListener(new ActionListener()
                 {
@@ -2372,8 +2443,10 @@ class GUI
         /******************************** CHECKK WARD INFO************************/
         
         b5 = new JButton ("CHECK WARD INFO");
-        b5.setBounds(280,400,220,50);
+        b5.setBounds(350,400,220,40);
         b5.setFont(new Font("Arial",Font.BOLD,16));
+        b5.setBackground(Color.WHITE);
+        b5.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c2.add(b5);
         b5.addActionListener(new ActionListener()
                 {
@@ -2385,7 +2458,7 @@ class GUI
                     wc.setLayout(null);
                     wc.add(l1);
                     
-                    Icon icon = new ImageIcon("b.jpg");
+                    Icon icon = new ImageIcon("b.jpeg");
                     back = new JButton(icon);
                     back.setBounds(8,15,42,36);
                     back.setBorderPainted(false);
@@ -2425,6 +2498,9 @@ class GUI
                     
                     wb = new JButton("GO");
                     wb.setBounds(290,60,82,30);
+                    wb.setFont(new Font("Arial",Font.BOLD,16));
+        wb.setBackground(Color.WHITE);
+        wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                     wc.add(wb);
                     wb.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae)
@@ -2481,109 +2557,109 @@ class GUI
     }
    public void searchData(){
                 
-           s2 = new JLabel ("Name : ") ;
+           s2 = new JLabel ("NAME: ") ;
             s2.setFont(font1) ;
             s2.setForeground(Color.BLACK);
-            s2.setBounds(80,80,200,30);
+            s2.setBounds(120,80,200,30);
             c11.add(s2);
                 
               st2 = new JTextField (50);   //Name
-                st2.setBounds(300,80,140,20);
+                st2.setBounds(340,85,140,20);
                 c11.add(st2);
-            s3 = new JLabel ("Father Name : ") ;
+            s3 = new JLabel ("FATHER NAME: ") ;
             s3.setFont(font1) ;
             s3.setForeground(Color.BLACK);
-            s3.setBounds(80,110,140,30);
+            s3.setBounds(120,110,200,30);
             c11.add(s3);
                 
                 st3 = new JTextField (50);  //father name
-                st3.setBounds(300,110,140,20);
+                st3.setBounds(340,115,140,20);
                 c11.add(st3);
-            s4 = new JLabel ("Gender : ") ; 
+            s4 = new JLabel ("GENDER: ") ; 
             s4.setFont(font1) ;
             s4.setForeground(Color.BLACK);
-            s4.setBounds(80,140,140,30);
+            s4.setBounds(120,140,140,30);
             c11.add(s4);
                 
                 st4 = new JTextField (50); //gender
-                st4.setBounds(300,140,140,20);
+                st4.setBounds(340,145,140,20);
                 c11.add(st4);
-                 s5 = new JLabel ("Age : ") ;
+                 s5 = new JLabel ("AGE: ") ;
             s5.setFont(font1) ;
             s5.setForeground(Color.BLACK);
-            s5.setBounds(80,170,140,30);
+            s5.setBounds(120,170,140,30);
             c11.add(s5);
                 
                 st5 = new JTextField (50);  //age
-                st5.setBounds(300,170,140,20);
+                st5.setBounds(340,175,140,20);
                 c11.add(st5);
-             s6 = new JLabel ("Qualification : ") ;
+             s6 = new JLabel ("QUALIFICATION: ") ;
             s6.setFont(font1) ;
             s6.setForeground(Color.BLACK);
-            s6.setBounds(80,200,140,30);
+            s6.setBounds(120,200,200,30);
             c11.add(s6);
                 
                 st6 = new JTextField (50);
-                st6.setBounds(300,200,140,20);
+                st6.setBounds(340,205,140,20);
                 c11.add(st6);
-            s7 = new JLabel ("Joining Date : ") ;
+            s7 = new JLabel ("JOINING DATE: ") ;
             s7.setFont(font1) ;
             s7.setForeground(Color.BLACK);
-            s7.setBounds(80,230,140,30);
+            s7.setBounds(120,230,200,30);
             c11.add(s7);
                 
                 st7 = new JTextField (50);
-                st7.setBounds(300,230,140,20);
+                st7.setBounds(340,235,140,20);
                 c11.add(st7);
-                s8 = new JLabel ("Leaving Date : ") ;
+                s8 = new JLabel ("LEAVING DATE: ") ;
             s8.setFont(font1) ;
             s8.setForeground(Color.BLACK);
-            s8.setBounds(80,260,140,30);
+            s8.setBounds(120,260,200,30);
             c11.add(s8);
                 
                 st8 = new JTextField (50);
-                st8.setBounds(300,260,140,20);
+                st8.setBounds(340,265,140,20);
                 c11.add(st8);
-                s9 = new JLabel ("Designation : ") ;
+                s9 = new JLabel ("DESIGNATION: ") ;
             s9.setFont(font1) ;
             s9.setForeground(Color.BLACK);
-            s9.setBounds(80,290,140,30);
+            s9.setBounds(120,290,200,30);
             c11.add(s9);
                 
                 st9 = new JTextField (50);
-                st9.setBounds(300,290,140,20);
+                st9.setBounds(340,295,140,20);
                 c11.add(st9);
-                s10 = new JLabel ("Staff ID : ") ;
+                s10 = new JLabel ("STAFF ID: ") ;
             s10.setFont(font1) ;
             s10.setForeground(Color.BLACK);
-            s10.setBounds(80,320,140,30);
+            s10.setBounds(120,320,140,30);
             c11.add(s10);
                 
                 st10 = new JTextField (50);
-                st10.setBounds(300,320,140,20);
+                st10.setBounds(340,325,140,20);
                 c11.add(st10);
-                s11 = new JLabel ("Duty Shift : ") ;
+                s11 = new JLabel ("DUTY SHIFT: ") ;
             s11.setFont(font1) ;
             s11.setForeground(Color.BLACK);
-            s11.setBounds(80,350,140,30);
+            s11.setBounds(120,350,140,30);
             c11.add(s11);
                 
                 st11 = new JTextField (50);
-                st11.setBounds(300,350,140,20);
+                st11.setBounds(340,355,140,20);
                 c11.add(st11);
                
-                s13 = new JLabel ("Position : ") ;
+                s13 = new JLabel ("POSITION: ") ;
             s13.setFont(font1) ;
             s13.setForeground(Color.BLACK);
-            s13.setBounds(80,410,140,30);
+            s13.setBounds(120,410,140,30);
             c11.add(s13);
                 
                 st13 = new JTextField (50);
-                st13.setBounds(300,410,140,20);
+                st13.setBounds(340,415,140,20);
                 c11.add(st13);
            }
     public void searchPatientData(){
-            p1 = new JLabel ("Patient id : ") ;
+            p1 = new JLabel ("PATIENT ID: ") ;
             p1.setFont(font1) ;
             p1.setForeground(Color.BLACK);
             p1.setBounds(80,50,200,30);
@@ -2592,99 +2668,101 @@ class GUI
                 pt1 = new JTextField (50);
                 pt1.setBounds(300,50,140,20);
                 c13.add(pt1);
-           p2 = new JLabel ("Name : ") ;
+           p2 = new JLabel ("NAME: ") ;
             p2.setFont(font1) ;
             p2.setForeground(Color.BLACK);
-            p2.setBounds(80,80,200,30);
+            p2.setBounds(120,80,200,30);
             c13.add(p2);
                 
               pt2 = new JTextField (50);   //Name
-                pt2.setBounds(300,80,140,20);
+                pt2.setBounds(340,85,140,20);
                 c13.add(pt2);
-            p3 = new JLabel ("Father Name : ") ;
+            p3 = new JLabel ("FATHER NAME: ") ;
             p3.setFont(font1) ;
             p3.setForeground(Color.BLACK);
-            p3.setBounds(80,110,140,30);
+            p3.setBounds(120,110,200,30);
             c13.add(p3);
                 
                 pt3 = new JTextField (50);  //father name
-                pt3.setBounds(300,110,140,20);
+                pt3.setBounds(340,115,140,20);
                 c13.add(pt3);
-            p4 = new JLabel ("Age : ") ; 
+            p4 = new JLabel ("AGE: ") ; 
             p4.setFont(font1) ;
             p4.setForeground(Color.BLACK);
-            p4.setBounds(80,140,140,30);
+            p4.setBounds(120,140,140,30);
             c13.add(p4);
                 
                 pt4 = new JTextField (50); //gender
-                pt4.setBounds(300,140,140,20);
+                pt4.setBounds(340,145,140,20);
                 c13.add(pt4);
-                 p5 = new JLabel ("Gender : ") ;
+                 p5 = new JLabel ("GENDER: ") ;
             p5.setFont(font1) ;
             p5.setForeground(Color.BLACK);
-            p5.setBounds(80,170,140,30);
+            p5.setBounds(120,170,140,30);
             c13.add(p5);
                 
                 pt5 = new JTextField (50);  //age
-                pt5.setBounds(300,170,140,20);
+                pt5.setBounds(340,175,140,20);
                 c13.add(pt5);
-             p6 = new JLabel ("Address : ") ;
+             p6 = new JLabel ("ADDRESS: ") ;
             p6.setFont(font1) ;
             p6.setForeground(Color.BLACK);
-            p6.setBounds(80,200,140,30);
+            p6.setBounds(120,200,140,30);
             c13.add(p6);
                 
                 pt6 = new JTextField (50);
-                pt6.setBounds(300,200,140,20);
+                pt6.setBounds(340,205,140,20);
                 c13.add(pt6);
-            p7 = new JLabel ("Phone Number : ") ;
+            p7 = new JLabel ("PHONE NUMBER: ") ;
             p7.setFont(font1) ;
             p7.setForeground(Color.BLACK);
-            p7.setBounds(80,230,140,30);
+            p7.setBounds(120,230,200,30);
             c13.add(p7);
                 
                 pt7 = new JTextField (50);
-                pt7.setBounds(300,230,140,20);
+                pt7.setBounds(340,235,140,20);
                 c13.add(pt7);
-                p8 = new JLabel ("Entry Date : ") ;
+                p8 = new JLabel ("ENTRY DATE: ") ;
             p8.setFont(font1) ;
             p8.setForeground(Color.BLACK);
-            p8.setBounds(80,260,140,30);
+            p8.setBounds(120,260,200,30);
             c13.add(p8);
                 
                 pt8 = new JTextField (50);
-                pt8.setBounds(300,260,140,20);
+                pt8.setBounds(340,265,140,20);
                 c13.add(pt8);
-                p9 = new JLabel ("Discharge Date : ") ;
+                p9 = new JLabel ("DISCHARGE DATE: ") ;
             p9.setFont(font1) ;
             p9.setForeground(Color.BLACK);
-            p9.setBounds(80,290,140,30);
+            p9.setBounds(120,290,200,30);
             c13.add(p9);
                 
                 pt9 = new JTextField (50);
-                pt9.setBounds(300,290,140,20);
+                pt9.setBounds(340,295,140,20);
                 c13.add(pt9);
-                p10 = new JLabel ("Ward Number: ") ;
+                p10 = new JLabel ("WARD NUMBER: ") ;
             p10.setFont(font1) ;
             p10.setForeground(Color.BLACK);
-            p10.setBounds(80,320,140,30);
+            p10.setBounds(120,320,200,30);
             c13.add(p10);
                 
                 pt10 = new JTextField (50);
-                pt10.setBounds(300,320,140,20);
+                pt10.setBounds(340,325,140,20);
                 c13.add(pt10);
-                p11 = new JLabel ("Doctor ID : ") ;
+                p11 = new JLabel ("DOCTOR ID: ") ;
             p11.setFont(font1) ;
             p11.setForeground(Color.BLACK);
-            p11.setBounds(80,350,140,30);
+            p11.setBounds(120,350,200,30);
             c13.add(p11);
                 
                 pt11 = new JTextField (50);
                 pt11.setBounds(300,350,140,20);
                 c13.add(pt11);
-                clear = new JButton ("Clear");
-        clear.setBounds(300,450,80,40);
+                clear = new JButton ("CLEAR");
+        clear.setBounds(380,455,80,40);
         clear.setFont(new Font("Arial",Font.BOLD,16));
+        clear.setBackground(Color.WHITE);
+        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
         c13.add(clear);
          clear.addActionListener(new ActionListener()
                 {
@@ -2719,7 +2797,7 @@ class searchDoc
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-       String val = "SELECT * FROM doctor JOIN staff using(st_id) WHERE hw?";
+       String val = "SELECT * FROM doctor JOIN staff using(st_id) WHERE d_id=?";
             PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(dt1.getText()));
             ResultSet rs = stmt.executeQuery();
@@ -2830,6 +2908,44 @@ class shw_Doc
         
         }
 }
+class shw_Nurse
+{
+         private Connection con;
+         public Connection connection1() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT n.n_id,s.Name,n.duty_shift,n.position,n.ward_num,n.st_id FROM nurse n join staff s using(st_id);";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              model3 = (DefaultTableModel) shw_nur.getModel();
+              model3.addRow(new Object[]{rs.getInt("n_id"),rs.getString("Name"),rs.getString("duty_shift"), rs.getString("position"),rs.getInt("ward_num"),rs.getInt("st_id")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+
 class updateDoc
                 {
                 private Connection con;
@@ -2931,80 +3047,6 @@ class searchNur
         return con;
         
         }}
-class shw_Pat
-{
-         private Connection con;
-         public Connection connection() throws SQLException
-         {
-         if(con==null)
-         {
-        String url = "jdbc:mysql://localhost/";
-        String dbName="projectdb";
-        String dr="com.mysql.jdbc.Driver"; 
-        String user="root";
-        String pass="";
-        try{
-            
-            Class.forName(dr);
-            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
-            PreparedStatement stmt = con.prepareStatement(val);
-           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next())
-            {
-              model4 = (DefaultTableModel) d_pat.getModel();
-              model4.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getString("Gender"), rs.getString("Age"),rs.getInt("ward_num"),rs.getInt("d_id")});
-            }
-            
-         con.close();
-             }
-        catch(ClassNotFoundException e)
-        {
-        System.out.println("Not Connected");
-        }
-        }
-        return con;
-        
-        }
-}
-class shw_Pat2
-{
-         private Connection con;
-         public Connection connection() throws SQLException
-         {
-         if(con==null)
-         {
-        String url = "jdbc:mysql://localhost/";
-        String dbName="projectdb";
-        String dr="com.mysql.jdbc.Driver"; 
-        String user="root";
-        String pass="";
-        try{
-            
-            Class.forName(dr);
-            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
-            PreparedStatement stmt = con.prepareStatement(val);
-           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next())
-            {
-              model3 = (DefaultTableModel) shw_pat.getModel();
-              model3.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getString("Gender"), rs.getString("Age"),rs.getInt("ward_num"),rs.getInt("d_id")});
-            }
-            
-         con.close();
-             }
-        catch(ClassNotFoundException e)
-        {
-        System.out.println("Not Connected");
-        }
-        }
-        return con;
-        
-        }
-}
 class deletePatient
              {
               private Connection con;
@@ -3186,6 +3228,81 @@ class searchPatient
         return con;
         
         }}
+   class shw_Pat
+{
+         private Connection con;
+         public Connection connection() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              model4 = (DefaultTableModel) d_pat.getModel();
+              model4.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getString("Gender"), rs.getString("Age"),rs.getInt("ward_num"),rs.getInt("d_id")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+class shw_Pat2
+{
+         private Connection con;
+         public Connection connection() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              model3 = (DefaultTableModel) shw_pat.getModel();
+              model3.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getString("Gender"), rs.getString("Age"),rs.getInt("ward_num"),rs.getInt("d_id")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+
 class insPat
 {
     private Connection con;
