@@ -1,4 +1,5 @@
-﻿package project;
+﻿//Updated Code
+package project;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -21,7 +22,7 @@ class GUI
             ,st11,st12,st13,dt1,dt2,dtf,dtf1,dtf2,dtf3,dtf4,dtf5,dtf6,dtf7,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,
             pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
-            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh;
+            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,nur_sh;
     //String val1,val2,val3;
     Vector v = new Vector();
      Vector v1 = new Vector();
@@ -31,8 +32,8 @@ class GUI
       JSpinner spinner;
     String opt[]={"ibuprofen","paracetamol","chloroquine","Voltral Emulgel","Risek Capsules 20mg","Risek Capsules 40mg","Motilium Tablets","Mucaine Suspension","Librax Dragees","Sita Met Tablets","Getryl Tablets 2mg","Treviamet Xr 50/500mg","Caldree-600mg","High-C 1000","Acenac Tab 100 MG"};
     JComboBox cb1,cb2,pcb,pcb2;
-    DefaultTableModel model1, model2;
-    JTable jt1, shw_doc,table;
+    DefaultTableModel model1, model2,model3;
+    JTable jt1, shw_doc,table,shw_nur;
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
     void Draw()
@@ -117,7 +118,7 @@ class GUI
         if((dsg.equals("doc")) && (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-         ImageIcon ii = new ImageIcon("bg.jpeg") ;
+         ImageIcon ii = new ImageIcon("bg.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         jf = new JFrame("Hospital Managment System");
@@ -457,7 +458,7 @@ class GUI
         if((dsg.equals("rec"))&& (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-        ImageIcon ii = new ImageIcon("bg.jpeg") ;
+        ImageIcon ii = new ImageIcon("bg.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         f2 = new JFrame("Hospital Managment System");
@@ -517,7 +518,7 @@ class GUI
                 f4.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c4.setLayout(null);
                 c4.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpeg") ;
+                ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
             Icon icon = new ImageIcon("b.jpeg");
@@ -631,7 +632,7 @@ class GUI
                c5.setLayout(null);
                f5.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c5.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpeg") ;
+                ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
                 Icon icon = new ImageIcon("b.jpeg");
@@ -1944,21 +1945,49 @@ class GUI
                     f10.setVisible(false);
                     f6.setVisible(true);
             }});
-        dltLabel = new JLabel ("Insert Id to delete", SwingConstants.CENTER) ;
+                    nur_sh = new JButton ("SHOW ALL NURSES");
+                    nur_sh.setBounds(170,65,220,30);
+                    nur_sh.setFont(new Font("Arial",Font.BOLD,16));
+                    c10.add(nur_sh);
+                    nur_sh.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                    model3 = new DefaultTableModel(); 
+                    shw_nur =new JTable(model3);    
+                    model3.addColumn("NURSE ID");
+                    model3.addColumn("NAME ");
+                    model3.addColumn("DUTY SHIFT");
+                    model3.addColumn("POSITION");
+                    model3.addColumn("WARD NUMBER");
+                    model3.addColumn("STAFF ID");
+                        shw_Nurse nu = new shw_Nurse();
+                        try 
+                        {
+                            nu.connection1();
+                        } 
+                        catch (SQLException ex) 
+                        {
+                            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        JScrollPane scroll3 = new JScrollPane(shw_nur);
+                    scroll3.setBounds(5,100,580,250);
+                    c10.add(scroll3);
+                    }});
+                dltLabel = new JLabel ("Insert Id to delete", SwingConstants.CENTER) ;
                 dltLabel.setFont(font1) ;
-               dltLabel.setForeground(Color.BLACK);
-                dltLabel.setBounds(350,120,200,30);
+                dltLabel.setForeground(Color.BLACK);
+                dltLabel.setBounds(300,350,260,30);
                 c10.add(dltLabel);
                 
                   dltNurse = new JTextField (50);
-                dltNurse.setBounds(350,140,240,49);
+                dltNurse.setBounds(350,360,240,49);
                 c10.add(dltNurse);
                 dltNurse.setOpaque(false);
     //    tf1.setText("USER ID");
                 dltNurse.setBorder(border);
                 dltNurse.setFont(font1);
                dlt_nur = new JButton ("DELETE");
-                dlt_nur.setBounds(350,200,120,30);
+                dlt_nur.setBounds(350,405,120,30);
                 dlt_nur.setFont(new Font("Arial",Font.BOLD,16));
                 c10.add(dlt_nur);
                
@@ -2018,7 +2047,6 @@ class GUI
         }
         }
         return con;
-        
         }
         
              }});     
@@ -2720,6 +2748,44 @@ class shw_Doc
         
         }
 }
+class shw_Nurse
+{
+         private Connection con;
+         public Connection connection1() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT n.n_id,s.Name,n.duty_shift,n.position,n.ward_num,n.st_id FROM nurse n join staff s using(st_id);";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              model3 = (DefaultTableModel) shw_nur.getModel();
+              model3.addRow(new Object[]{rs.getInt("n_id"),rs.getString("Name"),rs.getString("duty_shift"), rs.getString("position"),rs.getInt("ward_num"),rs.getInt("st_id")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+
 class updateDoc
                 {
                 private Connection con;
