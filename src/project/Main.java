@@ -1,5 +1,6 @@
-﻿//Updated Code
-package project;
+package project
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -7,22 +8,25 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Vector;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+
+
 class GUI
 {
-     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3,wf,wf1;
-    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3,wc,wc2;
+     JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3,wf,wf1,cf1;
+    Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3,wc,wc2,cc1;
     JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,d1,d2,dl,dl1,dl2,dl3,dl4,dl5,dl6,
             p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11;
     JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10
             ,st11,st12,st13,dt1,dt2,dtf,dtf1,dtf2,dtf3,dtf4,dtf5,dtf6,dtf7,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,
             pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
-            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,nur_sh;
+            updateButt,pb,pb1,pb2,pb3,pb4,pb5,clear,db1,db2,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,ct;
     //String val1,val2,val3;
     Vector v = new Vector();
      Vector v1 = new Vector();
@@ -32,8 +36,8 @@ class GUI
       JSpinner spinner;
     String opt[]={"ibuprofen","paracetamol","chloroquine","Voltral Emulgel","Risek Capsules 20mg","Risek Capsules 40mg","Motilium Tablets","Mucaine Suspension","Librax Dragees","Sita Met Tablets","Getryl Tablets 2mg","Treviamet Xr 50/500mg","Caldree-600mg","High-C 1000","Acenac Tab 100 MG"};
     JComboBox cb1,cb2,pcb,pcb2;
-    DefaultTableModel model1, model2,model3;
-    JTable jt1, shw_doc,table,shw_nur;
+    DefaultTableModel model1, model2,model3,model4;
+    JTable jt1, shw_doc,table,shw_pat,d_pat;
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
     void Draw()
@@ -42,7 +46,7 @@ class GUI
 	f = new JFrame("Hospital Managment System");
 	c = f.getContentPane();
 	c.setLayout(null);
-        ImageIcon ii = new ImageIcon("login.jpeg") ;
+        ImageIcon ii = new ImageIcon("login.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616);   
         f.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
@@ -131,7 +135,7 @@ class GUI
         l1.setForeground(Color.BLACK);
         l1.setBounds(70,00,600,60);
         c1.add(l1);
-       Icon icon = new ImageIcon("b.jpeg");
+       Icon icon = new ImageIcon("b.jpg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -147,6 +151,80 @@ class GUI
         b2.setBounds(280,100,250,50);
         b2.setFont(new Font("Arial",Font.BOLD,16));
         c1.add(b2);
+         b2.addActionListener(new ActionListener()
+        {
+          public void actionPerformed(ActionEvent ae)
+          {
+            cf1 = new JFrame("Hospital Managment System");
+            cc1 = cf1.getContentPane();
+            cf1.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
+            cc1.setLayout(null);
+            cc1.add(l1);
+            Icon icon = new ImageIcon("b.jpg");
+            back = new JButton(icon);
+            back.setBounds(8,15,42,36);
+            back.setBorderPainted(false);
+            cc1.add(back);
+            
+            JDateChooser chooser = new JDateChooser();
+            chooser.setLocale(Locale.US);
+
+            //JPanel panel = new JPanel();
+            JLabel k = new JLabel("Select Date");
+            k.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+            k.setForeground(Color.BLACK);
+            k.setBounds(110,60,250,50);
+            cc1.add(k);
+            chooser.setBounds(270,70,190,30);
+            cc1.add(chooser);
+            
+            ct = new JButton ("GO");
+            ct.setBounds(470,70,70,32);
+            ct.setFont(new Font("Arial",Font.BOLD,16));
+            cc1.add(ct);
+            ct.addActionListener(new ActionListener()
+            {
+          public void actionPerformed(ActionEvent ae)
+          {
+                model3 = new DefaultTableModel(); 
+                shw_pat =new JTable(model3);    
+                model3.addColumn("P-ID");
+                model3.addColumn("NAME ");
+                model3.addColumn("F/NAME");
+                model3.addColumn("GENDER");
+                model3.addColumn("AGE");
+                model3.addColumn("WARD NUM");
+                model3.addColumn("D-ID");
+                shw_Pat pt = new shw_Pat();
+                
+                try {
+                     pt.connection();
+                    } 
+                catch (SQLException ex) {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                JScrollPane scroll3 = new JScrollPane(shw_pat);
+                scroll3.setBounds(5,110,600,200);
+                cc1.add(scroll3); 
+          }});
+           
+                         
+             
+            back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                    
+                    jf.setVisible(true);
+                    cf1.setVisible(false);
+            }});
+                cf1.setFont(font1);
+                cc1.add(bgimg);
+                cf1.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
+                cf1.setVisible(true);
+                cf1.setSize(626,616);
+                cf1.setResizable(false);
+            }});
+       
         b3 = new JButton ("CHECK PATIENT REPORT");
         b3.setBounds(280,200,250,50);
         b3.setFont(new Font("Arial",Font.BOLD,16));
@@ -161,12 +239,12 @@ class GUI
                 df2.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 dc2.setLayout(null);
                 dc2.add(l1);
-             Icon icon = new ImageIcon("b.jpeg");
-       back = new JButton(icon);
-        back.setBounds(8,15,42,36);
-        back.setBorderPainted(false);
-        dc2.add(back);
-        back.addActionListener(new ActionListener() {
+             Icon icon = new ImageIcon("b.jpg");
+             back = new JButton(icon);
+             back.setBounds(8,15,42,36);
+             back.setBorderPainted(false);
+             dc2.add(back);
+             back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
                     df2.setVisible(false);
@@ -336,7 +414,7 @@ class GUI
                 mf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 mc.setLayout(null);
                 mc.add(l1);
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
                 back = new JButton(icon);
                 back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
@@ -470,7 +548,7 @@ class GUI
 	l1.setForeground(Color.BLACK);
 	l1.setBounds(70,00,600,60);
         c2.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -494,7 +572,7 @@ class GUI
         c3.setLayout(null);
         f3.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c3.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -521,7 +599,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -635,7 +713,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -820,7 +898,7 @@ class GUI
         c9.setLayout(null);
         f9.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c9.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -962,7 +1040,7 @@ class GUI
         c11.setLayout(null);
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.add(l1);
-             Icon icon = new ImageIcon("b.jpeg");
+             Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1061,7 +1139,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1194,7 +1272,7 @@ class GUI
          pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
          pc.setLayout(null);
          pc.add(l1);
-         Icon icon = new ImageIcon("b.jpeg");
+         Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1218,7 +1296,7 @@ class GUI
             pc1.setLayout(null);
             pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             pc1.add(l1);
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1396,7 +1474,7 @@ class GUI
         f12.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c12.setLayout(null);
         c12.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1407,21 +1485,52 @@ class GUI
                     f12.setVisible(false);
                     pf.setVisible(true);
             }});
-        dltLabel = new JLabel ("Insert Id to delete", SwingConstants.CENTER) ;
+                
+          JButton s = new JButton("SHOW ALL PATIENTS");
+          s.setBounds(170,65,220,30);
+          s.setFont(new Font("Arial",Font.BOLD,16));
+          c12.add(s);
+          s.addActionListener(new ActionListener() 
+          {
+            public void actionPerformed(ActionEvent ae)
+             {       
+                model4 = new DefaultTableModel(); 
+                d_pat =new JTable(model4);    
+                model4.addColumn("P-ID");
+                model4.addColumn("NAME ");
+                model4.addColumn("F/NAME");
+                model4.addColumn("GENDER");
+                model4.addColumn("AGE");
+                model4.addColumn("WARD NUM");
+                model4.addColumn("DOC ID");
+                shw_Pat pt = new shw_Pat();
+                try 
+                        {
+                            pt.connection();
+                        } 
+                        catch (SQLException ex) 
+                        {
+                            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                JScrollPane scroll4 = new JScrollPane(d_pat);
+                scroll4.setBounds(5,100,580,250);
+                c12.add(scroll4);   
+             }});
+                dltLabel = new JLabel ("Insert Id to Delete") ;
                 dltLabel.setFont(font1) ;
-               dltLabel.setForeground(Color.BLACK);
-                dltLabel.setBounds(350,120,200,30);
+                dltLabel.setForeground(Color.BLACK);
+                dltLabel.setBounds(350,380,250,30);
                 c12.add(dltLabel);
                 
                 dltPatient = new JTextField (50);
-                dltPatient.setBounds(350,140,240,49);
+                dltPatient.setBounds(350,410,240,30);
                 c12.add(dltPatient);
                 dltPatient.setOpaque(false);
-    //    tf1.setText("USER ID");
+    
                 dltPatient.setBorder(border);
                 dltPatient.setFont(font1);
                dlt_pt = new JButton ("DELETE");
-                dlt_pt.setBounds(350,200,120,30);
+                dlt_pt.setBounds(380,460,120,30);
                 dlt_pt.setFont(new Font("Arial",Font.BOLD,16));
                 c12.add(dlt_pt);
                
@@ -1466,7 +1575,7 @@ class GUI
                 f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c13.setLayout(null);
                 c13.add(l1);
-               Icon icon = new ImageIcon("b.jpeg");
+               Icon icon = new ImageIcon("b.jpg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -1523,7 +1632,7 @@ class GUI
         f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c13.setLayout(null);
         c13.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1613,7 +1722,7 @@ class GUI
         f6.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c6.setLayout(null);
        c6.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1636,7 +1745,7 @@ class GUI
                 f7.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c7.setLayout(null);
                 c7.add(l1);
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1739,7 +1848,7 @@ class GUI
                 f8.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
              c8.setLayout(null); 
              c8.add(l1);
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1934,7 +2043,7 @@ class GUI
         f10.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c10.setLayout(null);
         c10.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1945,49 +2054,21 @@ class GUI
                     f10.setVisible(false);
                     f6.setVisible(true);
             }});
-                    nur_sh = new JButton ("SHOW ALL NURSES");
-                    nur_sh.setBounds(170,65,220,30);
-                    nur_sh.setFont(new Font("Arial",Font.BOLD,16));
-                    c10.add(nur_sh);
-                    nur_sh.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent ae)
-                    {
-                    model3 = new DefaultTableModel(); 
-                    shw_nur =new JTable(model3);    
-                    model3.addColumn("NURSE ID");
-                    model3.addColumn("NAME ");
-                    model3.addColumn("DUTY SHIFT");
-                    model3.addColumn("POSITION");
-                    model3.addColumn("WARD NUMBER");
-                    model3.addColumn("STAFF ID");
-                        shw_Nurse nu = new shw_Nurse();
-                        try 
-                        {
-                            nu.connection1();
-                        } 
-                        catch (SQLException ex) 
-                        {
-                            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        JScrollPane scroll3 = new JScrollPane(shw_nur);
-                    scroll3.setBounds(5,100,580,250);
-                    c10.add(scroll3);
-                    }});
-                dltLabel = new JLabel ("Insert Id to delete", SwingConstants.CENTER) ;
+        dltLabel = new JLabel ("Insert Id to delete", SwingConstants.CENTER) ;
                 dltLabel.setFont(font1) ;
-                dltLabel.setForeground(Color.BLACK);
-                dltLabel.setBounds(300,350,260,30);
+               dltLabel.setForeground(Color.BLACK);
+                dltLabel.setBounds(350,120,200,30);
                 c10.add(dltLabel);
                 
                   dltNurse = new JTextField (50);
-                dltNurse.setBounds(350,360,240,49);
+                dltNurse.setBounds(350,140,240,49);
                 c10.add(dltNurse);
                 dltNurse.setOpaque(false);
     //    tf1.setText("USER ID");
                 dltNurse.setBorder(border);
                 dltNurse.setFont(font1);
                dlt_nur = new JButton ("DELETE");
-                dlt_nur.setBounds(350,405,120,30);
+                dlt_nur.setBounds(350,200,120,30);
                 dlt_nur.setFont(new Font("Arial",Font.BOLD,16));
                 c10.add(dlt_nur);
                
@@ -2047,6 +2128,7 @@ class GUI
         }
         }
         return con;
+        
         }
         
              }});     
@@ -2073,7 +2155,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2171,7 +2253,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2303,7 +2385,7 @@ class GUI
                     wc.setLayout(null);
                     wc.add(l1);
                     
-                    Icon icon = new ImageIcon("b.jpeg");
+                    Icon icon = new ImageIcon("b.jpg");
                     back = new JButton(icon);
                     back.setBounds(8,15,42,36);
                     back.setBorderPainted(false);
@@ -2637,7 +2719,7 @@ class searchDoc
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-       String val = "SELECT * FROM doctor JOIN staff using(st_id) WHERE d_id=?";
+       String val = "SELECT * FROM doctor JOIN staff using(st_id) WHERE hw?";
             PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(dt1.getText()));
             ResultSet rs = stmt.executeQuery();
@@ -2748,44 +2830,6 @@ class shw_Doc
         
         }
 }
-class shw_Nurse
-{
-         private Connection con;
-         public Connection connection1() throws SQLException
-         {
-         if(con==null)
-         {
-        String url = "jdbc:mysql://localhost/";
-        String dbName="projectdb";
-        String dr="com.mysql.jdbc.Driver"; 
-        String user="root";
-        String pass="";
-        try{
-            
-            Class.forName(dr);
-            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-            String val = "SELECT n.n_id,s.Name,n.duty_shift,n.position,n.ward_num,n.st_id FROM nurse n join staff s using(st_id);";
-            PreparedStatement stmt = con.prepareStatement(val);
-           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next())
-            {
-              model3 = (DefaultTableModel) shw_nur.getModel();
-              model3.addRow(new Object[]{rs.getInt("n_id"),rs.getString("Name"),rs.getString("duty_shift"), rs.getString("position"),rs.getInt("ward_num"),rs.getInt("st_id")});
-            }
-            
-         con.close();
-             }
-        catch(ClassNotFoundException e)
-        {
-        System.out.println("Not Connected");
-        }
-        }
-        return con;
-        
-        }
-}
-
 class updateDoc
                 {
                 private Connection con;
@@ -2887,6 +2931,80 @@ class searchNur
         return con;
         
         }}
+class shw_Pat
+{
+         private Connection con;
+         public Connection connection() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              model4 = (DefaultTableModel) d_pat.getModel();
+              model4.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getString("Gender"), rs.getString("Age"),rs.getInt("ward_num"),rs.getInt("d_id")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+class shw_Pat2
+{
+         private Connection con;
+         public Connection connection() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
+            PreparedStatement stmt = con.prepareStatement(val);
+           // stmt.setInt(1,Integer.parseInt(dt1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next())
+            {
+              model3 = (DefaultTableModel) shw_pat.getModel();
+              model3.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getString("Gender"), rs.getString("Age"),rs.getInt("ward_num"),rs.getInt("d_id")});
+            }
+            
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
 class deletePatient
              {
               private Connection con;
