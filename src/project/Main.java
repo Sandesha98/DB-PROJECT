@@ -1,4 +1,5 @@
-﻿package project;
+﻿//updated
+package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
@@ -120,7 +121,7 @@ class GUI
         if((dsg.equals("doc")) && (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-         ImageIcon ii = new ImageIcon("bg.jpeg") ;
+         ImageIcon ii = new ImageIcon("bg.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         jf = new JFrame("Hospital Managment System");
@@ -170,16 +171,18 @@ class GUI
             chooser.setLocale(Locale.US);
 
             //JPanel panel = new JPanel();
-            JLabel k = new JLabel("Select Date");
-            k.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+            JLabel k = new JLabel("SELECT DATE");
+           k.setFont(new Font("Arial",Font.BOLD,16));
             k.setForeground(Color.BLACK);
-            k.setBounds(110,60,250,50);
+            k.setBounds(100,100,250,50);
             cc1.add(k);
-            chooser.setBounds(270,70,190,30);
+            chooser.setBounds(260,110,190,30);
+            chooser.setBackground(Color.WHITE);
+        chooser.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
             cc1.add(chooser);
             
             ct = new JButton ("GO");
-            ct.setBounds(470,70,70,32);
+            ct.setBounds(460,110,70,32);
             ct.setFont(new Font("Arial",Font.BOLD,16));
             
         ct.setBackground(Color.WHITE);
@@ -207,13 +210,10 @@ class GUI
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                   }
                 JScrollPane scroll3 = new JScrollPane(shw_pat);
-                scroll3.setBounds(5,110,600,200);
+                scroll3.setBounds(5,150,600,200);
                 cc1.add(scroll3); 
           }});
-           
-                         
-             
-            back.addActionListener(new ActionListener() {
+           back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
                     
@@ -254,17 +254,18 @@ class GUI
                     df2.setVisible(false);
                     jf.setVisible(true);
             }});
-                dl1 = new JLabel ("Enter Patient Id ");
-                dl1.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl1 = new JLabel ("ENTER REPORT ID");
+                dl1.setFont(font1) ;
                 dl1.setForeground(Color.BLACK);
-                dl1.setBounds(70,70,250,50);
+                dl1.setBounds(50,70,250,50);
                 dc2.add(dl1);
                 dtf7 = new JTextField (50);
-                dtf7.setBounds(280,80,150,30);
+                dtf7.setBounds(260,80,150,30);
+              dtf7.setFont(font1);  
                 dc2.add(dtf7);
                 
                 db1 = new JButton("GO");
-                db1.setBounds(440,80,65,30);
+                db1.setBounds(420,80,65,30);
                 db1.setFont(new Font("Arial",Font.BOLD,16));
                 
         db1.setBackground(Color.WHITE);
@@ -306,16 +307,16 @@ class GUI
                     try{
                     Class.forName(dr);
                     this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-                    PreparedStatement stmt = con.prepareStatement("SELECT * FROM DIAGNOSIS_REPORT WHERE pt_id =?");
+                    PreparedStatement stmt = con.prepareStatement("SELECT * FROM DIAGNOSIS_REPORT WHERE report_id =?");
                     stmt.setInt(1,Integer.parseInt(dtf7.getText()));
                     ResultSet rs = stmt.executeQuery();
                     if(rs.next())
                     {
-                      dtf2.setText(rs.getInt("pt_id")+"");
+                      dtf2.setText(rs.getInt("report_id")+"");
                       dtf3.setText(rs.getString("details"));  
                       dtf4.setText(rs.getString("remarks"));
                       dtf5.setText(rs.getDate("report_Date")+"");
-                      dtf6.setText(rs.getInt("report_id")+"");
+                      dtf6.setText(rs.getInt("pt_id")+"");
                       
                     }
                      else
@@ -335,54 +336,58 @@ class GUI
                 });
                 
   
-                dl2 = new JLabel ("Patient Id");
-                dl2.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl2 = new JLabel ("REPORT ID");
+                dl2.setFont(font1) ;
                 dl2.setForeground(Color.BLACK);
-                dl2.setBounds(330,140,250,50);
+                dl2.setBounds(340,140,250,50);
                 dc2.add(dl2);
                 
                 dtf2 = new JTextField(50);
-                dtf2.setBounds(490,150,120,30);
+                dtf2.setBounds(490,155,120,25);
                 dc2.add(dtf2);
                 
-                dl3 = new JLabel ("Details");
-                dl3.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl3 = new JLabel ("DETAILS");
+                dl3.setFont(font1) ;
                 dl3.setForeground(Color.BLACK);
-                dl3.setBounds(330,180,250,50);
+                dl3.setBounds(340,180,250,50);
                 dc2.add(dl3);
                 
                 dtf3 = new JTextField(50);
-                dtf3.setBounds(490,190,120,30);
+                dtf3.setBounds(490,195,120,25);
+               dtf3.setFont(font1);
                 dc2.add(dtf3);
                 
-                dl4 = new JLabel ("Remarks");
-                dl4.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl4 = new JLabel ("REMARKS");
+                dl4.setFont(font1);
                 dl4.setForeground(Color.BLACK);
-                dl4.setBounds(330,220,250,50);
+                dl4.setBounds(340,220,250,50);
                 dc2.add(dl4);
                 
                 dtf4 = new JTextField(50);
-                dtf4.setBounds(490,230,120,30);
+                dtf4.setBounds(490,235,120,25);
+                dtf4.setFont(font1);
                 dc2.add(dtf4);
                 
-                dl5 = new JLabel ("Report Date");
-                dl5.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl5 = new JLabel ("REPORT DATE");
+                dl5.setFont(font1);
                 dl5.setForeground(Color.BLACK);
-                dl5.setBounds(330,260,250,50);
+                dl5.setBounds(340,260,250,50);
                 dc2.add(dl5);
                 
                 dtf5 = new JTextField(50);
-                dtf5.setBounds(490,270,120,30);
+                dtf5.setBounds(490,275,120,25);
+                dtf5.setFont(font1);
                 dc2.add(dtf5);
                 
-                dl6 = new JLabel ("Report Id");
-                dl6.setFont(new java.awt.Font("Tahoma" , 1, 22)) ;
+                dl6 = new JLabel ("PATIENT ID");
+                dl6.setFont(font1);
                 dl6.setForeground(Color.BLACK);
-                dl6.setBounds(330,300,250,50);
+                dl6.setBounds(340,300,250,50);
                 dc2.add(dl6);
                 
                 dtf6 = new JTextField(50);
-                dtf6.setBounds(490,310,120,30);
+                dtf6.setBounds(490,315,120,25);
+                dtf6.setFont(font1);
                 dc2.add(dtf6);
                 db2 = new JButton("CLEAR");
                 db2.setBounds(430,350,120,30);
@@ -434,16 +439,18 @@ class GUI
                 back.setBorderPainted(false);
                 mc.add(back);
                 
-                l2 = new JLabel("Medicine Name ");
+                l2 = new JLabel("MEDICINE NAME");
                 l2.setFont(font1) ;
                 l2.setForeground(Color.BLACK);
                 l2.setBounds(20,80,200,24);
                 mc.add(l2);
                 pcb2 = new JComboBox(opt);
                 pcb2.setBounds(30,110,150,30);
+                pcb2.setBackground(Color.WHITE);
+        pcb2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 mc.add(pcb2);
                 
-                l2 = new JLabel("Patient Id");
+                l2 = new JLabel("PATIENT ID");
                 l2.setFont(font1) ;
                 l2.setForeground(Color.BLACK);
                 l2.setBounds(210,80,200,24);
@@ -459,22 +466,25 @@ class GUI
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
                  pcb.setBounds(220,110 ,70, 30);
+                 pcb.setBackground(Color.WHITE);
+        pcb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 mc.add(pcb);
                 
-                l2 = new JLabel("Price");
+                l2 = new JLabel("PRICE");
                 l2.setFont(font1) ;
                 l2.setForeground(Color.BLACK);
                 l2.setBounds(350,80,200,24);
                 mc.add(l2);
                 
                 mt = new JTextField (50);
-                mt.setBounds(350,100,50,40);
+                mt.setBounds(330,110,100,25);
+                mt.setBackground(Color.WHITE);
+               mt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 mc.add(mt);
-                mt.setOpaque(false);
-                mt.setBorder(border);
+                
                 mt.setFont(font1);
                 
-                l2 = new JLabel("Quantity");
+                l2 = new JLabel("QUANTITY");
                 l2.setFont(font1) ;
                 l2.setForeground(Color.BLACK);
                 l2.setBounds(450,80,200,24);
@@ -482,7 +492,9 @@ class GUI
                 
          
                 spinner = new JSpinner(new SpinnerNumberModel(1, 1, 99, 1));
-                spinner.setBounds(470,110,50,30);    
+                spinner.setBounds(470,110,50,30); 
+                spinner.setBackground(Color.WHITE);
+            spinner.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 mc.add(spinner);    
                 
                     DefaultTableModel model = new DefaultTableModel(); 
@@ -492,11 +504,11 @@ class GUI
                     model.addColumn("Quantity");
                     model.addColumn("Price");
                     JScrollPane scroll = new JScrollPane(jt);
-                    scroll.setBounds(30,200,500,100);
+                    scroll.setBounds(30,200,500,200);
                     mc.add(scroll);
                     
                     
-                mb = new JButton("Next");
+                mb = new JButton("NEXT");
                 mb.setBounds(230,150,120,30);
                 mb.setFont(new Font("Arial",Font.BOLD,16));
         mb.setBackground(Color.WHITE);
@@ -505,18 +517,22 @@ class GUI
                 mb.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae)
                 {                  
+                    if(mt.getText().equals(""))
+                    {
+                    JOptionPane.showMessageDialog(null,"Please Enter values");
+                    }
+                else
+                    {
+                try {
                     DefaultTableModel model = (DefaultTableModel) jt.getModel();
                     model.addRow(new Object[]{pcb.getSelectedItem().toString(), pcb2.getSelectedItem().toString(), spinner.getValue(),mt.getText()});
-                    
                     insMed md = new insMed();
-                
-                try {
                     md.connection();
                 } 
                 catch (SQLException ex) {
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                    
+                    }
                 }});
 
                 back.addActionListener(new ActionListener() {
@@ -556,9 +572,10 @@ class GUI
                 rc.add(back);
                 
                 rl = new JLabel("PATIENT ID", SwingConstants.CENTER);
+                rl.setFont(new Font("Arial",Font.BOLD,16));
                 rl.setFont(font1) ;
                 rl.setForeground(Color.BLACK);
-                rl.setBounds(350,120,200,24);
+                rl.setBounds(350,110,200,30);
                 rc.add(rl);           
                 
                 getP pp = new getP();
@@ -570,21 +587,23 @@ class GUI
                 {
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                 pcb.setBounds(420,150 ,70, 30);
-                rc.add(pcb);
+                 pcb.setBounds(420,140 ,70, 30);
+              pcb.setFont(new Font("Arial",Font.BOLD,16));
+                 pcb.setBackground(Color.WHITE);
+                pcb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+              rc.add(pcb);
                 
                 
                 rl = new JLabel ("DETAILS", SwingConstants.CENTER) ;
+                //rl.setFont(new Font("Arial",Font.BOLD,16));
                 rl.setFont(font1) ;
                 rl.setForeground(Color.BLACK);
                 rl.setBounds(350,180,200,30);
                 rc.add(rl);
                 
                 rt = new JTextField (50);
-                rt.setBounds(350,200,240,49);
-                rc.add(rt);
-                rt.setOpaque(false);
-                rt.setBorder(border);
+                rt.setBounds(350,210,200,25);
+                 rc.add(rt);
                 rt.setFont(font1);
                 
                 rl = new JLabel ("REMARKS", SwingConstants.CENTER) ;
@@ -594,22 +613,21 @@ class GUI
                 rc.add(rl);
                 
                 rt1 = new JTextField (50);
-                rt1.setBounds(350,260,240,49);
-                rc.add(rt1);
-                rt1.setOpaque(false);
-                rt1.setBorder(border);
+                rt1.setBounds(350,270,200,25);
                 rt1.setFont(font1);
-                
+                     rc.add(rt1);
                 rb = new JButton("SAVE");
                 rb.setBounds(410,310,90,30);
-                rb.setFont(new Font("Arial",Font.BOLD,16));
+                rb.setFont(font1);
+                rb.setBackground(Color.WHITE);
+                rb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));      
                 rc.add(rb);
                 rb.addActionListener(new ActionListener()
                 {
                     createRep cr = new createRep();
                     public void actionPerformed(ActionEvent ae)
                     {
-                         if(rt.getText().equals("") && rt1.getText().equals(""))
+                         if(rt.getText().equals("")||rt1.getText().equals(""))
                     {
                         JOptionPane.showMessageDialog (null,"Please Enter Values") ;
                        // f4.setVisible(false);
@@ -617,6 +635,8 @@ class GUI
                     else{
                         try {
                             cr.connection();
+                            JOptionPane.showMessageDialog(null, "Added Successfully");
+                            rf.setVisible(false);
                         } 
                         catch (SQLException ex) {
                             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -651,7 +671,7 @@ class GUI
         if((dsg.equals("rec"))&& (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-        ImageIcon ii = new ImageIcon("bg.jpeg") ;
+        ImageIcon ii = new ImageIcon("bg.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         f2 = new JFrame("Hospital Managment System");
@@ -715,7 +735,7 @@ class GUI
                 f4.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c4.setLayout(null);
                 c4.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpeg") ;
+                ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
             Icon icon = new ImageIcon("b.jpeg");
@@ -816,7 +836,7 @@ class GUI
                c5.setLayout(null);
                f5.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c5.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpeg") ;
+                ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
                 Icon icon = new ImageIcon("b.jpeg");
