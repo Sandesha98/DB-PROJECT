@@ -1,3 +1,4 @@
+package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
@@ -43,7 +44,7 @@ class GUI
 	f = new JFrame("Hospital Managment System");
 	c = f.getContentPane();
 	c.setLayout(null);
-        ImageIcon ii = new ImageIcon("login.jpg") ;
+        ImageIcon ii = new ImageIcon("login.jpeg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616);   
         f.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
@@ -132,7 +133,7 @@ class GUI
         l1.setForeground(Color.BLACK);
         l1.setBounds(70,00,600,60);
         c1.add(l1);
-       Icon icon = new ImageIcon("b.jpg");
+       Icon icon = new ImageIcon("b.jpeg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -159,7 +160,7 @@ class GUI
             cf1.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             cc1.setLayout(null);
             cc1.add(l1);
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
             back = new JButton(icon);
             back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -241,7 +242,7 @@ class GUI
                 df2.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 dc2.setLayout(null);
                 dc2.add(l1);
-             Icon icon = new ImageIcon("b.jpg");
+             Icon icon = new ImageIcon("b.jpeg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -367,7 +368,7 @@ class GUI
                 mf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 mc.setLayout(null);
                 mc.add(l1);
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
                 back = new JButton(icon);
                 back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
@@ -503,7 +504,7 @@ class GUI
                 rf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 rc.setLayout(null);
                 rc.add(l1);
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
                 back = new JButton(icon);
                 back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
@@ -621,7 +622,7 @@ class GUI
 	l1.setForeground(Color.BLACK);
 	l1.setBounds(70,00,600,60);
         c2.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -647,7 +648,7 @@ class GUI
         c3.setLayout(null);
         f3.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c3.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -676,7 +677,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -770,7 +771,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -960,7 +961,7 @@ class GUI
         c9.setLayout(null);
         f9.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c9.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1109,7 +1110,7 @@ class GUI
         c11.setLayout(null);
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.add(l1);
-             Icon icon = new ImageIcon("b.jpg");
+             Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1215,7 +1216,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1358,7 +1359,7 @@ class GUI
          pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
          pc.setLayout(null);
          pc.add(l1);
-         Icon icon = new ImageIcon("b.jpg");
+         Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1384,7 +1385,7 @@ class GUI
             pc1.setLayout(null);
             in_f.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             pc1.add(l1);
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             //back.setBorderPainted(false);
@@ -1556,7 +1557,7 @@ class GUI
         f12.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c12.setLayout(null);
         c12.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1659,7 +1660,7 @@ class GUI
                 f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c13.setLayout(null);
                 c13.add(l1);
-               Icon icon = new ImageIcon("b.jpg");
+               Icon icon = new ImageIcon("b.jpeg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -1753,7 +1754,7 @@ class GUI
         f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c13.setLayout(null);
         c13.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1874,7 +1875,7 @@ class GUI
         f6.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c6.setLayout(null);
        c6.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1899,7 +1900,7 @@ class GUI
                 f7.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c7.setLayout(null);
                 c7.add(l1);
-            Icon icon = new ImageIcon("b.jpg");
+            Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1989,7 +1990,7 @@ class GUI
                 f8.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
              c8.setLayout(null); 
              c8.add(l1);
-                Icon icon = new ImageIcon("b.jpg");
+                Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2188,7 +2189,7 @@ class GUI
         f10.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c10.setLayout(null);
         c10.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2329,7 +2330,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2434,7 +2435,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpg");
+        Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2576,7 +2577,7 @@ class GUI
                     wc.setLayout(null);
                     wc.add(l1);
                     
-                    Icon icon = new ImageIcon("b.jpg");
+                    Icon icon = new ImageIcon("b.jpeg");
                     back = new JButton(icon);
                     back.setBounds(8,15,42,36);
                     back.setBorderPainted(false);
@@ -2585,7 +2586,7 @@ class GUI
                     l4 = new JLabel ("WARD NUM") ;
                     l4.setFont(font1) ;
                     l4.setForeground(Color.BLACK);
-                    l4.setBounds(130,60,200,30);
+                    l4.setBounds(70,60,200,30);
                     wc.add(l4); 
                 
                     getW w = new getW();
@@ -2597,21 +2598,19 @@ class GUI
                     {
                         Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    cb2.setBounds(270,60 ,70, 30);
+                    cb2.setBounds(210,60 ,70, 30);
                     wc.add(cb2);
                     
-                    
-                    wb = new JButton("GO");
-                    wb.setBounds(350,60,82,30);
-                    wb.setFont(new Font("Arial",Font.BOLD,16));
-                    wb.setBackground(Color.WHITE);
-                    wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                   wb = new JButton("GO");
+                   wb.setBounds(290,60,82,30);
+                   wb.setFont(new Font("Arial",Font.BOLD,16));
+		    wb.setBackground(Color.WHITE);
+			wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                     wc.add(wb);
                     wb.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae)
                     {
-                        
-                    model1 = new DefaultTableModel(); 
+			model1 = new DefaultTableModel(); 
                     jt1=new JTable(model1);    
                     model1.addColumn("PATIENT ID");
                     model1.addColumn("PATIENT NAME");
@@ -2629,11 +2628,10 @@ class GUI
                     
                     JScrollPane scroll6 = new JScrollPane(shw_n);
                     scroll6.setBounds(400,200,200,200);
-                    wc.add(scroll6);
-                        
-                        
-                        
-                            searchWard sw = new searchWard();
+                    wc.add(scroll6);	
+		
+	
+                        searchWard sw = new searchWard();
                         try {
                             sw.connection();
                             } 
@@ -3662,7 +3660,7 @@ class createRep
 }
  }
 }
-public class JavaApplication1{
+public class Main{
 
     public static void main(String[] args) {
         GUI g = new GUI();     
