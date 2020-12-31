@@ -1,3 +1,4 @@
+//updated
 package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -18,13 +19,14 @@ class GUI
 {
      JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3,wf,wf1,cf1,rf,rf1,in_f;
     Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3,wc,wc2,cc1,rc;
-    JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,d1,d2,dl,dl1,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,rl,xs;
+    JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,d1,d2,dl,dl1,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,rl,xs
+           ,lab1,lab2,lab3;
     JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10
             ,st11,st12,st13,dt1,dt2,dtf,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,rt,rt1,
             pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
             updateButt,pInsrt,pDel,pSear,pUp, pb,pb1,pb2,pb3,pb4,pb5,clear,db1,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,nur_sh,ct,rb;
-    //String val1,val2,val3;
+    int val1,val2,val3;
     JDateChooser chooser;
     Vector v = new Vector();
      Vector v1 = new Vector();
@@ -120,7 +122,7 @@ class GUI
         if((dsg.equals("doc")) && (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-         ImageIcon ii = new ImageIcon("bg.jpg") ;
+         ImageIcon ii = new ImageIcon("bg.jpeg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         jf = new JFrame("Hospital Managment System");
@@ -610,7 +612,7 @@ class GUI
         if((dsg.equals("rec"))&& (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-        ImageIcon ii = new ImageIcon("bg.jpg") ;
+        ImageIcon ii = new ImageIcon("bg.jpeg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         f2 = new JFrame("Hospital Managment System");
@@ -633,6 +635,93 @@ class GUI
                     f2.setVisible(false);
                     f.setVisible(true);
             }});
+        class show_label
+{
+         private Connection con;
+         public Connection connection3() throws SQLException
+         {
+         if(con==null)
+         {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+            Class.forName(dr);
+            this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+            val1=0;
+            val2=0;
+            val3=0;
+            String q1 = "SELECT * From doctor";
+            String q2 = "SELECT * FROM nurse";
+            String q3 = "SELECT * FROM patient";
+            PreparedStatement stmt = con.prepareStatement(q1);
+            PreparedStatement stmt1 = con.prepareStatement(q2);
+            PreparedStatement stmt2 = con.prepareStatement(q3);
+            ResultSet rs = stmt.executeQuery();
+            ResultSet rs1 = stmt1.executeQuery();
+            ResultSet rs2 = stmt2.executeQuery();
+            while(rs.next())
+            {
+              ++val1;
+            }
+            while(rs1.next())
+            {
+               ++val2;
+            }
+            while(rs2.next())
+            {
+               ++val3;
+            }
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+        show_label sl= new show_label();
+        try 
+                {
+                    sl.connection3();
+                } 
+                catch (SQLException ex) 
+                {
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+       JLabel Label1 = new JLabel("DOCTORS : ");
+       Label1.setBounds(70,100,220,20);
+       Label1.setFont(font1);
+        c2.add(Label1);
+        lab1 = new JLabel();
+        lab1.setBounds(190,100,220,20);
+        lab1.setFont(font1);
+        c2.add(lab1);
+        lab1.setText(val1+"");
+        JLabel Label2 = new JLabel("NURSES : ");
+       Label2.setBounds(70,120,220,20);
+       Label2.setFont(font1);
+        c2.add(Label2);
+        lab2 = new JLabel();
+        lab2.setBounds(190,120,220,20);
+        lab2.setFont(font1);
+        c2.add(lab2);
+        lab2.setText(val2+"");
+        JLabel Label3 = new JLabel("PATIENTS : ");
+       Label3.setBounds(70,140,220,20);
+       Label3.setFont(font1);
+       c2.add(Label3);
+        lab3 = new JLabel();
+        lab3.setBounds(190,140,220,20);
+        lab3.setFont(font1);
+        c2.add(lab3);
+        lab3.setText(val3+"");
+
         b2 = new JButton ("DOCTOR");
         b2.setBounds(350,100,220,40);
         b2.setFont(new Font("Arial",Font.BOLD,16));
@@ -674,7 +763,7 @@ class GUI
                 f4.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c4.setLayout(null);
                 c4.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpg") ;
+                ImageIcon ii = new ImageIcon("bg.jpeg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
             Icon icon = new ImageIcon("b.jpeg");
@@ -768,7 +857,7 @@ class GUI
                c5.setLayout(null);
                f5.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c5.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpg") ;
+                ImageIcon ii = new ImageIcon("bg.jpeg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
                 Icon icon = new ImageIcon("b.jpeg");
