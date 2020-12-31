@@ -1,5 +1,3 @@
-//updated code
-package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
@@ -45,7 +43,7 @@ class GUI
 	f = new JFrame("Hospital Managment System");
 	c = f.getContentPane();
 	c.setLayout(null);
-        ImageIcon ii = new ImageIcon("login.jpeg") ;
+        ImageIcon ii = new ImageIcon("login.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616);   
         f.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
@@ -134,7 +132,7 @@ class GUI
         l1.setForeground(Color.BLACK);
         l1.setBounds(70,00,600,60);
         c1.add(l1);
-       Icon icon = new ImageIcon("b.jpeg");
+       Icon icon = new ImageIcon("b.jpg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -161,7 +159,7 @@ class GUI
             cf1.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             cc1.setLayout(null);
             cc1.add(l1);
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
             back = new JButton(icon);
             back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -243,7 +241,7 @@ class GUI
                 df2.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 dc2.setLayout(null);
                 dc2.add(l1);
-             Icon icon = new ImageIcon("b.jpeg");
+             Icon icon = new ImageIcon("b.jpg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -369,7 +367,7 @@ class GUI
                 mf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 mc.setLayout(null);
                 mc.add(l1);
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
                 back = new JButton(icon);
                 back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
@@ -505,7 +503,7 @@ class GUI
                 rf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 rc.setLayout(null);
                 rc.add(l1);
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
                 back = new JButton(icon);
                 back.setBounds(8,15,42,36);
                 back.setBorderPainted(false);
@@ -623,7 +621,7 @@ class GUI
 	l1.setForeground(Color.BLACK);
 	l1.setBounds(70,00,600,60);
         c2.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -649,7 +647,7 @@ class GUI
         c3.setLayout(null);
         f3.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c3.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
         back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -678,7 +676,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -772,7 +770,7 @@ class GUI
                 ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -813,6 +811,7 @@ class GUI
                 
                 tf10 = new JTextField (50);
                  tf10.setBounds(350,210,200,25);
+                 tf10.setFont(font1);
                 c5.add(tf10);
                 
                  b7 = new JButton ("DONE");
@@ -874,7 +873,7 @@ class GUI
         
         stmt1.setInt(4,id2);
         stmt1.executeUpdate();
-        JOptionPane.showMessageDialog(null,"Insertion Successful");
+        JOptionPane.showMessageDialog(null,"Inserted Successfully");
         f5.setVisible(false);
         f3.setVisible(true);
         }
@@ -926,7 +925,7 @@ class GUI
         stmt.setInt(4, Integer.parseInt(tf6.getText())); //age
         stmt.setString(5, tf7.getText());//qualification
         stmt.setString(6,"doc"); // designation
-         int i =stmt.executeUpdate();
+        stmt.executeUpdate();
       }
         catch(ClassNotFoundException e)
         {
@@ -961,7 +960,7 @@ class GUI
         c9.setLayout(null);
         f9.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c9.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1030,13 +1029,14 @@ class GUI
             public void actionPerformed(ActionEvent a)
             {
             
-              delete dlt = new delete();
+              
             if(dltTf.getText().equals(""))
             {
                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
             }
             else{
                 try {
+                    delete dlt = new delete();
                     dlt.connection();
                 } 
                 catch (SQLException ex) {
@@ -1060,20 +1060,19 @@ class GUI
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-       String val = "delete doctor,staff from staff inner join doctor on doctor.st_id=staff.st_id where doctor.d_id = ?";
+       String val = "delete doctor,staff from staff inner join doctor using(st_id) where doctor.d_id = ?";
               PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(dltTf.getText()));
             int i=stmt.executeUpdate();
-         if(i==1)
-         {
-         JOptionPane.showMessageDialog(null,"Deleted Successfully");
-         f3.setVisible(true);
-         }
-         if(i==0)
+        if(i==0)
          {
          JOptionPane.showMessageDialog(null,"Not Found");
          }
-         
+         else
+         {
+          JOptionPane.showMessageDialog(null,"Deleted Successfully");
+          f3.setVisible(true);
+         }
             con.close();
              }
         catch(ClassNotFoundException e)
@@ -1110,7 +1109,7 @@ class GUI
         c11.setLayout(null);
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.add(l1);
-             Icon icon = new ImageIcon("b.jpeg");
+             Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1216,7 +1215,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1359,7 +1358,7 @@ class GUI
          pf.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
          pc.setLayout(null);
          pc.add(l1);
-         Icon icon = new ImageIcon("b.jpeg");
+         Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1385,7 +1384,7 @@ class GUI
             pc1.setLayout(null);
             in_f.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
             pc1.add(l1);
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             //back.setBorderPainted(false);
@@ -1516,7 +1515,7 @@ class GUI
                 {
                     public void actionPerformed(ActionEvent ae)
                 {
-                     insPat da = new insPat();
+                    
                      if(ptf.getText().equals("")||ptf1.getText().equals("")||ptf2.getText().equals("")||ptf3.getText().equals("")||ptf4.getText().equals("")||ptf5.getText().equals(""))
                      {
                      JOptionPane.showMessageDialog(null,"Please Enter Value");
@@ -1524,6 +1523,7 @@ class GUI
                      else
                      {
                 try {
+                     insPat da = new insPat();
                     da.connection();
                 } 
                 catch (SQLException ex) {
@@ -1556,7 +1556,7 @@ class GUI
         f12.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c12.setLayout(null);
         c12.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1620,13 +1620,14 @@ class GUI
             public void actionPerformed(ActionEvent a)
             {
             
-                    deletePatient dlt = new deletePatient();
+                    
             if(dltPatient.getText().equals(""))
             {
                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
             }
             else{
                 try {
+                    deletePatient dlt = new deletePatient();
                     dlt.connection();
                 } 
                 catch (SQLException ex) {
@@ -1658,7 +1659,7 @@ class GUI
                 f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c13.setLayout(null);
                 c13.add(l1);
-               Icon icon = new ImageIcon("b.jpeg");
+               Icon icon = new ImageIcon("b.jpg");
        back = new JButton(icon);
         back.setBounds(8,15,42,36);
         back.setBorderPainted(false);
@@ -1752,7 +1753,7 @@ class GUI
         f13.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c13.setLayout(null);
         c13.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1873,7 +1874,7 @@ class GUI
         f6.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c6.setLayout(null);
        c6.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1898,7 +1899,7 @@ class GUI
                 f7.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c7.setLayout(null);
                 c7.add(l1);
-            Icon icon = new ImageIcon("b.jpeg");
+            Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -1988,7 +1989,7 @@ class GUI
                 f8.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
              c8.setLayout(null); 
              c8.add(l1);
-                Icon icon = new ImageIcon("b.jpeg");
+                Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2017,7 +2018,7 @@ class GUI
                 c8.add(l2);
                 
                  tf18 = new JTextField (50);
-                tf18.setBounds(350,150,140,25);
+                tf18.setBounds(350,150,200,25);
                 c8.add(tf18);
                 tf18.setFont(font1);
                
@@ -2187,7 +2188,7 @@ class GUI
         f10.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c10.setLayout(null);
         c10.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2248,8 +2249,6 @@ class GUI
             {
             public void actionPerformed(ActionEvent a)
             {
-            
-                    deleteNurse dlt = new deleteNurse();
             if(dltNurse.getText().equals(""))
             {
                 JOptionPane.showMessageDialog (null,"Please Enter Values") ;
@@ -2257,6 +2256,7 @@ class GUI
 
             else{
                 try {
+                    deleteNurse dlt = new deleteNurse();
                     dlt.connection();
                 } 
                 catch (SQLException ex) {
@@ -2284,13 +2284,14 @@ class GUI
               PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(dltNurse.getText()));
          int i=stmt.executeUpdate();
-         if(i==1)
-         {
-         JOptionPane.showMessageDialog(null,"Deleted Successfully");
-         }
          if(i==0)
          {
          JOptionPane.showMessageDialog(null,"Not Found");
+         }
+         else
+         {
+          JOptionPane.showMessageDialog(null,"Deleted Successfully");
+          f6.setVisible(true);
          }
           con.close();
              }
@@ -2328,7 +2329,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2433,7 +2434,7 @@ class GUI
         f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
         c11.setLayout(null);
         c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
+        Icon icon = new ImageIcon("b.jpg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
             back.setBorderPainted(false);
@@ -2575,7 +2576,7 @@ class GUI
                     wc.setLayout(null);
                     wc.add(l1);
                     
-                    Icon icon = new ImageIcon("b.jpeg");
+                    Icon icon = new ImageIcon("b.jpg");
                     back = new JButton(icon);
                     back.setBounds(8,15,42,36);
                     back.setBorderPainted(false);
@@ -2584,7 +2585,7 @@ class GUI
                     l4 = new JLabel ("WARD NUM") ;
                     l4.setFont(font1) ;
                     l4.setForeground(Color.BLACK);
-                    l4.setBounds(70,60,200,30);
+                    l4.setBounds(130,60,200,30);
                     wc.add(l4); 
                 
                     getW w = new getW();
@@ -2596,9 +2597,20 @@ class GUI
                     {
                         Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    cb2.setBounds(210,60 ,70, 30);
+                    cb2.setBounds(270,60 ,70, 30);
                     wc.add(cb2);
                     
+                    
+                    wb = new JButton("GO");
+                    wb.setBounds(350,60,82,30);
+                    wb.setFont(new Font("Arial",Font.BOLD,16));
+                    wb.setBackground(Color.WHITE);
+                    wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                    wc.add(wb);
+                    wb.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent ae)
+                    {
+                        
                     model1 = new DefaultTableModel(); 
                     jt1=new JTable(model1);    
                     model1.addColumn("PATIENT ID");
@@ -2606,21 +2618,22 @@ class GUI
                     model1.addColumn("WARD Name");
                 
                     JScrollPane scroll1 = new JScrollPane(jt1);
-                    scroll1.setBounds(5,100,600,200);
+                    scroll1.setBounds(5,200,400,200);
                     wc.add(scroll1);
                     
+                    model6 = new DefaultTableModel(); 
+                    shw_n=new JTable(model6);    
+                    model6.addColumn("NURSE ID");
+                    model6.addColumn("NURSE NAME");
                     
                     
-                    wb = new JButton("GO");
-                    wb.setBounds(290,60,82,30);
-                    wb.setFont(new Font("Arial",Font.BOLD,16));
-        wb.setBackground(Color.WHITE);
-        wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-                    wc.add(wb);
-                    wb.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent ae)
-                    {
-                        searchWard sw = new searchWard();
+                    JScrollPane scroll6 = new JScrollPane(shw_n);
+                    scroll6.setBounds(400,200,200,200);
+                    wc.add(scroll6);
+                        
+                        
+                        
+                            searchWard sw = new searchWard();
                         try {
                             sw.connection();
                             } 
@@ -3168,13 +3181,14 @@ class deletePatient
               PreparedStatement stmt = con.prepareStatement(val);
             stmt.setInt(1,Integer.parseInt(dltPatient.getText()));
             int i=stmt.executeUpdate();
-         if(i==1)
-         {
-         JOptionPane.showMessageDialog(null,"Deleted Successfully");
-         }
          if(i==0)
          {
          JOptionPane.showMessageDialog(null,"Not Found");
+         }
+         else
+         {
+          JOptionPane.showMessageDialog(null,"Deleted Successfully");
+          pf.setVisible(true);
          }
          con.close();
              }
@@ -3648,7 +3662,7 @@ class createRep
 }
  }
 }
-public class Main{
+public class JavaApplication1{
 
     public static void main(String[] args) {
         GUI g = new GUI();     
