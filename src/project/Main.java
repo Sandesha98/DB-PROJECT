@@ -1,4 +1,4 @@
-//updated
+//updated file
 package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -43,7 +43,7 @@ class GUI
     void Draw()
     {		
         
-	f = new JFrame("Hospital Managment System");
+	f = new JFrame("Hospital Managment System"); //main frame
 	c = f.getContentPane();
 	c.setLayout(null);
         ImageIcon ii = new ImageIcon("login.jpeg") ;
