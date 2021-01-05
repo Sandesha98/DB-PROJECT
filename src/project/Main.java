@@ -1,4 +1,3 @@
-//updated file
 package project;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -20,13 +19,13 @@ class GUI
      JFrame f, jf, f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,df1,df2,df3,pf,pf1,pf2,pf3,pf4,pf5,mf,mf1,mf2,mf3,wf,wf1,cf1,rf,rf1,in_f;
     Container c,c1,c2,c3 ,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,dc1,dc2,dc3,pc,pc1,pc2,pc3,pc4,pc5,mc,mc1,mc2,mc3,wc,wc2,cc1,rc;
     JLabel l,l1,l2,l3, l4,label, bgimg, h1,l5,dltLabel,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,d1,d2,dl,dl1,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,rl,xs
-           ,lab1,lab2,lab3;
+            ,lab1,lab2,lab3;
     JTextField tf1, tf2,tf3,tf4,tf5,tf6,tf7,tf8,tf9,tf10,tf11,tf12,tf13,tf14,tf15,tf16,tf17,tf18,tf19,dltTf,dltNurse,st1,st2,st3,st4,st5,st6,st7,st8,st9,st10
             ,st11,st12,st13,dt1,dt2,dtf,ptf,ptf1,ptf2,ptf3,ptf4,ptf5,ptf6,dltPatient,rt,rt1,
-            pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3;
+            pt1,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9,pt10,pt11,mt,mt1,mt2,mt3,St;
     JButton b1,b2,b3,b4,b5,button, b6,b7,b8,b9,insert,update,delete,search , insertNur,delNur,searchNur,updNur,dlt_but,back,dlt_nur,searchBut,searchButt,
             updateButt,pInsrt,pDel,pSear,pUp, pb,pb1,pb2,pb3,pb4,pb5,clear,db1,dlt_pt,mb,mb1,mb2,wb,wb1,doc_sh,nur_sh,ct,rb;
-    int val1,val2,val3;
+   int val1,val2,val3;
     JDateChooser chooser;
     Vector v = new Vector();
      Vector v1 = new Vector();
@@ -36,14 +35,14 @@ class GUI
       JSpinner spinner;
     String opt[]={"ibuprofen","paracetamol","chloroquine","Voltral Emulgel","Risek Capsules 20mg","Risek Capsules 40mg","Motilium Tablets","Mucaine Suspension","Librax Dragees","Sita Met Tablets","Getryl Tablets 2mg","Treviamet Xr 50/500mg","Caldree-600mg","High-C 1000","Acenac Tab 100 MG"};
     JComboBox cb1,cb2,pcb,pcb2;
-    DefaultTableModel model1, model2,model3,model4,model5,model6;
-    JTable jt1, shw_doc,table,shw_nur,shw_pat,d_pat,shw_rep,shw_n;
+    DefaultTableModel model1, model2,model3,model4,model5,model6,model7,model8,model9;
+    JTable jt1, shw_doc,table,shw_nur,shw_pat,d_pat,shw_rep,shw_n,S_p,S_d,S_n;
    Border border = BorderFactory.createLineBorder(Color.BLUE, 0);
    Font font1 = new Font("SansSerif", Font.BOLD, 20);
     void Draw()
     {		
         
-	f = new JFrame("Hospital Managment System"); //main frame
+	f = new JFrame("Hospital Managment System");
 	c = f.getContentPane();
 	c.setLayout(null);
         ImageIcon ii = new ImageIcon("login.jpeg") ;
@@ -122,7 +121,7 @@ class GUI
         if((dsg.equals("doc")) && (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-         ImageIcon ii = new ImageIcon("bg.jpeg") ;
+         ImageIcon ii = new ImageIcon("bg.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         jf = new JFrame("Hospital Managment System");
@@ -612,7 +611,7 @@ class GUI
         if((dsg.equals("rec"))&& (Integer.parseInt(tf1.getText())==i) && (tf2.getText().equals(p)))
         {
         flag = true;
-        ImageIcon ii = new ImageIcon("bg.jpeg") ;
+        ImageIcon ii = new ImageIcon("bg.jpg") ;
         bgimg = new JLabel("",ii,JLabel.CENTER);
         bgimg.setBounds(0,0,626,616); 
         f2 = new JFrame("Hospital Managment System");
@@ -721,7 +720,6 @@ class GUI
         lab3.setFont(font1);
         c2.add(lab3);
         lab3.setText(val3+"");
-
         b2 = new JButton ("DOCTOR");
         b2.setBounds(350,100,220,40);
         b2.setFont(new Font("Arial",Font.BOLD,16));
@@ -749,7 +747,7 @@ class GUI
                     f2.setVisible(true);
             }});
         
-         insert = new JButton ("INSERT");
+         insert = new JButton ("RECRUIT");
         insert.setBounds(350,100,220,40);
         insert.setFont(new Font("Arial",Font.BOLD,16));
          insert.setBackground(Color.WHITE);
@@ -763,7 +761,7 @@ class GUI
                 f4.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c4.setLayout(null);
                 c4.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpeg") ;
+                ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
             Icon icon = new ImageIcon("b.jpeg");
@@ -857,7 +855,7 @@ class GUI
                c5.setLayout(null);
                f5.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
                 c5.add(l1);
-                ImageIcon ii = new ImageIcon("bg.jpeg") ;
+                ImageIcon ii = new ImageIcon("bg.jpg") ;
                 bgimg = new JLabel("",ii,JLabel.CENTER);
                 bgimg.setBounds(0,0,626,616); 
                 Icon icon = new ImageIcon("b.jpeg");
@@ -1007,7 +1005,7 @@ class GUI
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-        String st = "insert into staff(Name,FatherName,Gender,Age,Qualification,JoiningDate,Designation) values(?,?,?,?,?,current_date(),?)";
+        String st = "insert into staff(Name,FatherName,Gender,Age,Qualification,JoiningDate,leavingDate,Designation) values(?,?,?,?,?,current_date(),ADDDATE(current_date(),730),?)";
         PreparedStatement stmt = con.prepareStatement(st);
         stmt.setString(1, tf3.getText());  //name
         stmt.setString(2, tf4.getText());  //fname
@@ -1035,7 +1033,7 @@ class GUI
                 f4.setResizable(false); 
                 
             }});
-        delete = new JButton ("DELETE");
+        delete = new JButton ("DELETE RECORD");
         delete.setBounds(350,300,220,40);
         delete.setFont(new Font("Arial",Font.BOLD,16));
         delete.setBackground(Color.WHITE);
@@ -1183,7 +1181,7 @@ class GUI
                 f9.setResizable(false);  
              }
         });
-        search = new JButton ("SEARCH");
+        search = new JButton ("SEARCH RECORD");
         search.setBounds(350,200,220,40);
         search.setFont(new Font("Arial",Font.BOLD,16));
         search.setBackground(Color.WHITE);
@@ -1210,77 +1208,70 @@ class GUI
                     f11.setVisible(false);
                     f3.setVisible(true);
             }});
-            d1 = new JLabel ("DOCTOR ID: ") ;
+                d1 = new JLabel ("Enter Doctor ID: ") ;
             d1.setFont(font1) ;
             d1.setForeground(Color.BLACK);
-            d1.setBounds(120,50,200,30);
+            d1.setBounds(70,60,200,20);
             c11.add(d1);
-                
-                dt1 = new JTextField (50);
-                dt1.setBounds(340,55,140,20);
-                c11.add(dt1);
-                searchData();
            
-            d2 = new JLabel("SPECIALIZATION: ") ;
-            d2.setFont(font1) ;
-            d2.setForeground(Color.BLACK);
-            d2.setBounds(120,380,200,30);
-            c11.add(d2);
-                
-                dt2 = new JTextField (50);
-                dt2.setBounds(340,385,140,20);
-                c11.add(dt2);
-              searchButt=new JButton("SEARCH");
-                searchButt.setBounds(210,450,100,40);
-                searchButt.setFont(new Font("Arial",Font.BOLD,16));
-        searchButt.setBackground(Color.WHITE);
-        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-                c11.add(searchButt);
-        clear = new JButton ("CLEAR");
-        clear.setBounds(320,450,100,40);
-        clear.setFont(new Font("Arial",Font.BOLD,16));
-        clear.setBackground(Color.WHITE);
-        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
-        c11.add(clear);
-         clear.addActionListener(new ActionListener()
+            getD g = new getD();
+                try 
                 {
-                public void actionPerformed(ActionEvent a)
+                    g.connection();
+                } 
+                catch (SQLException ex) 
                 {
-                dt1.setText("");
-                dt2.setText("");
-                st2.setText("");
-                st3.setText("");
-                st4.setText("");
-                st5.setText("");
-                st6.setText("");
-                st7.setText("");
-                st8.setText("");
-                st9.setText("");
-                st10.setText("");
-                st11.setText("");
-                st13.setText("");
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                }); 
+               
+                cb1.setBounds(270,55,70,30);
+                c11.add(cb1);
+                cb1.setBackground(Color.WHITE);
+                cb1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
+                
+                searchButt = new JButton("GO");
+                searchButt.setBounds(350,55,90,30);
+                searchButt.setFont(new Font("Arial",Font.BOLD,16));
+                searchButt.setBackground(Color.WHITE);
+                searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));	
+                c11.add(searchButt);
+
+
               searchButt.addActionListener(new ActionListener()
                 {
                 public void actionPerformed(ActionEvent a)
                 { 
-                    searchDoc data = new searchDoc();
-            if(d1.getText().equals(""))
-            {
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-               // f4.setVisible(false);
-            }
-            else{
-                try {
+                    model8 = new DefaultTableModel(); 
+                    S_d =new JTable(model8);    
+                    model8.addColumn("ST-ID");
+                    model8.addColumn("NAME ");
+                    model8.addColumn("F/NAME");
+                    model8.addColumn("GENDER");
+                    model8.addColumn("AGE");
+                    model8.addColumn("QUALIFICATION");
+                    model8.addColumn("JOINING DATE");
+                    model8.addColumn("LEAVING DATE");
+                    model8.addColumn("DESIGNATION");
+                    model8.addColumn("D-ID");
+                    model8.addColumn("DUTY SHIFT");
+                    model8.addColumn("POSITION");
+                    model8.addColumn("SPECIALIZATION");
+                    search_D data = new search_D();
+           
+               try {
                     data.connection();
                 } 
                 catch (SQLException ex) {
-                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-                }
-                
+                   Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               JScrollPane scroll8 = new JScrollPane(S_d);
+                    scroll8.setBounds(5,100,580,250);
+                     S_d.setPreferredScrollableViewportSize(new Dimension(300, 200));
+                    S_d.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                    c11.add(scroll8);
+           
+               }
+               
                 });
                 c11.add(bgimg);
                 
@@ -1290,7 +1281,7 @@ class GUI
                 f11.setSize(626,616);
                 f11.setResizable(false);
              }});
-        update = new JButton ("UPDATE");
+        update = new JButton ("UPDATE RECORD");
         update.setBounds(350,400,220,40);
         update.setFont(new Font("Arial",Font.BOLD,16));
         update.setBackground(Color.WHITE);
@@ -1459,7 +1450,7 @@ class GUI
                     pf.setVisible(false);
                     f2.setVisible(true);
             }});
-          pInsrt = new JButton("INSERT");
+          pInsrt = new JButton("APPOINTMENT");
          pInsrt.setBounds(350,100,220,40);
          pInsrt.setFont(new Font("Arial",Font.BOLD,16));
          pInsrt.setBackground(Color.WHITE);
@@ -1477,7 +1468,7 @@ class GUI
             Icon icon = new ImageIcon("b.jpeg");
              back = new JButton(icon);
              back.setBounds(8,15,42,36);
-            //back.setBorderPainted(false);
+            back.setBorderPainted(false);
            pc1.add(back);
           back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
@@ -1631,7 +1622,7 @@ class GUI
         }
         });
          
-       pDel = new JButton("DELETE");
+       pDel = new JButton("DELETE RECORD");
         pDel.setBounds(350,300,220,40);
         pDel.setFont(new Font("Arial",Font.BOLD,16));
         pDel.setBackground(Color.WHITE);
@@ -1735,7 +1726,7 @@ class GUI
                 f12.setResizable(false);  
              }
         }); 
-        pSear = new JButton ("SEARCH");
+        pSear = new JButton ("SEARCH RECORD");
         pSear.setBounds(350,200,220,40);
         pSear.setFont(new Font("Arial",Font.BOLD,16));
         pSear.setBackground(Color.WHITE);
@@ -1750,75 +1741,84 @@ class GUI
                 c13.setLayout(null);
                 c13.add(l1);
                Icon icon = new ImageIcon("b.jpeg");
-       back = new JButton(icon);
-        back.setBounds(8,15,42,36);
-        back.setBorderPainted(false);
-        c13.add(back);
-        
+                back = new JButton(icon);
+                 back.setBounds(8,15,42,36);
+                 back.setBorderPainted(false);
+                 c13.add(back);
+
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
                     f13.setVisible(false);
                     pf.setVisible(true);
             }});
-               searchPatientData();
-              searchButt=new JButton("SEARCH");
-                searchButt.setBounds(220,380,80,40);
-              searchButt.setFont(new Font("Arial",Font.BOLD,16));
-        searchButt.setBackground(Color.WHITE);
-        searchButt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-                c13.add(searchButt);
-         clear = new JButton ("CLEAR");
-        clear.setBounds(320,380,80,40);
-        clear.setFont(new Font("Arial",Font.BOLD,16));
-        clear.setBackground(Color.WHITE);
-        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-        c13.add(clear);
-        clear.addActionListener(new ActionListener()
+            //   searchPatientData();
+                getP pp = new getP();
+                try 
                 {
-                public void actionPerformed(ActionEvent a)
+                    pp.connection();
+                } 
+                catch (SQLException ex) 
                 {
-                pt1.setText("");
-                pt2.setText("");
-                pt3.setText("");
-                pt4.setText("");
-                pt5.setText("");
-                pt6.setText("");
-                pt7.setText("");
-                pt8.setText("");
-                pt9.setText("");
-                pt10.setText("");
-                pt11.setText("");
+                    Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                });
-              searchButt.addActionListener(new ActionListener()
-                {
-                public void actionPerformed(ActionEvent a)
-                { 
-                    searchPatient data = new searchPatient();
-            if(pt1.getText().equals(""))
+                pcb.setBounds(280,70 ,70, 30);
+                pcb.setBackground(Color.WHITE);
+                pcb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));                            
+                
+                c13.add(pcb);
+                
+                dl1 = new JLabel ("SELECT PATIENT ID");
+                dl1.setFont(font1) ;
+                dl1.setForeground(Color.BLACK);
+                dl1.setBounds(50,60,250,50);
+                c13.add(dl1);
+                
+                searchBut = new JButton("GO");
+                searchBut.setBounds(360,70,65,30);
+                searchBut.setFont(new Font("Arial",Font.BOLD,16));
+                searchBut.setBackground(Color.WHITE);
+                searchBut.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                c13.add(searchBut);
+                searchBut.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
             {
-                JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-               // f4.setVisible(false);
-            }
-            else{
+                    model7 = new DefaultTableModel(); 
+                    S_p =new JTable(model7);    
+                    model7.addColumn("P-ID");
+                    model7.addColumn("NAME ");
+                    model7.addColumn("F/NAME");
+                    model7.addColumn("AGE");
+                    model7.addColumn("GENDER");
+                    model7.addColumn("ADDRESS");
+                    model7.addColumn("PH-NO");
+                    model7.addColumn("ENTRY DATE");
+                    model7.addColumn("DIS DATE");
+                    model7.addColumn("WARD NUM");
+                    model7.addColumn("D-ID");
+                 search_P data = new search_P();
                 try {
                     data.connection();
                 } 
                 catch (SQLException ex) {
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-                }
-                
-                });
+                    JScrollPane scroll7 = new JScrollPane(S_p);
+                    scroll7.setBounds(5,100,580,250);
+                     S_p.setPreferredScrollableViewportSize(new Dimension(300, 200));
+                    S_p.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                    c13.add(scroll7);
+            
+            }});
+
+
                 c13.add(bgimg);
                 f13.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE) ;
                 f13.setVisible(true);
                 f13.setSize(626,616);
                 f13.setResizable(false);
              }});
-        pUp = new JButton ("UPDATE");
+        pUp = new JButton ("UPDATE RECORD");
         pUp.setBounds(350,400,220,40);
         pUp.setFont(new Font("Arial",Font.BOLD,16));
         pUp.setBackground(Color.WHITE);
@@ -1975,7 +1975,7 @@ class GUI
                     f6.setVisible(false);
                     f2.setVisible(true);
             }}); 
-         insertNur = new JButton ("INSERT");
+         insertNur = new JButton ("RECRUIT");
         insertNur.setBounds(350,100,220,40);
         insertNur.setFont(new Font("Arial",Font.BOLD,16));
         insertNur.setBackground(Color.WHITE);
@@ -2231,7 +2231,7 @@ class GUI
         try{
         Class.forName(dr);
         this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-        String st = "insert into staff(Name,FatherName,Gender,Age,Qualification,JoiningDate,Designation) values(?,?,?,?,?,current_date(),?)";
+        String st = "insert into staff(Name,FatherName,Gender,Age,Qualification,JoiningDate,leavingDate,Designation) values(?,?,?,?,?,current_date(),ADDDATE(current_date(),730),?)";
        PreparedStatement stmt = con.prepareStatement(st);
       stmt.setString(1, tf12.getText());  //name
         stmt.setString(2, tf13.getText());  //fname
@@ -2262,7 +2262,7 @@ class GUI
             }
               });
          
-        delNur = new JButton ("DELETE");
+        delNur = new JButton ("DELETE RECORD");
         delNur.setBounds(350,300,220,40);
         delNur.setFont(new Font("Arial",Font.BOLD,16));
         delNur.setBackground(Color.WHITE);
@@ -2404,7 +2404,7 @@ class GUI
              }
         });
       
-        searchNur = new JButton ("SEARCH");
+        searchNur = new JButton ("SEARCH RECORD");
         searchNur.setBounds(350,200,220,40);
         searchNur.setFont(new Font("Arial",Font.BOLD,16));
         searchNur.setBackground(Color.WHITE);
@@ -2415,90 +2415,71 @@ class GUI
              { 
                  f11 = new JFrame("Hospital Managment System");
         //f8.setVisible(false);
-        c11 = f11.getContentPane();
-        f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
-        c11.setLayout(null);
-        c11.add(l1);
-        Icon icon = new ImageIcon("b.jpeg");
-             back = new JButton(icon);
-             back.setBounds(8,15,42,36);
-            back.setBorderPainted(false);
-           c11.add(back);
-          back.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae)
-            {
-                    f11.setVisible(false);
-                    f6.setVisible(true);
-            }});
+                c11 = f11.getContentPane();
+                f11.getRootPane().setBorder(BorderFactory.createLineBorder(Color.black, 5));
+                c11.setLayout(null);
+                c11.add(l1);
+                Icon icon = new ImageIcon("b.jpeg");
+                back = new JButton(icon);
+                back.setBounds(8,15,42,36);
+                back.setBorderPainted(false);
+                c11.add(back);
+                back.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae)
+                    {
+                        f11.setVisible(false);
+                        f6.setVisible(true);
+                    }});
         
-           s1 = new JLabel ("NURSE ID: ") ;
+           s1 = new JLabel ("Enter Nurse ID: ") ;
             s1.setFont(font1) ;
             s1.setForeground(Color.BLACK);
-            s1.setBounds(120,50,200,30);
+            s1.setBounds(70,60,200,30);
             c11.add(s1);
                 
                 st1 = new JTextField (50);
-                st1.setBounds(340,55,140,20);
+                st1.setBounds(250,65,140,20);
                 c11.add(st1);
-            searchData();    
-           s12 = new JLabel ("WARD NUMBER: ") ;
-            s12.setFont(font1) ;
-            s12.setForeground(Color.BLACK);
-            s12.setBounds(120,380,200,30);
-            c11.add(s12);
-                
-                st12 = new JTextField (50);
-                st12.setBounds(340,385,140,20);
-                c11.add(st12);
-                clear = new JButton ("CLEAR");
-        clear.setBounds(300,450,80,40);
-        clear.setFont(new Font("Arial",Font.BOLD,16));
-        clear.setBackground(Color.WHITE);
-        clear.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-        c11.add(clear);
-         clear.addActionListener(new ActionListener()
-                {
-                public void actionPerformed(ActionEvent a)
-                {
-                st1.setText("");
-                st2.setText("");
-                st3.setText("");
-                st4.setText("");
-                st5.setText("");
-                st6.setText("");
-                st7.setText("");
-                st8.setText("");
-                st9.setText("");
-                st10.setText("");
-                st11.setText("");
-                st12.setText("");
-                st13.setText("");
-                }
-                });
-               searchBut=new JButton("SEARCH");
-                searchBut.setBounds(200,450,80,40);
+
+                searchBut=new JButton("SEARCH");
+                searchBut.setBounds(400,59,80,30);
                 searchBut.setFont(new Font("Arial",Font.BOLD,16));
-        searchBut.setBackground(Color.WHITE);
-        searchBut.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                searchBut.setBackground(Color.WHITE);
+                searchBut.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                 c11.add(searchBut);
-              searchBut.addActionListener(new ActionListener()
+                searchBut.addActionListener(new ActionListener()
                 {
                 public void actionPerformed(ActionEvent a)
                 { 
-                    searchNur data = new searchNur();
-            if(st1.getText().equals(""))
-            {
-               JOptionPane.showMessageDialog (null,"Please Enter Values") ;
-               // f4.setVisible(false);
-            }
-            else{
+                    model9 = new DefaultTableModel(); 
+                    S_n =new JTable(model9);    
+                    model9.addColumn("N-ID");
+                    model9.addColumn("NAME ");
+                    model9.addColumn("F/NAME");
+                    model9.addColumn("GENDER");
+                    model9.addColumn("AGE");
+                    
+                    model9.addColumn("QUALIFICATION");
+                    
+                    model9.addColumn("JOINING DATE");
+                    model9.addColumn("LEAVING DATE");
+                    model9.addColumn("DUTY SHIFT");
+                    model9.addColumn("WARD NUM");
+                    model9.addColumn("POSITION");
+                    model9.addColumn("D-ID");
+                    search_N data = new search_N();
                 try {
                     data.connection();
                 } 
                 catch (SQLException ex) {
                     Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
+                JScrollPane scroll9 = new JScrollPane(S_n);
+                    scroll9.setBounds(5,100,580,250);
+                     S_n.setPreferredScrollableViewportSize(new Dimension(300, 200));
+                    S_n.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                    c11.add(scroll9);
+            
                 }
                 });
                 c11.add(bgimg);
@@ -2509,7 +2490,7 @@ class GUI
                 f11.setSize(626,616);
                 f11.setResizable(false);
              }});
-        updNur = new JButton ("UPDATE");
+        updNur = new JButton ("UPDATE RECORD");
         updNur.setBounds(350,400,220,40);
         updNur.setFont(new Font("Arial",Font.BOLD,16));
         updNur.setBackground(Color.WHITE);
@@ -2675,7 +2656,7 @@ class GUI
                     l4 = new JLabel ("WARD NUM") ;
                     l4.setFont(font1) ;
                     l4.setForeground(Color.BLACK);
-                    l4.setBounds(70,60,200,30);
+                    l4.setBounds(130,60,200,30);
                     wc.add(l4); 
                 
                     getW w = new getW();
@@ -2687,19 +2668,21 @@ class GUI
                     {
                         Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    cb2.setBounds(210,60 ,70, 30);
+                    cb2.setBounds(270,60 ,70, 30);
                     wc.add(cb2);
                     
-                   wb = new JButton("GO");
-                   wb.setBounds(290,60,82,30);
-                   wb.setFont(new Font("Arial",Font.BOLD,16));
-		    wb.setBackground(Color.WHITE);
-			wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+                    
+                    wb = new JButton("GO");
+                    wb.setBounds(350,60,82,30);
+                    wb.setFont(new Font("Arial",Font.BOLD,16));
+                    wb.setBackground(Color.WHITE);
+                    wb.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
                     wc.add(wb);
                     wb.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent ae)
                     {
-			model1 = new DefaultTableModel(); 
+                        
+                    model1 = new DefaultTableModel(); 
                     jt1=new JTable(model1);    
                     model1.addColumn("PATIENT ID");
                     model1.addColumn("PATIENT NAME");
@@ -2717,10 +2700,11 @@ class GUI
                     
                     JScrollPane scroll6 = new JScrollPane(shw_n);
                     scroll6.setBounds(400,200,200,200);
-                    wc.add(scroll6);	
-		
-	
-                        searchWard sw = new searchWard();
+                    wc.add(scroll6);
+                        
+                        
+                        
+                            searchWard sw = new searchWard();
                         try {
                             sw.connection();
                             } 
@@ -2978,7 +2962,7 @@ class GUI
  }
 class searchDoc
 {
-                private Connection con;
+         private Connection con;
          public Connection connection() throws SQLException
          {
          if(con==null)
@@ -3013,6 +2997,44 @@ class searchDoc
               dt2.setText(rs.getString("specialization"));
               st13.setText(rs.getString("Position"));
             }
+            else
+            {
+            JOptionPane.showMessageDialog(null,"Record not found");
+            }
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }
+}
+class search_D
+{
+                private Connection con;
+         public Connection connection() throws SQLException
+         {
+         if(con==null)
+         {
+         String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+        Class.forName(dr);
+        this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+       String val = "SELECT * FROM staff JOIN doctor using(st_id) WHERE d_id=?";
+            PreparedStatement stmt = con.prepareStatement(val);
+            stmt.setInt(1,Integer.parseInt(cb1.getSelectedItem().toString()));
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next())
+            {
+                model8 = (DefaultTableModel) S_d.getModel();
+                model8.addRow(new Object[]{rs.getInt("st_id"),rs.getString("Name"),rs.getString("FatherName"),rs.getString("Gender"),rs.getInt("Age"),rs.getString("Qualification"),rs.getDate("JoiningDate"),rs.getDate("LeavingDate"),rs.getString("Designation"),rs.getInt("d_id"),rs.getString("duty_shift"),rs.getString("position"),rs.getString("specialization")});            }
             else
             {
             JOptionPane.showMessageDialog(null,"Record not found");
@@ -3089,7 +3111,7 @@ class shw_Doc
             
             Class.forName(dr);
             this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-            String val = "SELECT d.d_id,s.Name,d.duty_shift,d.position,d.specialization,d.st_id FROM doctor d join staff s using(st_id);";
+            String val = "CALL CALL_D();";
             PreparedStatement stmt = con.prepareStatement(val);
            // stmt.setInt(1,Integer.parseInt(dt1.getText()));
             ResultSet rs = stmt.executeQuery();
@@ -3169,7 +3191,7 @@ class updateDoc
         Date parsed = format.parse(st7.getText());
         java.sql.Date d = new java.sql.Date(parsed.getTime());
          SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        Date pd = format1.parse(st8.getText());
+         Date pd = format1.parse(st8.getText());
         java.sql.Date d1 = new java.sql.Date(pd.getTime());
          //   stmt.setInt(1,Integer.parseInt(dt1.getText()));
               stmt.setString(1,st2.getText());
@@ -3183,7 +3205,10 @@ class updateDoc
                stmt.setString(9,st13.getText());
                 
             int i = stmt.executeUpdate();
-            if(i==1)
+            if(i==0)
+            {JOptionPane.showMessageDialog(null,"Record not found"); 
+            }
+            else
             {JOptionPane.showMessageDialog(null,"Updated Successfully"); 
             f11.setVisible(false);
             }
@@ -3335,6 +3360,84 @@ class searchPatient
         return con;
         
         }}
+class search_P
+                {
+                private Connection con;
+        public Connection connection() throws SQLException
+        {
+        if(con==null)
+        {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+        Class.forName(dr);
+        this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+       String val = "SELECT * FROM patient WHERE pt_id=?";
+            PreparedStatement stmt = con.prepareStatement(val);
+            String vl = pcb.getSelectedItem().toString();
+            int ii = Integer.parseInt(vl);
+            stmt.setInt(1,ii);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next())
+            {
+              model7 = (DefaultTableModel) S_p.getModel();
+              model7.addRow(new Object[]{rs.getInt("pt_id"),rs.getString("Name"),rs.getString("fatherName"),rs.getInt("Age"),rs.getString("Gender"), rs.getString("Address"),rs.getString("PhoneNumber"),rs.getDate("EntryDate"),rs.getDate("DischargeDate"),rs.getInt("ward_num"),rs.getInt("d_id")});
+            }
+            else
+            {
+            JOptionPane.showMessageDialog(null,"Record not found");
+            }
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }}
+class search_N
+                {
+                private Connection con;
+        public Connection connection() throws SQLException
+        {
+        if(con==null)
+        {
+        String url = "jdbc:mysql://localhost/";
+        String dbName="projectdb";
+        String dr="com.mysql.jdbc.Driver"; 
+        String user="root";
+        String pass="";
+        try{
+        Class.forName(dr);
+        this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
+       String val = "SELECT n.n_id,s.Name,s.FatherName,s.Age,s.Gender,s.Qualification,s.JoiningDate,s.LeavingDate,n.duty_shift,n.ward_num,n.position,s.st_id  FROM nurse n JOIN staff s using(st_id) WHERE n_id=?";
+            PreparedStatement stmt = con.prepareStatement(val); 
+            stmt.setInt(1,Integer.parseInt(st1.getText()));
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next())
+            {
+              model9 = (DefaultTableModel) S_n.getModel();
+              model9.addRow(new Object[]{rs.getInt("n_id"),rs.getString("Name"),rs.getString("FatherName"),rs.getInt("Age"),rs.getString("Gender"), rs.getString("Qualification"),rs.getDate("JoiningDate"),rs.getDate("LeavingDate"),rs.getString("duty_shift"),rs.getInt("ward_num"),rs.getString("position"),rs.getInt("st_id")});
+            }
+            else
+            {
+            JOptionPane.showMessageDialog(null,"Record not found");
+            }
+         con.close();
+             }
+        catch(ClassNotFoundException e)
+        {
+        System.out.println("Not Connected");
+        }
+        }
+        return con;
+        
+        }}
    class updateNur
                 {
                 private Connection con;
@@ -3369,9 +3472,14 @@ class searchPatient
                stmt.setInt(8,Integer.parseInt(st12.getText()));  
                stmt.setString(9,st13.getText());
                int i= stmt.executeUpdate();
-            if(i==1)
-            {JOptionPane.showMessageDialog(null,"Updated Successfully"); 
-           f11.setVisible(false);
+            if(i==0)
+            {JOptionPane.showMessageDialog(null,"Record not found"); 
+            
+            }
+            else
+            {
+            JOptionPane.showMessageDialog(null,"Updated Successfully");
+            f11.setVisible(false);
             }
          con.close();
              }
@@ -3447,7 +3555,7 @@ class searchPatient
             
             Class.forName(dr);
             this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-            String val = "SELECT pt_id, Name,fatherName,Gender,Age,ward_num,d_id FROM patient;";
+            String val = "CALL pt;";
             PreparedStatement stmt = con.prepareStatement(val);
            // stmt.setInt(1,Integer.parseInt(dt1.getText()));
             ResultSet rs = stmt.executeQuery();
@@ -3506,7 +3614,6 @@ class shw_Pat2
         
         }
 }
-
 class insPat
 {
     private Connection con;
@@ -3523,7 +3630,7 @@ class insPat
             try{
                 Class.forName(dr);
                 this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-                String in = "INSERT INTO patient(Name,fathername,Age,Gender,Address,PhoneNumber,EntryDate,ward_Num,d_id) values(?,?,?,?,?,?,current_date(),?,?)";
+                String in = "INSERT INTO patient(Name,fathername,Age,Gender,Address,PhoneNumber,EntryDate,dischargeDate,ward_Num,d_id) values(?,?,?,?,?,?,current_date(),ADDDATE(current_date(),10),?,?)";
                 PreparedStatement stmt = con.prepareStatement(in);
                 stmt.setString(1,ptf.getText()); //name
                 stmt.setString(2, ptf1.getText()); //f-name
@@ -3539,7 +3646,7 @@ class insPat
                 stmt.setInt(8, ii);
                 int j=stmt.executeUpdate();
                 
-                if(j==1)
+                if(j!=0)
                 {
                 JOptionPane.showMessageDialog(null,"Inserted Successfully");
                 in_f.setVisible(false);
@@ -3614,10 +3721,11 @@ class getD
             try{
                 Class.forName(dr);
                 this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-                String d = "select d_id from doctor" ;
+                String d = "select * from doctor" ;
                 PreparedStatement stmt = con.prepareStatement(d);
                
                 ResultSet rs = stmt.executeQuery();
+                v.clear();
                 while(rs.next())
                 {
                     int i = rs.getInt("d_id");
@@ -3656,6 +3764,7 @@ class getD
                 PreparedStatement stmt = con.prepareStatement(d);
                
                 ResultSet rs = stmt.executeQuery();
+                v1.clear();
                 while(rs.next())
                 {
                     int x = rs.getInt("Ward_Num");
@@ -3691,10 +3800,11 @@ class getD
             try{
                 Class.forName(dr);
                 this.con =(Connection)DriverManager.getConnection(url+dbName,user,pass);
-                String d = "select pt_id from patient" ;
+                String d = "select * from patient;" ;
                 PreparedStatement stmt = con.prepareStatement(d);
                
                 ResultSet rs = stmt.executeQuery();
+                p.clear();
                 while(rs.next())
                 {
                     int x = rs.getInt("pt_id");
@@ -3752,7 +3862,7 @@ class createRep
 public class Main{
 
     public static void main(String[] args) {
-        GUI g = new GUI();     
+         GUI g = new GUI();     
           g.Draw(); 
     }
     
