@@ -1,4 +1,4 @@
-# DB-PROJECT
+# HOSPITAL MANAGEMENT SYSTEM IN JAVA
 Our project is about Hospital Management System in which there are basically two major panels. One is to insert records of doctors, nurse and patient by any authorized user(let's say receptionist).It also contains active number of doctors, nurses and patients in the hospital and the ward information.
 Another panel is to show the data of particular doctors treating the number of patients and nurse working in any ward. 
 -> If you are logged in as receptionist then you can only see the features related to inserting,deleting,searching and updating data related to particular subjects(doctor,nurse,patient) and you can not see other features that the staff can see(Let's say doctor).
